@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>野马网站当日数据分析</title>
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- 自定义JS -->
+    <script src="/javascripts/webAnalysis.js"></script>
+</head>
+<body  style="background-color: black" ng-app="myApp" ng-controller="myCtrl">
+<div style="color: white">
+    <h1>野马网站当日数据分析</h1>
+    <h2>数据截止: {{currentTime}}</h2>
+    <hr>
+    <h2>用户:</h2>
+    <ul>
+        <li>
+            用户总数: {{totalUsers}}
+        </li>
+    </ul>
+
+    <hr>
+    <h2>发布任务</h2>
+    <ul>
+        <li>今日发布任务总数: {{totalReleaseTaskToday}}</li>
+        <li>今日发布任务总条数: {{totalReleaseTaskAmountToday}}</li>
+        <li>今日发布任务总人数: {{releaseTaskUserIds.length}}</li>
+    </ul>
+
+    <hr>
+    <h2>领取任务</h2>
+    <ul>
+        <li>今日领取任务总数: {{totalReceiveTaskToday}}</li>
+        <li>今日领取任务总条数: {{totalReceiveTaskAmountToday}}</li>
+        <li>今日领取任务总人数: {{receiveTaskUserIds.length}}</li>
+        <li>领取任务出错: {{totalReceiveTaskError}}</li>
+    </ul>
+</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

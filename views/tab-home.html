@@ -1,0 +1,175 @@
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">小马零花钱</div>
+    <button class="button button-icon" onclick="location.reload()">
+        <img src="images/xiaoma/shape-1.png" style="width: 20px;height: 20px;margin-right: 8px;margin-top: -2px">
+    </button>
+
+</ion-header-bar>
+
+<ion-view view-title="" style="font-family: PingFang-SC-Regular;background-color: #f5f5f5">
+    <ion-content ng-click="unselectUrl()" style="">
+        <ion-card ng-if="isIOSDevice != 1" >
+
+            <div style=" background: linear-gradient(#41a4fa, #357cf0);position: absolute;top: 0;width: 100%;">
+                <ion-card-header>
+                    <div class="xiaoma-head" >
+                        <span style="font-size: 20px">小马试客</span>
+                        <hr style="color:white;width:15px;z-index: 99;">
+                        <span style="font-size: 16px;line-height: 26px;"> 用手机按要求下载APP<br>
+                            轻松赚取零花钱<br>
+                        </span>
+                        <img src="images/app/card-head.png" style="margin-top: 65px;">
+                    </div>
+                </ion-card-header>
+                <div class="xiaoma-content">
+                    <span style="color: white;font-size: 16px;line-height: 43px;">抱歉,非IOS用户无法使用</span>
+                </div>
+                <ion-card-content >
+
+                </ion-card-content>
+            </div>
+        </ion-card>
+
+        <!--IOS浏览器鉴别-->
+
+        <ion-card ng-if="isIOSDevice == 1 && isiPhoneSafari != 1" >
+
+            <div style=" background: linear-gradient(#41a4fa, #357cf0);position: absolute;top: 0;width: 100%;">
+                <ion-card-header>
+                    <div class="xiaoma-head" >
+                        <ion-card-content>
+                            <div class="xiaoma-content" style="margin-top: -36px;height:800px;">
+
+                                <span style="font-size: 13px;">需要在Safari中打开</span><br>
+                                <img src="images/app/card-con.png" style="margin-top: 10px;zoom:0.7"><br>
+                                <button class="btn safari-btn" style="margin-top: 5px;"
+                                        onclick="window.location.href = 'safari://www.yema.leanapp.cn/app'">
+                                    点击右上角选择在safara中打开
+                                </button><br><br>
+                                <span style="font-size: 20px;margin-top: 40px;display: inline-block">小马试客</span>
+                                <hr style="color:white;width:15px;">
+                                <span style="font-size: 16px;line-height: 26px;"> 用手机按要求下载APP<br>
+                                    轻松赚取零花钱<br>
+                                </span>
+                                <img src="images/app/righttop.png" style="position: absolute;top:1em;right:1em;zoom:0.6;">
+
+                            </div>
+                        </ion-card-content>
+
+                    </div>
+                </ion-card-header>
+
+
+            </div>
+        </ion-card>
+
+        <!--主要界面-->
+        <div ng-if="isIOSDevice == 1 && isiPhoneSafari == 1" style="background-color: #F5F5F5">
+            <div class="head">
+                <div class="one-head">
+                    <div class="text">
+                        <br>
+                        <h4 style="color:white;margin-top: -5px">今日收益(元)
+                            <span style="font-size: 14px;float: right;margin-right: 5%;color: white;font-weight: 400;">邀请码:{{userInfoObject.userCode}}</span>
+                        </h4>
+                    </div>
+                    <div class="headh1" ng-show="userInfoObject.todayMoney !== 0">{{userInfoObject.todayMoney.toFixed(2)}}</div>
+                    <div class="headh1" ng-show="userInfoObject.todayMoney == 0">竟然没有</div>
+                </div>
+
+                <div style="border-top:1px solid #AEC0FA;width:94%;position: absolute;right :0;margin-top: -10px"></div>
+
+                <div class="blocktwo">
+                    <div ng-show="userInfoObject.userCode != undefined" style="margin-top: -6px"><br>
+                        <img ng-src="{{userInfoObject.userIcon}}" class="img-circle" style="width: 40px;height:40px;float:left;margin-top: -11px;margin-left: 5%;">
+                        <h5 style="font-size: 11pt">账户余额:{{userInfoObject.currentMoney.toFixed(2)}}<br>
+                            <span style="font-size: 11pt">总共收益:{{userInfoObject.totalMoney.toFixed(2)}}</span>
+                        </h5>
+                        <div style="font-size: 16px;float: right;margin-right: 5%;">
+                            <img src="/images/xiaoma/money-img.png" style="top: 4px;width: 18px;height: 18px">
+                            <span ui-sref="tab-account">
+                                <span style="color: #EAF5FF;">提现中心</span>
+                            </span>
+                            <img src="/images/app/arrowhead.svg" style="width:1.2em;margin-top: -2px;">
+                        </div>
+                    </div>
+                    <p ng-show="errorId != 0 && message.length > 0">服务器错误:{{message}}</p>
+                </div>
+            </div>
+
+            <ion-slide-box active-slide="myActiveSlide" style="margin-top: 11px" >
+                <ion-slide >
+                    <div class="box">
+                        <h1><img class="full-image" ng-src="http://ac-we0latdv.clouddn.com/ab8add8931e6e43b744c.png"></h1>
+                    </div>
+                </ion-slide>
+
+            </ion-slide-box>
+
+            <div class="row" style="margin-top: -14px;">
+                <div class="col col-27 item item-body" style="text-align: center;" ui-sref="taskHall">
+                    <img src="/images/xiaoma/rapid.png" style="width: 35px;height: 35px;margin-top: 10px">
+                    <p style="margin-top: 5px;color: #676767;margin-bottom: 10px;font-size: 14px">快速任务</p>
+                </div>
+
+                <div class="col col-27 item item-body" style="text-align: center" ui-sref="printScreenTask">
+                    <img src="/images/xiaoma/printScreen.png" style="width: 35px;height: 35px;margin-top: 10px">
+                    <p style="margin-top: 5px;color: #676767;margin-bottom: 10px;font-size: 14px">截图任务</p>
+                </div>
+
+                <div class="col col-27 item item-body" style="text-align: center" ui-sref="himselfApprentice">
+                    <img src="/images/xiaoma/everyApprentice.png" style="width: 35px;height: 35px;margin-top: 10px">
+                    <p style="margin-top: 5px;color: #676767;margin-bottom: 10px;font-size: 14px">收徒任务</p>
+                </div>
+
+                <!--ui-sref="greatNumberTask"-->
+                <div class="col col-27 item item-body" style="text-align: center" ui-sref="greatNumberTask">
+                    <img src="/images/xiaoma/greatNumber.png" style="width: 35px;height: 35px;margin-top: 10px">
+                    <p style="margin-top: 5px;color: #676767;margin-bottom: 10px;font-size: 14px">高额任务</p>
+                </div>
+            </div>
+
+            <div class="list" style="margin-top: 5pt;">
+                <div class="item item-avatar" ui-sref="newTaskHall">
+                    <img src="/images/xiaoma/everyJiangli.png">
+                    <p class="" style="font-size: 11pt;color: #666666;margin-top: 11px;">
+                        新手任务
+                    </p>
+                    <!--<span class="badge badge-assertive" style="margin-top: 10px;margin-right: 10px">10</span>-->
+                    <img src="/images/app/right.png" style="float:right;height:20px;margin-top:-25px;color: #DDDDDD">
+                </div>
+
+                <div class="item item-avatar" ui-sref="theTaskReview">
+                    <img src="/images/xiaoma/oneIndiana.png">
+                    <p class="" style="font-size: 11pt;color: #666666;margin-top: 11px;">
+                        审核中
+                    </p>
+                    <span class="badge badge-assertive" style="margin-top: 10px;margin-right: 10px" ng-if="userAuditCount > 0">{{userAuditCount}}</span>
+                    <img src="/images/app/right.png" style="float:right;height:20px;margin-top:-25px;color: #DDDDDD">
+                </div>
+
+                <div class="item item-avatar" ui-sref="lottery">
+                    <img src="/images/xiaoma/everyDate.png">
+                    <p style="font-size: 11pt;color: #666666;margin-top: 10px;">
+                        必中红包
+                    </p>
+                    <span class="item-note" style="margin-top: -25px;margin-right: 20px">
+                        上期幸运数字: <span style="color: red">5</span>
+                    </span>
+                    <img src="/images/app/right.png" style="float:right;height:20px;margin-top:-25px;color: #DDDDDD">
+                </div>
+            </div>
+
+            <div class="" style="margin-top: 20px;background-color: #f5f5f5;height: 20px"></div>
+
+
+            <button class="button button-icon" onclick="window.open('https://www.yematest.leanapp.cn/ios/xiaozhushou/')">
+                <img src="images/xiaoma/shape-1.png" >
+            </button>
+
+
+        </div>
+
+    </ion-content>
+
+</ion-view>

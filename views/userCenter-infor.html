@@ -1,0 +1,40 @@
+
+<div class="mytitle">
+    <span>账号中心</span>
+    <span style="margin-left: 500px" ng-if="Administrator != '' && Administrator != undefined">
+        <button class="ui primary basic button" style=""
+                ng-click="AdministratorSubmit()">管理员</button>
+    </span>
+
+</div>
+<hr style="margin-top: 12px;margin-left: 20px;border: 2px solid #3498db;margin-right: 20px">
+
+<div class=" form-group  ">
+    <label class="control-label">手机号</label>
+    <input  type="text" class="form-control" placeholder={{PhoneNumber}} aria-describedby="basic-addon1" disabled>
+</div>
+<div class=" form-group  user-content">
+    <label class="control-label">密码</label>
+    <input type="text" class="form-control" placeholder=****** aria-describedby="basic-addon1" disabled>
+</div>
+
+<div class=" form-group  user-content">
+    <label class="control-label">昵称</label>
+    <input type="text" class="form-control" ng-model="userNickname" placeholder={{userNickname}} aria-describedby="basic-addon1">
+</div>
+
+<div class=" form-group  user-content">
+    <label class="control-label">QQ号</label>
+    <input type="text" class="form-control" ng-model="userQQ" placeholder={{userQQ}} aria-describedby="basic-addon1">
+    <div style="color: #eb3030; margin-left: 110px; margin-bottom:0; margin-top: 5px;">建议您尽快填写,方便和换评者沟通</div>
+</div>
+
+<label style="color: #eb3030; margin-left: 110px; margin-bottom:0; margin-top: 5px;" class="control-label">{{userReputation}}信誉（成功完成任务信誉会增加，领取任务不做信誉会减少）</label>
+
+<hr class="solid-pull">
+
+<div class=" form-group  user-content">
+    <button type="button" onclick="javascript:window.location.href='/user/forgetSecret'" class="btn btn-danger">修改密码</button>
+    <button type="button" ng-click="preserve()" class="btn btn-danger save" ng-show="errorId != 0">保存</button>
+    <button type="button" class="btn btn-danger save" ng-show="errorId == 0">已保存</button>
+</div>

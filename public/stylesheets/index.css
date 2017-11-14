@@ -1,0 +1,262 @@
+
+
+.navbar{
+    font-size: 17px;
+    height: 48px;
+    border-style: none;
+    /*background-color: rgba(0,0,0,0);*/
+}
+/**屏幕宽度大于800*/
+@media screen and (min-width:800px) {
+    #pageone{
+        padding-top: 150px;
+        width: 100vw;
+        height: 100vh;
+
+    }
+    .pageone_p{
+        font-size: 56px;padding-top: 54px;margin:auto;color:white;padding-left: 14%;
+    }
+    .pageone_button{
+        width: 226px;height:51px;color: white;background: rgba(0, 0, 0, 0.3);
+        margin-top: 40px;
+        margin-bottom: 52px;
+        margin-left: 33%;
+        font-size: 31px;
+        border: 2px solid #ffffff;
+        border-radius: 20px;
+        text-align: center;
+    }
+    #pagetwo{
+        padding-top:100px;
+        width: 100vw;
+        height: 100vh;
+    }
+    .pagetwo_p{
+        font-size: 54px;
+        color: white;
+        margin-left: 15%;
+        margin-top: -15px;
+    }
+    .pagetwo_ul{
+        margin-top: 40px;
+        font-size: 22px;
+        color:#FFFFFF;
+        margin-left: 14.5%;
+    }
+    .flyleft{
+        font-size: 54px;
+        color: white;
+        margin-left: 15%;
+    }
+    .flyright{
+        margin-top: 18px
+    }
+
+
+    #pagethree {
+        padding-top: 100px;
+        width: 100vw;
+        height: 100vh;
+    }
+    .pagethree_p{
+        font-size: 56px;color: #f78469;margin-top: 30px;
+    }
+    .pagethree_p2{
+        font-size: 56px;color: #FFFFFF;margin-top: -20px
+    }
+    .pagethree_button{
+        height: 96px;font-size: 56px;
+        border: 3px solid #363636;
+        width:220px;
+        border-radius:40px;
+        background-color: rgba(0,0,0,0);
+    }
+    #pagefour{
+        width: 100vw;
+        height: 100vh;
+    }
+    .pagefour_p{
+        padding-top:60px;font-size: 50px;color: #333333;margin-left: 35%
+    }
+    .pagefour_p2{
+        font-size: 20px;color: #999999;margin-top: 16px;margin-bottom: 40px;margin-left:41.5%
+    }
+    .p_content{
+        font-size: 20px;color:#b3b3b3
+    }
+    .pagefour_div{
+        width:860px;margin: auto;
+    }
+    .yema{
+        height: 96px;font-size: 56px;
+        border: 3px solid #FFFFFF;
+        color: #FFFFFF;width:220px;border-radius:40px;
+        background-color: rgba(0,0,0,0);
+    }
+    .yema_p{
+        font-size: 20px;color:#b3b3b3;
+    }
+    .start:hover{
+        text-decoration: none;
+    }
+    .task{
+        color: white;font-size: 18px;margin-left: 20px;
+        text-decoration: none;
+        list-style: none;
+    }
+    .task:hover{
+        text-decoration: none;
+    }
+    .task:active{
+        text-decoration: none;
+    }
+    .img_1{
+        width: 120px;
+        height: 120px;
+        border: 1px solid #e0e0e0;
+        border-radius: 20px;
+        display: inline-block;
+        margin-right: 60px;
+    }
+    .img_2{
+        width: 120px;
+        height: 120px;
+        border: 1px solid #e0e0e0;
+        border-radius: 20px;
+        display: inline-block;
+    }
+    .img_two{
+        margin-top: 60px;
+        margin-bottom:50px;
+    }
+
+
+}
+
+
+
+@media screen and (max-width:780px) {
+    #pageone{
+        padding-top: 100px;
+        width: 100vw; height:50vh;
+
+    }
+    .pageone_p{
+        font-size:28px;padding-top: 27px;margin:auto;color:white;padding-left: 14%;
+    }
+    .pageone_button{
+        width: 100px;height:51px;color: white;background: rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+        margin-bottom: 30px;
+        margin-left: 33%;
+        font-size: 15px;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        text-align: center;
+    }
+    #pagetwo{
+        padding-top:50px;
+        width: 100vw; height: 50vh;
+    }
+    .pagetwo_p{
+        font-size: 27px;
+        color: white;
+        margin-left: 15%;
+        margin-top: -10px;
+    }
+    .pagetwo_ul{
+        margin-top: 20px;
+        font-size: 14px;
+        color:#FFFFFF;
+        margin-left: 14.5%;
+    }
+    .flyleft{
+        font-size:27px;
+        color: white;
+        margin-left: 15%;
+    }
+    .flyright{
+        margin-top: 18px
+    }
+
+
+    #pagethree {
+        padding-top: 50px;
+        width: 100vw; height: 50vh;
+    }
+    .pagethree_p{
+        font-size: 28px;color: #f78469;margin-top: 20px;
+    }
+    .pagethree_p2{
+        font-size: 28px;color: #FFFFFF;margin-top: -10px
+    }
+    .pagethree_button{
+        height:48px;font-size: 28px;
+        border: 3px solid #363636;
+        width:100px;
+        border-radius:20px;
+        background-color: rgba(0,0,0,0);
+    }
+    #pagefour {
+        padding-top: 50px;
+        width: 100vw; height:50vh;
+    }
+    .pagefour_p{
+        padding-top:30px;font-size: 25px;color: #333333;margin-left: 20%
+    }
+    .pagefour_p2{
+        font-size: 14px;color: #999999;margin-top: 10px;margin-bottom: 20px;margin-left:41.5%
+    }
+    .p_content{
+        font-size: 10px;color:#b3b3b3
+    }
+    .pagefour_div{
+        width:500px;margin: auto;
+    }
+    .yema{
+        height: 48px;font-size: 28px;
+        border: 2px solid #FFFFFF;
+        color: #FFFFFF;width:110px;border-radius:20px;
+        background-color: rgba(0,0,0,0);
+    }
+    .yema_p{
+        font-size: 10px;color:#b3b3b3;
+    }
+    .start:hover{
+        text-decoration: none;
+    }
+    .task{
+        color: white;font-size: 14px;margin-left: 10px;
+        text-decoration: none;
+        list-style: none;
+    }
+    .task:hover{
+        text-decoration: none;
+    }
+    .task:active{
+        text-decoration: none;
+    }
+    .img_1{
+        width: 60px;
+        height: 60px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        display: inline-block;
+        margin-right: 30px;
+    }
+    .img_2{
+        width: 60px;
+        height: 60px;
+        border: 1px solid #e0e0e0;
+        border-radius: 20px;
+        display: inline-block;
+    }
+    .img_two{
+        margin-top: 30px;
+        margin-bottom:25px;
+    }
+
+
+}
+

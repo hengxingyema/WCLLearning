@@ -1,0 +1,474 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    background-color: #e0e0e0;
+}
+.menu,.setting-content{
+    margin-top: 100px;
+}
+
+.main-body{
+    width: 100%;
+}
+.user_button{
+    border:1px solid #3498db;
+    width: 100%;
+    max-width: 50px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: 100;
+    text-align: center;
+    margin-right: 64px;
+    border-radius: 4px;
+    color: #3498db;
+    background-color: white;;
+}
+.personal{
+    height: 800px;
+    width:200px;
+    margin-top: 100px;
+    margin-bottom:100px;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+
+ .personal-title{
+    font-size:16px;
+    line-height:2;
+    margin-top: 48px;
+}
+
+
+.img-normal{
+    padding-left: 26px;
+    margin-top: 20px;
+    /*border-left: 4px solid #3498db;*/
+}
+.img-normal img{
+    margin-top: -10px;
+}
+.img-normal a{
+    margin-left: 15px;
+    font-size: 18px;
+    color: #000000;
+    text-decoration: none;
+}
+.img-normal a:hover{
+    text-decoration: none;
+}
+
+.title{
+    margin-left: 40px;
+    padding-top: 30px;
+    font-size: 20px;
+    color: #000000;
+    cursor:pointer;
+}
+
+.setting-content{
+    display: inline-block;
+    height: 100%;
+    background-color: #ffffff;
+    margin-left:10px;
+    width: 808px;
+    border-radius: 6px;
+}
+
+.form-control{
+    margin-left: 100px;
+    width: 360px;
+}
+
+.control-label{
+    float: left;
+}
+
+.form-group{
+    margin-left: 140px;
+    margin-top: 40px;
+}
+
+.save{
+    margin-left: 320px;
+    width: 80px;
+}
+
+.solid-pull{
+    margin-top:40px;
+}
+
+.back-out{
+
+    margin-left: 63px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.button{
+    color: #d43f3a;
+    cursor:pointer;
+}
+
+.btn-danger{
+    background-color: #3498db;
+    border: 1px solid #3498db;
+}
+
+ /*个人中心的账户*/
+.account{
+    /*border: 1px solid #e0e0e0;*/
+    margin-left: 40px;
+    padding-top: 30px;
+    font-size: 20px;
+    color: #000000;
+}
+.firt_row{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+
+.acheive{
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.consume{
+    margin-bottom: 10px;
+
+
+}
+.leftmoney{
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+.money{
+    margin-bottom:6px;
+}
+.acheive span:nth-child(1){
+    margin-left: 10px;
+    font-size: 18px;
+    color: #666666;
+}
+
+.acheive span:nth-child(2){
+    color:  #eb3030;
+    font-size: 24px;
+    margin-left: 20px
+}
+.acheive span:nth-child(3){
+    color: #eb3030;
+    margin-left: 5px;
+}
+.consume span:nth-child(1){
+    margin-left: 10px;
+    font-size: 18px;
+    color: #666666;
+}
+.consume span:nth-child(2){
+    color:  #eb3030;font-size:24px;margin-left: 20px
+}
+.consume span:nth-child(3){
+    color:  #eb3030;
+    margin-left: 5px
+}
+.dotask{
+    font-size: 18px;
+    line-height: 20px;
+    background-color: #3498db;
+    height: 40px
+}
+.dotask span:nth-child(1){
+    margin-left: 11px
+}
+.dotask span:nth-child(2){
+    margin-left: 23px
+}
+.dotask span:nth-child(3){
+    margin-left: 20px
+}
+.leftmoney span:nth-child(2){
+    margin-left: 10px;
+    font-size: 18px;
+    color: #666666;
+}
+.moneyimg{
+    padding-bottom: 5px;
+    margin-left: 45px;
+}
+.money span:nth-child(1){
+    margin-left: 50px;
+    font-size: 24px;
+    color: #eb3030;
+}
+
+.money span:nth-child(2){
+    margin-left: 5px;
+    font-size: 14px;
+    color: #eb3030;
+}
+.myMoney{
+    cursor: pointer;;
+    width: 160px;
+    height: 200px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+
+    -webkit-box-shadow: 2px 2px 2px #e0e0e0;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+.myMoney:hover{
+    -webkit-box-shadow: 4px 4px 4px #e0e0e0;
+}
+.mine{
+    margin-top: 15px;
+    margin-left: 40px;
+}
+.mine2{
+    margin-top: 15px;
+    margin-left:28px;
+
+}
+.mine_one{
+    font-size: 30px;
+    color: #eb3030;
+
+}
+.mine_two{
+    font-size: 14px;
+    color: #eb3030;
+    margin-left: 5px;
+
+}
+.mine_img{
+    margin-left: 20px;
+}
+.myMoney button{
+    /*margin-bottom: 15px;*/
+    margin-top: 12px;
+    margin-left: 40px;
+
+    border-radius: 5px;
+    color:#FFFFFF ;
+    width: 80px;
+    font-size: 18px;
+    line-height: 18px;
+    outline: none;
+    height: 30px;
+
+}
+
+.mine_btn1{
+    border: 1px solid #ffc273 ;
+    background-color: #ffc273;
+
+}
+.mine_btn2{
+    border: 1px solid #ffa673 ;
+    background-color: #ffa673;
+
+}
+.mine_btn3{
+    border: 1px solid #ff8f73 ;
+    background-color: #ff8f73;
+
+}
+.mine_btn4{
+    border: 1px solid #ff7773 ;
+    background-color: #ff7773;
+
+}
+.mine_btn5{
+    border: 1px solid #ff7373 ;
+    background-color: #ff7373;
+
+}
+/*.row{*/
+    /*overflow: hidden;*/
+
+/*}*/
+/*[class*="change"]{*/
+    /*margin-bottom:-9999px;*/
+    /*padding-bottom: 9999px;*/
+/*}*/
+
+ /*消息提醒 begin*/
+
+.taskInfor{
+    margin-left: 30px;
+    padding-top:30px;
+    margin-bottom: 16px
+}
+.infor1{
+    margin-left: 30px;margin-top:-5px;
+}
+.horizon1{
+    height: 1px;
+    border-color: #f5f5f5;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.infor_one{
+    font-size: 16px;
+    margin-left:8px;
+    color: #000000;
+}
+.date{
+    margin-left:30px ;
+    font-size: 14px;
+    color: #999999;
+}
+.date1{
+    margin-left: 10px;font-size: 14px;color: #999999
+}
+.promote{
+    margin-top: 16px;
+    margin-left:30px;
+    height: 48px;
+    border:1px solid #f9f9f9;
+    border-radius: 4px;
+    width: 90%;
+    background-color: #f9f9f9
+}
+.promote1{
+    line-height: 48px;
+    font-size: 14px;
+    color: #666666;
+    margin-left: 16px
+}
+
+.msgDot{
+    width: 8px;
+    height: 8px;
+    margin-bottom: 2px;
+    border-radius: 4px;
+    border: 0px solid white;
+    background: #eb3030;
+    -webkit-box-shadow: 2px 2px 2px #e0e0e0;
+    display: inline-block;
+}
+/*
+历史任务*/
+.mytitle{
+    padding-top: 24px;font-size: 24px;color: #3498db;margin-left: 24px;
+}
+.history_date{
+    margin-left: 20px;
+    padding-left: 10px;
+    margin-top:30px;border-left: 4px solid #3498db;font-size: 18px;color: #3498db;
+}
+/*
+账户*/
+.handbook a:hover{
+    text-decoration: none;
+
+}
+.do_taska a:hover{
+    text-decoration: none;
+
+}
+
+.read_tag{
+    margin-left: 30px;
+    font-size: 14px;
+    color: #53d435;
+}
+
+.unread_tag{
+    margin-left: 30px;
+    font-size: 14px;
+    color: #CC2222;
+}
+/*********复制链接****************/
+.copy{
+    height:200px;
+    margin-top: 24px;
+    margin-bottom:40px;
+    margin-left:10px;
+    border: 1px solid #e0e0e0
+}
+.copy input{
+    width:500px;
+    height: 30px;
+    font-size: 14px;
+    color: #66abd6;
+    margin-left:10px;
+    margin-top:27px;
+    margin-bottom: 10px;
+    background-color: #eaf7ff;
+    border: none;
+    padding-left: 10px;
+}
+.copy button{
+    background-color: white;
+    border: 1px solid #3498db;
+    color: #3498db;
+    font-size: 16px;
+    width: 116px;
+    height: 30px;
+    margin-left: 20px;
+    line-height: 2px;
+}
+.copy .url_p{
+    margin: 5px 15px 10px;
+}
+.message{
+    /*width: 600px;*/
+    margin-top: -10px;
+    font-size: 16px;
+    color: orange;
+    margin-left: 106px;
+
+}
+
+
+.button_right{
+    padding-left:50px
+}
+.close_btn{
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    width: 100px;
+    height:35px;
+    border: 1px solid #3498db;
+    font-size: 16px;
+    margin-left: 100px;
+}
+
+.invite{
+    font-size: 16px;
+    color: #999999;
+    margin-top: 28px;
+    margin-left: 30px
+}
+.invite_info{
+    margin-left: 30px;margin-right: 30px
+}
+
+/*Y币明细*/
+.date{
+    width: 80px;
+}
+.type{
+    width: 60px;
+}
+.feed{
+    width: 80px;
+}
+.freeze{
+    width: 80px;
+}
+.total{
+    width: 60px;
+}

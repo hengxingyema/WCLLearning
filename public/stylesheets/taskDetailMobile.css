@@ -1,0 +1,200 @@
+.main{
+    margin-top: 100px;
+}
+
+.logo{
+    display: inline-block;
+    height: 90px;
+    width: 90px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    vertical-align: top;
+}
+
+.description{
+    margin-left: 24px;
+    display: inline-block;
+    height: 70px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.task-link {
+    margin-top: 6px;
+
+    color:#000000;
+    margin-bottom: 10px;
+}
+
+.id{
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #7a7a7a;
+}
+
+.company{
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #7a7a7a;
+    margin-left:40px;
+}
+
+.download{
+    font-size:18px;
+    color: red;
+    margin-bottom: 6px;
+    font-weight:bold;
+}
+
+.left{
+    font-size: 18px;
+    margin-left: 5%;
+    color: #7a7a7a;
+}
+
+.num{
+    text-decoration: none;
+    font-size: 18px;
+    color: #f55e5a;
+}
+
+.page-wrapper{
+    margin-top: 110px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.text-center{
+    font-size: 26px;
+    margin-top: 23px;
+
+}
+.screenshot{
+    border: 1px solid #e0e0e0;
+}
+.image-center img{
+    margin: 10px auto;
+}
+.submission-screenshot {
+    margin-left: 2%;
+}
+
+.submission-screenshot img{
+
+    border: 2px solid #e0e0e0;
+    width: 90px;
+    height: 200px;
+    object-fit: contain;
+
+}
+.cust1,.cust2{
+    width: 94%;
+    height: 5%;
+    font-size: 24px;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: 2px solid #3498db;
+}
+.cust1 a{
+    text-decoration: none;
+}
+.text-right{
+    font-size: 18px;
+}
+@media (max-width: 768px){
+    .modal-dialog{
+        width: 90%;
+        height: 200px;
+        text-align: center;
+    }
+    .uploadname{
+        width: 70%;
+        height: 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+    }
+}
+@media screen and (min-width: 800px) and (max-width: 1800px){
+    .modal-dialog{
+        width: 50%;
+        height: 200px;
+        text-align: center;
+    }
+    .uploadname{
+        width: 80%;
+        height: 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+    }
+    .submission-screenshot{
+        margin-left: 3%;
+    }
+    .submission-screenshot img{
+
+        border: 2px solid #e0e0e0;
+        width: 320px;
+        height: 200px;
+        object-fit: contain;
+
+    }
+
+}
+.progress{
+    width: 94%;
+    margin-top: 10px;
+    margin-left:10px;
+}
+
+
+  /*按钮美化*/
+.a-upload {
+    padding: 5px 10px;
+    width: 94%;
+    font-size: 24px;
+    line-height: 30px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    color:white ;
+    background:#3498db ;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    bottom: 10px;
+    /**zoom: 1*/
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 24px;
+    right: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+
+.a-upload:hover {
+    color: black;
+    background: #e0e0e0;
+    border-color: lightgray;
+    text-decoration: none
+}
+.submit{
+
+    margin-top: 30px
+}
+.btn_primary{
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    width: 95%;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    margin-left: 4%;
+}

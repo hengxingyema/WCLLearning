@@ -1,0 +1,53 @@
+<!--支付宝提现-->
+<ion-header-bar  class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">支付宝提现</div>
+
+</ion-header-bar>
+
+<ion-view style="background-color: #F5F5F5;margin-top: 15px">
+
+    <ion-content style="">
+        <div class="list">
+            <div class="item input-info">
+                <p class="item-input" style="height: 30px">
+                    <span class="input-label">帐号</span>
+                    <input type="text" placeholder="支付宝账号（手机或邮箱)" style="font-size: 18px" ng-model="userInfoObject.aliPayNumber" value="userInfoObject.aliPayNumber">
+                </p>
+
+                <hr style="width: 110%;margin-left: 10px">
+                <p class="item-input" style="height: 30px">
+                    <span class="input-label">姓名</span>
+                    <input type="text" placeholder="绑定支付宝账号的真实姓名" ng-model="userInfoObject.aliPayName" value="userInfoObject.aliPayName">
+                </p>
+            </div>
+        </div>
+
+        <div class="list" style="margin-top: 15px">
+            <div class="item" ng-repeat="item in aliPaySideList">
+                <div ng-click="choosePrice()">
+                    <label name="nba" style="margin-top: 10px;margin-left: 15px;font-size: 14px;color: #666666">
+                        {{ item.text }}
+                    </label>
+                    <input type="radio" checked="checked" name="sport" ng-value="item.value" ng-model="aliPayTopUp.clientSide">
+                    <span style="font-size: 14px;color: #D9D9D9;float: right;margin-right: 30px;margin-top: 8px">
+                        需要0.5元手续费
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list list-borderless" style="margin-top: 5px">
+            <div class="item item-text-wrap" style="background-color: #F5F5F5;">
+                <p>实际支出 <span style="color: red">{{aliPayTopUp.clientSide}}</span> 元（余额 <span style="color: red">{{userInfoObject.currentMoney}}</span> 元）</p>
+                <button class="button button-full button-light" style="background-color: #4191FA;height: 47px;border-radius: 5px" ng-click="aliPaySubmit(userInfoObject, aliPayTopUp.clientSide)">
+                    提交
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

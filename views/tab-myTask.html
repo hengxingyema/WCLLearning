@@ -1,0 +1,66 @@
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">审核中</div>
+    <button class="button button-icon" onclick="location.reload()">
+        <img src="images/xiaoma/shape-1.png" style="width: 20px;height: 20px;margin-right: 8px;margin-top: -2px">
+    </button>
+
+</ion-header-bar>
+
+<ion-view>
+
+    <ion-content style="background-color: #F5F5F5">
+
+        <div class="dashed">
+            <div style="margin-top: 0.65em;">
+                <span style="margin-left:1em;font-size: 1em;display: inline-block">有&nbsp;<span style="color: red;">{{undoTask}}</span>&nbsp;条任务未完成</span>
+                <span  style="font-size: 1em;margin-left:0.8em;color:#999999;margin-top: 0.3em;font-weight:300;">预计可获得&nbsp;<span style="color: red;font-weight: 600;">{{willGetRmb.toFixed(2)}}&nbsp;元</span></span>
+            </div>
+        </div>
+
+
+            <!--ionic card-->
+            <div class="ion-list" >
+                <!--<div class="item item-text-wrap">-->
+                <!--{{task.appName}}-->
+                <!--</div>-->
+                <ion-item class="ion-item card" type="item-text-wrap" style="border-radius: 0.5em;height: 5.2em;margin-bottom: 0.8em;margin-top: 0.8em;"  ng-repeat="task in retList" ng-click="taskClick(task)" >
+
+                    <img ng-src="{{task.appIcon}}" class="cardicon" style="margin-top: 0.3em;">
+                    <div class="character" style="margin-top: 0.55em;margin-left: 3.5em">
+                       {{task.appName}}
+                    </div>
+
+                    <span ng-show="task.statusDes == '被拒绝'" class = "cardplay typegray" style="color: #f7798b;border: 1px solid #f7798b;">被拒绝</span>
+                     <span ng-show="task.statusDes == '被拒绝'" style="color: #f7798b;;font-size: 0.8em;position: absolute;top:5.1em;margin-left: -4.2em;">{{task.refuseReason}}</span>
+                    <span ng-show="task.statusDes == '未完成'" class = "cardplay typegray" style="color: #f4995d;border: 1px solid #f4995d;">未完成
+                        <span ng-show="task.downcountDisplay != undefined && task.downcountDisplay.length > 0" name=divdown style="font-size:12px;">
+                            {{task.downcountDisplay}}
+                        </span>
+                        <!--<span style="font-size:12px;">-->
+                            <!--{{task.createdAt}}-->
+                        <!--</span>-->
+                    </span>
+                    <span ng-show="task.statusDes == '审核中'" class = "cardplay typegray" style="color: #67bdff;border: 1px solid #67bdff;">审核中&nbsp;
+                    </span>
+                    <span ng-show="task.statusDes == '已完成'" class = "cardplay typegray" style="color: #cccccc;border: 1px solid #cccccc;">已完成</span>
+                    <span ng-show="task.statusDes == '已超时'" class = "cardplay typegray" style="color: #cccccc;border: 1px solid #cccccc;">已超时</span>
+                    <span class="cardtextright cardword" style="margin-right: 2px">
+                        +{{task.doTaskPrice}}
+                        <span style="font-size: 0.6em;">元</span>
+                    </span>
+                    <br><br>
+                </ion-item>
+            </div>
+
+
+
+        </div>
+        </div>
+
+       
+    </ion-content>
+</ion-view>

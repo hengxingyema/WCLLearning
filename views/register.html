@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>野马运营 - APP运营工具丨应用推广,换评,换量平台丨专业ASO优化丨APP推广榜单优化丨手游推广,试玩丨试客,私单,App store,冲榜,刷榜</title>
+
+    <meta name="keywords" content="app运营工具,app运营菜鸟,鸟哥笔记aso,免费aso优化,ios换评,苹果榜单,app推广,手游推广,应用推广,ios榜单,关键词覆盖,关键词优化,排名优化,积分墙,钱咖,应用试客,app推广,鼠宝,粉咖,钱小咖,app推广公司"/>
+    <meta name="description" content="野马是App运营者的首选，你可以进行高效率换评，免费提高给你ASO优化建议，还可以直接购买App好评低至2.4元/条，下载激活2元/条"/>
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- 引入封装了failback的接口--initGeetest -->
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+
+    <script src="/javascripts/userAngular.min.js"></script>
+
+    <link rel="stylesheet" href="/stylesheets/register.min.css">
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+
+    <title>用户注册</title>
+</head>
+
+<body>
+<div class="container content">
+    <div ng-app="userAccountApp" ng-controller="userAccountCtrl">
+    <div class="register-content ">
+        <div class="register-main">
+            <h2 class="register-title">注册野马账号</h2>
+            <p class="register-subheading">App推广营销自助平台</p>
+                <div class="register-input-group">
+                    <p class="input-title">手机：<span class="login">已有账号？ 去<a href="/user/login">登陆</a></span></p>
+                    <div class="input-fill">
+                        <input type="text" ng-model="userMobile" class="phone-input" autofocus="true">
+                    </div>
+                </div>
+
+                <div class="register-input-group">
+                    <p class="input-title">密码： </p>
+                    <div class="input-fill">
+                        <input type="password" ng-model="userSecret" class="phone-input">
+                    </div>
+                </div>
+
+            <!--验证码相关 start-->
+            <div id="embed-captcha"></div>
+            <p id="wait" class="show">正在加载验证码......</p>
+            <p id="notice" class="hide">请先拖动验证码到相应位置</p>
+            <!--验证码相关 end-->
+
+            <div class="register-input-group">
+                <p class="input-title">手机验证码： </p>
+                <div class="input-fill">
+                    <input type="text" ng-model="userSmsCode" class="signup ">
+                    <button type="button" id="getSmsBtn" class="btn btn-primary">获取验证码</button>
+                </div>
+            </div>
+
+            <div class="alert alert-warning" role="alert" ng-hide="errorId==0" style="margin-top: 20px">
+                {{ errorMsg }}
+            </div>
+
+            <div class="register-sub text-center">
+                <button class="btn btn-org-empty" ng-click="userRegister()" id="register-btn">注&nbsp;&nbsp;册</button>
+            </div>
+            <div class="pro">
+                <div class="agree text-center">
+                    注册账号，代表您同意 《<a class="agreement" href="#">野马服务协议</a>》
+                    <div class="secrecy">我们采用符合业界标准的加密技术保密信息</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

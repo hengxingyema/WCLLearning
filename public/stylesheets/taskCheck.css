@@ -1,0 +1,556 @@
+div,p{
+    margin: 0;
+    padding: 0;
+}
+.panel-receivetask span{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 64px;
+    margin-left: 10px;
+    color: #666666;
+
+
+}
+.receiveimg{
+    display: inline-block;
+    width: 32px;height: 32px;
+    border: 1px solid red;
+    border-radius: 4px;
+    margin-left: 10px;
+    line-height: 64px;
+
+}
+.bt_o{
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+.receivebtn{
+    background-color: #3498db;
+    color: white;
+    margin-left: 20px;
+    height: 36px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+/*"拒绝理由"中的 select下拉菜单*/
+.select_15{
+    margin:-3px  30px 0 -20px ;
+    height: 34px ;
+    width: 400px;
+    font-size: 14px;
+    color: #333333;
+    padding-left: 14px;
+    overflow: auto;
+
+}
+#all:hover{transition: width 2s; }
+.receiveinfor div{
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.receiveinfor img{
+    width: 30%;
+    height: 400px;
+    object-fit: contain;
+    border: 1px  solid #e0e0e0;
+    margin-left: 14px;
+
+}
+.receive_btn{
+    margin-right: 30px;
+    font-size: 20px;
+}
+
+.receive_btn .reject{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: #f7aa58;
+    width: 100px;
+    border: 1px solid #f7aa58;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.receive_btn .noReject{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: #f7aa58;
+    width: 200px;
+    border: 1px solid #f7aa58;
+    border-radius: 4px;
+    background-color: white;
+}
+
+
+.receive_btn .receive{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: #3498db;
+    width: 100px;
+    border: 1px solid  #3498db;
+    border-radius: 4px;
+    background-color: white;
+
+}
+.receive_btn .reject2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: white;
+    width: 100px;
+    border: 1px solid  #CC2222;
+    border-radius: 4px;
+    background-color: #CC2222;
+
+}
+
+.receive_btn .show1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: -24px;
+    color:white;
+    width: 100px;
+    border: 1px solid #53d435;
+    border-radius: 10px;
+    background-color: #53d435;
+}
+.receive_btn .show2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: -24px;
+    color:white;
+    width: 100px;
+    border: 1px solid #53d435;
+    border-radius: 10px;
+    background-color: #53d435;
+}
+
+.receive_btn .receive2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: white;
+    width: 100px;
+    border: 1px solid  #53d435;
+    border-radius: 4px;
+    background-color: #53d435;
+
+}
+
+.btn_sure{
+    width: 80px;
+    background-color: #3498db;
+    color: white;
+    border: 1px solid  #3498db;
+    border-radius: 4px;
+
+}
+
+.icon1{
+    margin: 0;
+    border: 0;
+    background: #f4f4f4;
+    height: 50px;
+    padding-left:28px;
+    padding-top: 7px;
+}
+
+.selected{
+    margin: 0;
+    border: 0;
+    background: white;
+    height: 50px;
+    padding-left: 28px;
+    padding-top: 7px;
+}
+.se_1{
+    background-color:#FFFDFD;
+    color: #39cccc;
+   /* background-color: #0a9dc7;*/
+}
+.se_2{
+    background-color:#FFFDFD;
+    color:#6AB5B5;
+}
+.se_3{
+    background-color: #FFFDFD;
+    color:#319AC7;
+}
+.se_4{
+    background-color:#FFFDFD;
+    color: #D1B1F6;
+}
+
+.icon1 img{
+    width: 36px;
+    border: 1px solid #e0e0e0;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.icon1:hover{
+    background: #7F7F7F;
+}
+
+.icon1:active{
+    background: white;
+}
+
+.row{
+    overflow: hidden;
+
+}
+
+[class*=" change"]{
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+}
+
+h3{
+    margin-left: 40px;
+    font-size: 18px;
+    color: #999999;
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.checkDetail{
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #3498db;
+    color: #3498db;
+    font-size: 16px;
+    padding:0;
+}
+
+.checkDetail:hover{
+    border: 1px solid black;
+}
+
+.cancel{
+    width: 80px;
+    height: 25px;
+    background-color: transparent;
+    border: 1px solid #eb3030;
+    color: #eb3030;
+    font-size: 14px;
+    padding:0;
+}
+
+.cancel:hover{
+    border: 1px solid black;
+}
+
+.cancelled{
+    width: 80px;
+    height: 25px;
+    background-color: #9a9a9a;
+    border: 1px solid #9a9a9a;
+    color: white;
+    font-size: 14px;
+    padding:0;
+}
+
+.noRemain{
+    width: 80px;
+    height: 25px;
+    background-color: #3498db;
+    border: 1px solid #3498db;
+    color: white;
+    font-size: 14px;
+    padding:0;
+}
+
+
+.completed{
+    width: 80px;
+    height: 25px;
+    background-color: #00ee00;
+    border: 1px solid #00ee00;
+    color: white;
+    font-size: 14px;
+    padding:0;
+}
+
+.synwords{
+    color: #fff727;
+    font-size: 20px;
+}
+
+.oneTaskClose{
+    float: right;
+    font-size: 1.5em;
+    margin-top: -10px;
+    margin-right: 5px;
+    cursor: hand;
+}
+
+.oneTaskClose:hover{
+    color: #7a7a7a;
+}
+
+.taskStatus{
+    padding: 3px 5px 3px 5px;
+    font-size: 12px;
+    color: white;
+    border-radius: 4px;
+}
+
+
+/*才龙*/
+
+.appTrack-name {
+    margin-left: 40px;
+    margin-bottom: 24px;
+    margin-top: 5px;
+    font-size: 24px;
+    color: #333333;
+    width: 470px;
+    white-space:nowrap;
+    word-break:keep-all;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.modal-content {
+    width: 551px;
+    height: auto;
+}
+
+.task-appIcon-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    /*margin-top: 8px;*/
+   /* margin-left: 30px;*/
+    margin-bottom: 10px;
+}
+
+.appTrackName {
+    font-size: 20px;
+    color: #333333;
+    margin-top: 25px;
+    margin-bottom: 6px;
+    width: 247px;
+    height: 30px;
+    margin-left: -40px;
+    white-space:nowrap;
+    word-break:keep-all;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.task-rateUnitPrice {
+    color: #F43446;
+    float: right;
+    margin-top: -45px;
+    margin-right: 25px;
+}
+
+.task-type {
+    font-size: 16px;
+    color: #3498DB;
+    margin-left: -40px;
+}
+
+.taskFormattedPrice {
+    float: right;
+    margin-top: -22px;
+    color: #999999;
+    font-size: 14px;
+    margin-right: 25px;
+}
+
+/*任务需求部分样式*/
+.task-demand {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.attach-criteria {
+    margin-bottom: 20px;
+}
+
+.needGet {
+    color: #FFFFFF;
+    border: 1px solid #A9C5E2;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 6px 10px;
+    background-color: #A9C5E2;
+    margin-top: 13px;
+}
+
+.demand {
+    border: 1px solid #E6E6E6;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+
+.demand-one {
+    margin-left: 15px;
+    margin-top: 17px;
+    margin-bottom: 16px;
+}
+
+.demand-gps {
+    font-size: 12px;
+    color: #F4B07A;
+}
+
+.demand-two {
+    font-size: 16px;
+    color: #666666;
+    margin-top: 5px;
+    margin-bottom: 6px;
+}
+
+.demand-vital {
+    color: #67BDFF;
+}
+
+.title-and-comment {
+    margin-left: 24px;
+    margin-top: 2px;
+    color: #4c4c4c;
+    font-size: 14px;
+
+}
+
+.comment-top {
+    margin-left: 24px;
+    margin-top: 2px;
+    color: #999999;
+    font-size: 14px;
+}
+
+.title-and-comment-info {
+    color: #999999;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+/*修改*/
+.around{
+    /*height: 24px;*/
+    display: inline-block;
+    border-left: 1px solid #CCCCCC;
+
+    margin-left: 10px;
+}
+
+.user-custom {
+    font-size: 16px;
+    color: #666666;
+    margin-top: 5px;
+}
+
+.color-ramp {
+    font-size: 16px;
+    color: #67bdff;
+}
+
+
+/*新写*/
+
+.task-lei {
+    font-size: 16px;
+    margin-top: 26px;
+    margin-bottom: 16px;
+    color: #333333;
+    font-weight:bold;
+}
+.fa{text-align: center;
+    margin-left: 42px;
+    margin-top: 2px;}
+.task-title {
+    border: 1px solid #e0e0e0;
+    width: auto;
+    height: 43px;
+    background-color: #f5f5f5;
+    padding: 10px 40px;
+    background-color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.timestyle{
+    margin-right: -36px;
+    margin-top: 10px;
+    text-align: center;
+}
+span p:hover{
+    width: 90px;
+    height: 32px;
+    color: #4C90F8;
+    font-size: 16px;
+    background-color: #e6e6e6;
+    margin-left: 30px;
+    border-radius: 3px;
+    text-align: center;
+   padding-top: 5px;
+    font-width:bold;
+    margin-bottom: 10px;
+}
+.taskTitle-name {
+     width: auto;
+    height: 49px;
+    font-size: 14px;
+    color: #333333;
+
+
+}
+
+.taskTitle-info-one {
+    width: 140px;
+    text-align: center;
+}
+
+.taskTitle-info-two {
+    width: 60px;
+    margin-left: 20px;
+}
+
+.task-info {
+    border: 1px solid #DDDDDD;
+    border-left-color: white;
+    border-right-color: white;
+    width: 980px;
+}
+
+.track-name {
+    width: 70px;
+    height: 22px;
+    margin-top: 23px;
+    margin-left: 10px;
+    display: inline-block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.task-state {
+    color:#69D43F;
+    margin-left: 50px;
+}
+
+.task-info-a {
+    margin-left: 45px
+}
+
+.task-info-b {
+    margin-left: 40px;
+    width: 73px;
+    height: 28px;
+    font-size: 14px;
+}
+
+
+

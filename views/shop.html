@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>野马运营</title>
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 bootstrap 的 model and dropdown 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+    <link rel="stylesheet" href="/stylesheets/taskCheck.css">
+    <link rel="stylesheet" href="../stylesheets/loading.css">
+
+    <!--网站内部js-->
+
+    <!--<script src="/javascripts/doTask.js"></script>-->
+    <script src="/javascripts/shop.js"></script>
+    <script src="/javascripts/indexApp.js"></script>
+
+    <!--网站内部css-->
+    <!--<link rel="stylesheet" href="/stylesheets/taskCheck.css"/>-->
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+
+</head>
+<body ng-app="yemaWebApp">
+
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<!--导航栏-->
+<div class="container" ng-controller="indexAppCtrl" >
+    <th-nav></th-nav>
+</div>
+
+<div class="container-fluid" style="margin-top: 60px; margin-bottom: 0px" ng-controller="shopCtrl">
+
+    <div class="ui three column very relaxed grid">
+        <div class="column" style="background: white;width: 20%;margin-left: 15px">
+            <!--野马基础商品-->
+            <div class="ui raised segment" style="width: 210px;height: 180px">
+                <a class="ui blue ribbon label">自助商城首冲优惠</a>
+                <!--<span style="font-size: 12px;color: #DB2828">第一的感觉</span>-->
+                <div class="ui minimal comments">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="/images/shop/Movie-512.png" style="width:60px;height: 60px">
+                        </a>
+                        <div class="content" style="margin-left: 70px;">
+                            <a class="text" style="font-size: 16px;color: #333333;font-weight: 800">ASO冲榜套餐</a>
+
+                            <div class="text" style="font-size: 10px;color: #999999;line-height: 8px;margin-top: 5px">
+                                1600条下载
+                            </div>
+                            <div class="text" style="font-size: 10px;color: #999999;line-height: 8px;margin-top: 5px">
+                                1260条好评
+                            </div>
+                            <div class="text" style="font-size: 10px;color: #999999;line-height: 8px;margin-top: 5px">
+                                每人限购一次
+                            </div>
+                            <div class="text" style="font-size: 10px;color: #999999;line-height: 8px">
+                                App冲榜必备
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form name="alipayment" action="/pay/buy/3000/first_recharge_3000_total_limit" method="post" target="_blank">
+                    <button class="ui bottom attached blue button" type="submit"
+                            style="width: 207px;margin-left: -14px;">
+                        <span style="color: #FFFFFF;font-size: 14px">￥3000(得3520)</span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="ui divider" style="margin-top: 60px; margin-bottom: 0px"></div>
+
+            <!--野马现金券-->
+            <h5 class="ui header">
+                您的积分:{{userPointer}}积分
+                <div class="sub header">每成功完成1个任务会获得1积分,过期1个任务扣除1积分</div>
+            </h5>
+
+            <div>
+                <div class="ui two cards" style="margin-bottom: 10px">
+                    <div class="  card" ng-repeat="pointerItem in pointerItems" >
+                        <div class="image" >
+                            <img ng-src={{pointerItem.icon}}>
+                        </div>
+                        <div class="ui tiny  button" ng-click="exchange(pointerItem.pointer)" style="color: #FFFFFF;background-color: #8A3650;">
+                            {{pointerItem.des}}兑换
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="ui vertical divider"></div>
+
+        <div class="column" style="width: 75%;background-color: rgb(236,241,245)">
+            <h3 class="ui header" style="margin-top: 10px">
+                <img class="ui rounded image" src="/images/horse.png">
+                <div style="margin-top: 10px" class="content">
+                    任务投放（现金）
+                    <div class="ui tag labels">
+                        <a class="ui label">任务类型仅限 <span style="color: red">下载任务</span></a>
+                    </div>
+                </div>
+
+                <div class="ui divider"></div>
+
+                <div>
+                    <div class="ui labeled button" tabindex="0" style="margin-top: 10px">
+                        <div class="ui basic red button">
+                            {{'账户余额: ' + cashMoney.toFixed(2) + ' 元'}}
+                        </div>
+                        <button style="margin-right: 20px" type="submit" class="ui red left pointing label" ng-click="prepareRechargeCash()">
+                            <i class="yen icon"></i>  充值
+                        </button>
+
+                        <form name="alipayment" action="{{'/pay/buy/' + inputRechargeCash + '/user_recharge_cash_account'}}" method="post" target="_blank">
+                            <div ng-show="clickRecharge == 1" style="margin-left: 20px;" class="ui action input">
+                                <input type="text" ng-model="inputRechargeCash"  placeholder="输入充值金额(100起)">
+                                <button type="submit" class="ui button">充值</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div style="margin-left: 20px" class="ui left pointing grey basic label">
+                        现金账户可用于投放您的积分墙任务
+                    </div>
+
+                </div>
+            </h3>
+
+            <div class="ui divider"></div>
+
+            <div ng-if="ASOPlanArray.length > 0">
+
+                <div>
+                    <a class="ui blue large image label">
+                        <i class="wizard icon"></i>
+                        我的投放方案
+                        <div class="ui left pointing grey basic label">
+                            开始投放后，可以在审核任务中看到投放结果
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ui divided items">
+                    <div class="item" ng-repeat="asoPlan in ASOPlanArray">
+                        <div class="ui tiny rounded image">
+                            <img ng-src="{{asoPlan.artworkUrl512}}">
+                        </div>
+                        <div class="content">
+                            <a class="header">{{asoPlan.asoKey}}</a>
+                            <div class="meta">
+                                <span ng-if="asoPlan.sendType == 'now'" class="price">立即投放计划</span>
+                                <span ng-if="asoPlan.sendType == 'timer'" class="price">持续 {{asoPlan.taskLastDay}} 天 ( {{asoPlan.deliverDateString}} )</span>
+                                <span ng-if="asoPlan.sendType == 'timer'" class="stay">每天 {{asoPlan.taskHour}} 点,每天投放 {{asoPlan.taskCountPerDay}} 条</span>
+                                <div class="ui left pointing blue basic label">
+                                    {{asoPlan.planDes}}
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div ng-if="asoPlan.deliverSucceedReason != undefined && asoPlan.deliverSucceedReason.length > 0" class="ui grey mini message">
+                                    <i class="checkmark warning"></i>
+                                    {{asoPlan.deliverSucceedReason}}
+                                </div>
+                                <div ng-if="(asoPlan.deliverSucceedReason == undefined || asoPlan.deliverSucceedReason.length == 0) && asoPlan.deliverErrorReason != undefined && asoPlan.deliverErrorReason.length > 0"
+                                     class="ui negative mini message">
+                                    <i class="icon warning"></i>
+                                    {{asoPlan.deliverErrorReason}}
+                                </div>
+                            </div>
+                            <div class="extra">
+                                <div class="ui right floated buttons">
+                                    <button ng-if="asoPlan.planDeliverStatus != 'planEnd'" ng-click="modifyPlan($index)" class="ui button">修改</button>
+                                    <button ng-if="asoPlan.planDeliverStatus == 'planEnd' && (asoPlan.planStatus != 'hidden')"
+                                            ng-click="actionPlan($index, 'hidden')" class="ui button">隐藏</button>
+                                    <button ng-if="asoPlan.planDeliverStatus == 'planEnd' && asoPlan.planStatus == 'hidden'"
+                                            ng-click="actionPlan($index, 'show')" class="ui button">显示</button>
+
+                                    <div class="or"></div>
+
+                                    <button ng-if="asoPlan.planDeliverStatus != 'planEnd' && (asoPlan.planStatus != 'stop')"
+                                            ng-click="actionPlan($index, 'stop')" class="ui red button">停止</button>
+                                    <button ng-if="asoPlan.planDeliverStatus != 'planEnd' && asoPlan.planStatus == 'stop'"
+                                            ng-click="actionPlan($index, 'restart')" class="ui green button">恢复</button>
+
+                                    <button ng-if="asoPlan.planDeliverStatus == 'planEnd' || asoPlan.sendType == 'now'" ng-click="copyPlan($index)" class="ui blue button">再次投放</button>
+                                </div>
+                                <div class="ui label">
+                                    <i class="line chart icon"></i>
+                                    {{asoPlan.asoKey}}
+                                </div>
+                                <div class="ui label" ng-if="asoPlan.needThird == 'needThird'">
+                                    <i class="user icon"></i>
+                                    第三方登陆
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui divider"></div>
+            </div>
+
+            <div>
+                <a style="margin-bottom: 20px" class="ui blue large image label">
+                    <i class="write icon"></i>
+                    {{asoPlantTitle}}
+                </a>
+            </div>
+
+            <!--选择App-->
+            <div>
+                <div class="ui label">
+                    选择要投放的APP
+                </div>
+
+                <div style="margin-left: 20px" class="ui dropdown">
+                    <div ng-if="shopASOBuyObject.trackName != undefined &&  shopASOBuyObject.trackName.length > 0" class="text">
+                        <img class="ui avatar image" ng-src={{shopASOBuyObject.artworkUrl100}}>
+                        {{shopASOBuyObject.trackName | limitTo:25}}
+                    </div>
+                    <div ng-if="shopASOBuyObject.trackName == undefined || shopASOBuyObject.trackName.length == 0" class="default text">
+                        点击搜索你的App名字
+                    </div>
+
+                    <i class="dropdown icon"></i>
+
+                    <div class="menu">
+                        <div class="item" ng-repeat="asoApp in shopASOGoods" ng-click="selectMyApp($index)">
+                            <img class="ui avatar image" ng-src={{asoApp.artworkUrl100}}>
+                            {{asoApp.trackName | limitTo:20}}
+                        </div>
+
+                        <div class="item">
+                            <i class="dropdown icon"></i>
+                            <i class="search icon"></i>
+                            <input type="text" ng-model="searchAppKeyword" name="search" placeholder="搜索新的App..."
+                                   ng-keyup="searchNewApps($event)">
+                            <div ng-show="isSearchApps == true" class="ui active mini inline loader"></div>
+                            <div class="right menu">
+                                <div ng-repeat="searchApp in searchApps" ng-click="shopAddApp($index)"
+                                     ng-class="{true :'item disabled', false :'item'}[searchApp.isMine == true]">
+                                    <img class="ui avatar image" ng-src={{searchApp.artworkUrl100}}>
+                                    {{searchApp.trackName | limitTo:20}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <i class="" data-inverted="" data-position="right center" data-variation="wide"
+                   data-tooltip="暂不支持付费应用">
+                    <i class="help circle icon" data-variation="mini"></i>
+                </i>
+
+                <div ng-click="updateApp(shopASOBuyObject.appObjectId)"
+                     ng-show="(searchAppKeyword == '' || searchAppKeyword == undefined) && (errorId != 0 || shopASOBuyObject.appObjectId != appObjectId)"
+                     ng-class="{true:'mini ui green button', false:'mini ui green loading button'}[isLoadingApp]">
+                    更新
+                </div>
+
+                <div class="mini ui teal disabled button" ng-show="errorId == 0 && shopASOBuyObject.appObjectId == appObjectId">
+                    已更新
+                </div>
+
+            </div>
+
+            <div class="ui divider" ng-if="shopASOBuyObject.appObjectId != undefined"></div>
+
+            <!--选择关键词-->
+            <div ng-show="shopASOBuyObject.appObjectId != undefined">
+                <div class="ui label">
+                    ASO优化词
+                </div>
+
+                <div class="ui selection dropdown">
+                    <div ng-if="shopASOBuyObject.asoKey != undefined && shopASOBuyObject.asoKey.length > 0" class="text">
+                        {{shopASOBuyObject.asoKey}}
+                    </div>
+                    <div ng-if="shopASOBuyObject.asoKey == undefined || shopASOBuyObject.asoKey.length == 0" class="default text">
+                        选择/新增
+                    </div>
+
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">
+                            <input type="text" ng-model="newSelectedAppAsoKey" placeholder="添加新的优化词"
+                                   ng-keyup="addNewAsoKey($event)">
+
+                            <div class="menu">
+
+                            </div>
+
+                        </div>
+
+                        <div class="item" ng-repeat="asoKey in selectedAppASOGoodKeys" ng-click="selectNewAsoKey($index)">
+                            {{asoKey}}
+                        </div>
+                    </div>
+                </div>
+
+                <!--细节要求 : 排名-->
+
+                <div class="ui labeled input">
+                    <div class="ui label">
+                        排名
+                    </div>
+                    <input type="text" ng-model="shopASOBuyObject.ranKing" ng-change="rankingChange()" style="width: 80px">
+                </div>
+
+                <div class="ui labeled button" tabindex="0">
+                    <div class="ui basic blue button">
+                        <i class="fork icon"></i> 关键词排名
+                    </div>
+
+                    <div ng-if = "getAsoRanking == 1" class="ui active inline loader"></div>
+                    <a ng-if = "getAsoRanking == 0 && shopASOBuyObject.ranKing > 0" class="ui basic left pointing blue label">
+                        {{shopASOBuyObject.ranKing}}
+                    </a>
+                </div>
+
+                <i class="" data-inverted="" data-position="right center" data-variation="wide" ng-if="ranKingErrorMsg == undefined"
+                   data-tooltip="关键词排名限制 <{{shopASOBuyObject.limitRanking}}">
+                    <i class="help circle icon" data-variation="mini"></i>
+                </i>
+
+                <i class="" data-inverted="" data-position="right center" data-variation="wide" ng-if="ranKingErrorMsg != undefined"
+                   data-tooltip="{{ranKingErrorMsg}}">
+                    <i class="help circle icon" data-variation="mini"></i>
+                </i>
+
+                <button ng-click="lookASOHelp()" style="margin-top: 20px" class="ui orange labeled icon button">
+                    <i class="help icon"></i>
+                    {{ASOHelpString}}
+                </button>
+
+                <div ng-if="isShowAsoAdvice == true" class="ui tiny info message">
+                    <div class="header">
+                        重要！必读！ASO优化注意点！
+                    </div>
+                    <ul class="list">
+                        <li>资金充裕的情况下，选择高热度词是最有效果的</li>
+                        <li>选择关键词时，注意市场环境变化，比如双11时，电商相关的词热度会变高，此时你选择他，想要效果就需要更多的预算</li>
+                        <li>关键词优化到Top3以内才有显著效果</li>
+                        <li>【重要】光冲排名确不维持排名的ASO优化是无效的！所以达到指定排名后，至少需要2周的维系排名的推广预算</li>
+                        <li>技巧：维持排名的时间越长，排名自身权重值越高，此时你维系排名的量会越来越少</li>
+                        <li>【重要】推广效果是需要不断分析，思考，然后优化修改的，你的方案可以被随时修改，未使用资金会退还到你的现金账户</li>
+                        <li>【重要】如果你不知道<4605，行为词，关联词>，建议您购买野马会员，野马CEO会1对1电话指导您进行专业投放</li>
+                        <li>秘籍：如何扩大关键词覆盖</li>
+                        <ul>
+                            <li>App发布多个国家区域</li>
+                            <li>关键词之前不加符号</li>
+                            <li>更频繁更新App版本和关键词</li>
+                            <li>盲目/单纯提升覆盖关键词无意义，前10名的有效关键词覆盖才是有意义的</li>
+                            <li>扩大关键词覆盖，是和App大量下载以及ASO优化时附带做的，这样优化可以到达事半功倍的效果</li>
+                        </ul>
+                        <li>小众App，选择App关联的行为词去优化是最佳选择</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <!--细节要求 : 第三方登录 / 官方审核-->
+            <div>
+                <label>任务额外需求</label>
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" name="needThird" ng-model="shopASOBuyObject.needThird" ng-checked="shopASOBuyObject.needThird == 'needThird'" ng-click="taskExtraDemand('needThird', $event)">
+                    <label>是否需要第三方登陆(+0.2/条)</label>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <!--投放量/天-->
+            <div>
+                <div class="ui label">
+                    投放量/每天
+                </div>
+
+                <div class="ui right labeled left icon input" style="margin-top: 10px">
+                    <i class="tags icon"></i>
+                    <input type="text" placeholder="自定义投放量/天..." ng-model="shopASOBuyObject.customDay" ng-change="customTaskCountPerDay()">
+                </div>
+
+            </div>
+
+            <!--<div class="ui divider"></div>-->
+
+            <!--&lt;!&ndash;立即投放&ndash;&gt;-->
+            <!--<div>-->
+                <!--<div class="ui label">-->
+                    <!--投放方式-->
+                <!--</div>-->
+
+                <!--<div class="ui buttons">-->
+                    <!--<button ng-class="{true:'ui positive button', 'false':'ui button'}[shopASOBuyObject.sendType == 'now']"-->
+                            <!--ng-click="shopSendTaskType('now')">立即投放</button>-->
+                    <!--<div class="or"></div>-->
+                    <!--<button ng-class="{true:'ui positive button', 'false':'ui button'}[shopASOBuyObject.sendType == 'timer']"-->
+                            <!--ng-click="shopSendTaskType('timer')">定时投放</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--投放周期-->
+            <div>
+                <div>
+                    <div class="ui divider"></div>
+
+                    <div class="ui label">
+                        &nbsp;&nbsp;&nbsp;&nbsp;投放总天数
+                    </div>
+
+                    <div class="ui selection dropdown">
+                        <div class="text">
+                            {{taskTotalDays}}
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" ng-repeat="taskTotalDays in taskLastDays" ng-click="selectTaskLastDay(taskTotalDays)">
+                                {{taskTotalDays}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <i>3天以内</i>
+                    <i class="" data-inverted="" data-position="right center" data-variation="wide"
+                       data-tooltip="选择总共投放多少天（若前1日投放任务未全部完成,前日任务取消,次日仍会正常投放）">
+                        <i class="help circle icon" data-variation="mini"></i>
+                    </i>
+                </div>
+
+                <div class="ui divider"></div>
+
+                <div>
+                    <div class="ui label">
+                        每天投放时间
+                    </div>
+
+                    <div class="ui selection dropdown">
+                        <div class="=text">
+                            {{shopASOBuyObject.taskHour}}
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" ng-repeat="taskHour in [8, 9, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]" ng-click="selectTaskHour(taskHour)">
+                                {{taskHour}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <i class="" data-inverted="" data-position="right center" data-variation="wide"
+                       data-tooltip="几点开始投放您的任务（若当日选择时间已过, 则会在次日投放）">
+                        <i class="help circle icon" data-variation="mini"></i>
+                    </i>
+                </div>
+
+                <div class="ui divider"></div>
+
+                <div>
+                    <div class="ui label">
+                        投放开始日期
+                    </div>
+
+                    <div class="ui selection dropdown">
+                        <div class="text">
+                            {{delayTaskDay}}
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" ng-repeat="delayTaskDay in ['今天', '明天', '后天', '三天后']" ng-click="selectDelayTaskDay(delayTaskDay)">
+                                {{delayTaskDay}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <i class="" data-inverted="" data-position="right center" data-variation="wide"
+                       data-tooltip="X天 后开始投放（持续投放天数会从投放日开始计算）">
+                        <i class="help circle icon" data-variation="mini"></i>
+                    </i>
+                </div>
+
+                <div class="ui divider"></div>
+            </div>
+
+            <div style="margin-bottom: 20px" class="ui floating teal message">
+                <div class="header">
+                    <img class="ui avatar image" ng-src={{shopASOBuyObject.artworkUrl100}}>
+                    {{shopASOBuyObject.trackName | limitTo:36}}
+                </div>
+                <ul style="margin-bottom: 20px"  class="list">
+                    <li>优化关键词  {{shopASOBuyObject.asoKey}},当前排名 {{shopASOBuyObject.ranKing}} (排名每日都会重新计算)</li>
+                    <a class="ui top pointing blue basic label" style="margin-top: 0px;margin-bottom: 5px">
+                        计划未投放结束前都可以被修改(修改后立即生效)
+                    </a>
+                    <li ng-if="shopASOBuyObject.rankPriceString != undefined && shopASOBuyObject.rankPriceString.length > 0"
+                        style="color: deepskyblue;">
+                        +{{(shopASOBuyObject.taskRankPrice).toFixed(2)}}/每条任务(计算规则{{shopASOBuyObject.rankPriceString}})
+                    </li>
+
+                    <a ng-if="shopASOBuyObject.rankPriceString != undefined && shopASOBuyObject.rankPriceString.length > 0"
+                       class="ui top pointing grey basic label" style="margin-bottom: 10px">
+                        每天发布任务都会重新计算您的排名,排名所带来的额外开销会依次递减,直到没有
+                    </a>
+
+                    <div class="ui icon small message">
+                        <i class="hourglass start icon"></i>
+                        <div class="content">
+                            <!--<div class="header">-->
+                                <!--定时投放计划 <div ng-if="shopASOBuyObject.calculateFavNum == 6" class="ui teal horizontal label">{{shopASOBuyObject.calculateFavNum}}折优惠</div>-->
+                            <!--</div>-->
+                            <p>持续 {{taskTotalDays}} 天,每天 {{shopASOBuyObject.taskHour}} 点投放 {{shopASOBuyObject.taskCountPerDay}} 条 {{shopASOBuyObject.taskType}}  任务</p>
+                        </div>
+                    </div>
+                    <li>共投放 {{taskTotalDays * shopASOBuyObject.taskCountPerDay}}条 {{taskType}} 任务, 每条任务单价为 {{(shopASOBuyObject.taskPrice).toFixed(2)}}</li>
+                    <li style="color: #00a5ff">预计消耗 {{((taskTotalDays * shopASOBuyObject.taskCountPerDay) * shopASOBuyObject.taskPrice).toFixed(2)}} 元, 该计划在 {{delayTaskDay}} 开始投放</li>
+                </ul>
+
+                <div ng-class="{true:'ui teal button', 'false':'ui teal loading button'}[createAsoPlanLoading]" ng-click="createAsoPlan()">创建方案</div>
+            </div>
+
+        </div>
+        <div class="ui vertical divider">
+
+        </div>
+    </div>
+</div>
+
+<th-footer>
+
+</th-footer>
+
+
+
+<script src="/javascripts/cookieHelper.js"></script>
+<script>
+    $('.ui.dropdown')
+            .dropdown()
+    ;
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>

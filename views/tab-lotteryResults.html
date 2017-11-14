@@ -1,0 +1,28 @@
+<ion-view view-title="中奖纪录">
+
+    <ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+        <div class="h1 title" style="font-size: 16px;">中奖纪录</div>
+    </ion-header-bar>
+
+    <ion-content style="background: #ec5858;">
+        <div style="margin: 20.5px 30px 20.5px 30px">
+            <div style="padding: 14.5px 13px 14.5px 13px; border: 1px dashed #ffffff;">
+                <p style="color: #ffffff; font-size: 5vw">
+                    中奖纪录只显示最近30天,请及时查看.
+                    中奖金额将直接打到账户余额中,可自由提现.
+                </p>
+            </div>
+            <div ng-repeat="pool in pools" style="padding-top: 19px; padding-bottom: 20px;">
+                <h1 style="font-size: 6vw; color: #ffeda3">{{pool.date|date: 'yyyy-M-dd'}}</h1>
+                <div style="text-align: center">
+                    <h2 style="font-size: 5vw; color: #ffffff;">开奖号码</h2>
+                    <h1 style="font-size: 6vw; color: #ffd36a;">{{pool.result}}</h1>
+                    <h2 style="font-size: 5vw; color: #ffffff;">中奖人数: {{pool.totalWinners}} 人</h2>
+                </div>
+            </div>
+            <hr style="border-color: #db5151; margin: 0">
+        </div>
+    </ion-content>
+</ion-view>

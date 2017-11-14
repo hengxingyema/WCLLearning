@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>野马运营</title>
+
+    <meta name="theme-color" content="#19B5FE">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--第三方 CSS JS-->
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="../stylesheets/loading.min.css">
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+    <link rel="stylesheet" href="../stylesheets/taskDetail.min.css">
+
+    <!--网站内部js-->
+
+    <script src="/javascripts/taskDetail.min.js"></script>
+    <script src="/javascripts/indexApp.min.js"></script>
+
+</head>
+
+<body ng-app="yemaWebApp">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<div class="container" ng-controller="indexAppCtrl" >
+    <!--导航-->
+    <th-nav></th-nav>
+</div>
+
+
+    <!--任务列表-->
+
+    <div class="page-wrapper"  ng-controller="taskDetailControl">
+        <div class="header-wrapper hidden-xs">
+            <h1 class="header">任务详情</h1>
+            <hr class="hr-header"/>
+        </div>
+        <div class="media">
+            <div class="media-left">
+                <a href="#"><img  style="position: relative" class="logo" ng-src="{{ oneAppInfo.artworkUrl100 }}" alt="" class="img-thumbnail"/></a>
+            </div>
+            <div class="media-body ">
+                <div class="task-link">{{ oneAppInfo.trackName.substr(0,6)+'...' }}</div>
+                <div>
+                    <span class="id hidden-xs">App ID: {{ oneAppInfo.appleId }}</span>
+                    <span class="company hidden-xs">{{ oneAppInfo.sellerName.substr(0,12)+"..." }}</span>
+                </div>
+                <div class="switchImg">
+                    <img src="/images/appDetail/switch.png" alt="" >
+                </div>
+                <div class="download">
+                    <span><a  class="download" href="#">{{ oneAppInfo.excKinds }}</a></span>
+                    <span class="left"> 共<em class="num">{{ oneAppInfo.totalExcCount }}</em>条</span>
+                </div>
+            </div>
+            <div class="media-right ">
+                <div class="media">
+                    <div class="meida">
+                        <div class="media-left">
+                            <h3 class="oneAppInfo hidden-xs">{{oneAppInfo.myAppName.substr(0,9)+"..."}} </h3>
+                        </div>
+                        <div class="media-body oneAppInfo">
+                            <img  ng-src="{{oneAppInfo.myAppartworkUrl100}}" alt="" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="text-center">需求截图</div>
+        <div class="image-center">
+            <img class=" img-responsive requirementImg" ng-src="{{ oneAppInfo.requirementImg }}"/>
+        </div>
+        <hr/>
+
+        <div class=" row submission-info " ng-repeat="task in taskInfo" >
+            <div class="col-xs-12">
+                <div class="text-right">提交人: {{task.uploadName}}</div>
+                <span class="submission-screenshot" ng-repeat="taskImg in task.taskImages"><img ng-src="{{taskImg}}"></span>
+            </div>
+
+        </div>
+    </div>
+
+<script src="/javascripts/cookieHelper.min.js"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

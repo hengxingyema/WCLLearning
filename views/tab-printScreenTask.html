@@ -1,0 +1,91 @@
+<!--截图任务界面-->
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">截图任务</div>
+    <button class="button button-icon" onclick="location.reload()">
+        <img src="images/xiaoma/shape-1.png" style="width: 20px;height: 20px;margin-right: 8px;margin-top: -2px">
+    </button>
+
+</ion-header-bar>
+
+<ion-view style="margin-top: 15px;background-color: #F5F5F5">
+    <ion-content style="">
+        <div class="list" style="margin-bottom: 10px" ng-if="ongoingScreenTaskArray.length > 0">
+            <a class="item item-avatar" style="height: 66px" ng-repeat="ongoing in ongoingScreenTaskArray" href="#/printScreenTask/{{ongoing.taskId}}" >
+                <img ng-src="{{ongoing.appIcon}}" style="width: 28.8vw;height: 28.8vw;border-radius: 8px;border: 1px solid #E5E4E3">
+                <p class="quickTask-A">搜索词：“{{ongoing.searchKeyword}}”</p>
+                <span style="margin-top: 3px">
+                    <span class="item-A" ng-if="ongoing.formattedPrice == undefined">免费</span>
+                    <span class="item-A" ng-if="ongoing.formattedPrice != undefined">付费</span>
+                    <!--<span class="item-A">有专属</span>-->
+                    <span class="item-A">剩余{{ongoing.remainCount}}份</span>
+                </span>
+                <span class="item-note" style="margin-top: -13px;margin-right: 10px;font-size: 16px;color: #00a5ff">
+                    进行中
+                </span>
+            </a>
+        </div>
+
+        <div class="list">
+
+            <div class="item item-avatar" style="height: 66px" ng-repeat="task in commentScreenTasks" ng-click="getTheTask(task.taskId)">
+                <img ng-src="{{task.appIcon}}" style="width: 28.8vw;height: 28.8vw;border-radius: 8px;border: 1px solid #E5E4E3">
+                <p style="margin-top: -5px">
+                <p class="quickTask-A">搜索词：“{{task.searchKeyword}}”</p>
+                    <span style="margin-top: 3px">
+                        <span class="item-A" ng-if="task.formattedPrice == undefined">免费</span>
+                        <span class="item-A" ng-if="task.formattedPrice != undefined">付费</span>
+                        <!--<span class="item-A">有专属</span>-->
+                        <span class="item-A">剩余{{task.remainCount}}份</span>
+                    </span>
+                    <span class="item-note" style="margin-top: -20px;margin-right: 10px;color: #F43446;font-size: 10px">
+                        + <span style="font-size: 25px;font-weight: 500">{{task.doTaskPrice}}</span>元
+                    </span>
+                </p>
+            </div>
+
+            <!--&lt;!&ndash;虚线框&ndash;&gt;-->
+            <!--<div class="dashed" style="height: auto">-->
+                <!--<h4 style="color: #666666;font-size: 3.75vw;padding: 5px 20px;">任务即将开始,预计收益9.4元, 准时来抢</h4>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash;任务即将开始区域&ndash;&gt;-->
+            <!--<div class="item item-avatar" style="height: 66px;margin-top: 15px">-->
+                <!--<img src="/images/xiaoma/rectangle20.png" style="width: 50px;height: 50px;border-radius: 8px">-->
+                <!--<p style="margin-top: -5px">-->
+                <!--<p class="quickTask-A">搜索词：“社交”</p>-->
+                    <!--<span style="margin-top: 3px">-->
+                        <!--<span class="item-A">今日15:00</span>-->
+                        <!--<span class="item-A">剩余1000份</span>-->
+                    <!--</span>-->
+                    <!--<span class="item-note" style="margin-top: -20px;margin-right: 10px;color: #F43446;font-size: 10px">-->
+                        <!--+ <span style="font-size: 25px">1.8</span>元-->
+                    <!--</span>-->
+                <!--</p>-->
+            <!--</div>-->
+        </div>
+
+        <div class="list" style="margin-top: 15px">
+            <!--每天已经完成的任务,显示灰色-->
+            <div class="item item-avatar" style="height: 66px" ng-repeat="complete in completeScreenTasks">
+                <img ng-src="{{complete.appIcon}}" class="gray" style="width: 50px;height: 50px;border-radius: 8px;">
+                <p style="margin-top: -5px">
+                <p class="quickTask-A" style="color: #ADADAD">搜索词：“{{complete.searchKeyword}}”</p>
+                    <span style="margin-top: 3px">
+                        <span class="item-A" ng-if="complete.formattedPrice == undefined">免费</span>
+                        <span class="item-A" ng-if="complete.formattedPrice != undefined">付费</span>
+                        <span class="item-A">剩余{{complete.remainCount}}份</span>
+                    </span>
+                    <span class="item-note" style="margin-top: -13px;margin-right: 10px;font-size: 16px">
+                        已完成
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <ion-infinite-scroll ng-if="commentloadHasMore == true" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

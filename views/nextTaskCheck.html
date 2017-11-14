@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>野马运营</title>
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 dialog 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+
+    <link rel="stylesheet" href="../stylesheets/loading.css">
+
+    <!--网站内部js-->
+
+    <!--<script src="/javascripts/doTask.js"></script>-->
+    <script src="/javascripts/nextTaskCheck.js"></script>
+    <script src="/javascripts/indexApp.js"></script>
+
+    <!--网站内部css-->
+    <link rel="stylesheet" href="/stylesheets/nextTaskCheck.css">
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+    <script src="/javascripts/jszip.min.js"></script>
+    <script xmlns="http://www.w3.org/1999/xhtml" async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
+
+</head>
+<body ng-app="yemaWebApp">
+
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<!--导航栏-->
+<div class="container" ng-controller="indexAppCtrl" >
+    <th-nav></th-nav>
+</div>
+
+<div ng-controller="nextTaskCheckCtrl">
+
+    <div class="container-fluid" style="margin-top: 80px;">
+
+        <div class="task-top-info">
+            <img ng-src="{{app.artworkUrl100}}" class=" task-img  ">
+            <div class="appTrack-name " style="display: inline-block; margin-top: 10px;margin-left: 12px;font-size: 14px;">
+                {{app.trackName}}
+
+            <!--    <button class="ui primary basic button" a ng-click="downloadImgs()" style="margin-left: 611px">
+                    {{downloadProgress > 0 ? downloadProgress*100 + '%' : '下载截图压缩包(Vip试用功能)'}}
+
+                </button>-->
+
+                <div style=" font-size: 14px;margin-left: 10px;margin-top: 14px" >
+                    <div class=""style="display: inline-block;margin-right: 22px;margin-left: -10px;">
+                        <div style="font-size: 12px; color: #666666;margin-bottom: 9px">开发商</div>
+                        <div style="font-size: 14px;">{{app.sellerName | limitTo:30}}</div>
+                    </div>
+                    <div class=""style="display: inline-block;margin-right: 81px;">
+                        <div style="font-size: 12px; color: #666666;margin-bottom: 9px">App ID</div>
+                        <div  style="font-size: 14px;">{{app.appId}}</div>
+                    </div>
+                    <div class="" style="display: inline-block;margin-right: 182px;">
+                        <div style="font-size: 12px; color: #666666;margin-bottom: 9px">更新时间</div>
+                        <div style="font-size: 14px;">{{app.latestReleaseDate | date:"yyyy/MM/dd"}}</div>
+                    </div>
+
+                    <!--批量下载截图-->
+                    <!--       <div style="display: inline-block">
+                           <button class="btn checkDetail"  style="width: 120px;margin-left: 30px" data-target="#xiaz" data-toggle="modal">
+                               批量下载截图
+                           </button>
+                               &lt;!&ndash; 模态框（Modal） &ndash;&gt;
+                               <div class="modal fade" id="xiaz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                   <div class="modal-dialog">
+                                       <div class="modal-content" style="width: 339px;height: 133px;">
+                                           <div class="modal-header " style="height: 73px;background-color: #4191D6">
+                                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                   &times;
+                                               </button>
+                                               <h4 class="modal-title" id="myModalLabel" style="text-align: center;padding-top: 8px; font-size: 22px;color: white">
+                                                 是否确认下载
+                                               </h4>
+                                           </div>
+
+                                           <div class="modal-footer">
+                                               <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                               </button>
+                                               <button type="button" class="btn btn-primary">
+                                                   确认
+                                               </button>
+                                           </div>
+                                       </div>&lt;!&ndash; /.modal-content &ndash;&gt;
+                                   </div>&lt;!&ndash; /.modal &ndash;&gt;
+                               </div></div>-->
+                    <!--查看详情-->
+                    <div style="display: inline-block">
+                       <!-- <button class="ui primary basic button" a ng-click="downloadImgs()">
+                                {{downloadProgress > 0 ? downloadProgress*100 + '%' : '下载截图压缩包(Vip试用功能)'}}
+
+                        </button>-->
+                        <button class="btn checkDetail" data-target="#detail" data-toggle="modal" style="margin-left: -22px;">
+                            查看详情
+                        </button>
+                        <!--查看详情弹窗-->
+                        <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="">任务详情</h4>
+                                    </div>
+
+                                    <div class="ui cards">
+                                        <div class="card" style="width: 545px;margin: auto">
+                                            <div class="content">
+                                                <img class="left floated mini ui image" ng-src="{{app.artworkUrl100}}">
+                                                <span class="right floated time">{{app.rateUnitPrice}}YB</span>
+                                                <div class="header">
+                                                    {{ app.trackName }}
+                                                </div>
+                                                <div class="meta">
+                                                    <span>{{app.taskType}}</span>
+                                                    <span>更新日期:{{ app.latestReleaseDate | date:"yyyy/MM/dd"  }}</span>
+                                                    <span class="right floated time" ng-show="app.formattedPrice == '免费'">{{app.formattedPrice}}应用</span>
+                                                    <span class="right floated time" ng-show="app.formattedPrice != '免费'">价格:{{app.formattedPrice}}</span>
+                                                </div>
+                                                <hr>
+                                                <div class="description">
+                                                    <div class="task-demand">
+                                                        <div class="attach-criteria">
+                                                            <span class="needGet" ng-show="app.needGet == true">首次</span>
+                                                            <span class="needGet" ng-show="app.registerStatus == 'third'">第三方登陆</span>
+                                                            <span class="needGet" ng-show="app.ranking >= 30">关键词排名{{app.ranking}}</span>
+                                                            <span class="needGet" ng-show="app.needMoreReviewContent == true">50字超长评论</span>
+                                                        </div>
+
+                                                        <!--第一部分-->
+                                                        <div class="demand">
+                                                            <div class="demand-one">
+                                                                <p class="demand-gps">*做任务手机需有SIM卡</p>
+                                                                <p class="demand-two">
+                                                                    1.App Store 搜索关键字
+                                                                    <span class="demand-vital">{{app.searchKeyword}}</span>, 大概在第
+                                                                    <span class="demand-vital">{{app.ranking}}</span>位。
+                                                                </p>
+                                                                <p class="demand-two">2.下载, 打开跳过引导页, 试玩1-2分钟。</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--第二部分-->
+                                                        <div class="demand" ng-show="app.taskType != '下载'">
+                                                            <div class="demand-one">
+                                                                <p class="demand-gps">*领取多条任务,评论截图需流量标记</p>
+                                                                <p class="demand-two">3.打开AppStore, 按下面要求评论</p>
+
+                                                                <p class="title-and-comment" style="color: #00a5ff;font-size: 16px">{{app.score + '星好评'}}</p>
+                                                                <p class="title-and-comment">{{'标题关键字: ' + app.titleKeyword}}</p>
+                                                                <p ng-if="app.reviewMustTitleKey != ''" class="comment-top">
+                                                                    标题必须包含:{{app.reviewMustTitleKey}}
+                                                                </p>
+
+                                                                <!--评论部分-->
+                                                                <p class="title-and-comment" style="line-height: 25px;">{{'评论关键字:' + app.commentKeyword}}
+
+                                                                </p>
+                                                                <p ng-if="app.reviewMustContentKey != ''" class="comment-top">
+                                                                    评论内容必须包含:{{app.reviewMustContentKey}}
+                                                                </p>
+                                                            </div>
+                                                            <p class="demand-one">
+                                                                <span class="demand-two">至少包含2个关键字,</span>
+                                                                <span ng-show="app.needMoreReviewContent == true">
+                                                                    <span class="demand-two">评论字数</span><span class="color-ramp">至少50字。</span>
+                                                                </span>
+                                                                <span ng-show="app.needMoreReviewContent != true">
+                                                                    <span class="demand-two">评论字数至少20字。</span>
+                                                                </span>
+                                                            </p>
+                                                        </div>
+
+                                                        <!--第三部分-->
+                                                        <div class="demand">
+                                                            <div class="demand-one" style="line-height: 20px">
+                                                                <p class="demand-two">备注:</p>
+                                                                <p class="title-and-comment-info">a.3天后再次打开App后,方可卸载</p>
+                                                                <p ng-if="app.taskType == '评论'" class="title-and-comment-info">b.评论标题至少包含1个关键字,至少6个字符</p>
+                                                                <p ng-if="app.needGet != true" class="title-and-comment-info">c.二次评论需要修改评论后方可提交</p>
+                                                                <p class="color-ramp">用户自定义要求(非官方认可)</p>
+                                                                <p class="user-custom" style="line-height: 25px;" ng-if="app.detailRem != undefined && app.detailRem != ''">{{app.detailRem}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>  </div></div>
+
+        <div class="ui center aligned basic segment">
+            <div class="ui six small compact item menu" style="width: 80%">
+                <a ng-click="getTaskImgs('uploaded')"
+                   ng-class="{true :'item active', false :'item'}[taskType == 'uploaded']"
+                >
+                    待审核 {{taskType == 'uploaded' ? app.totalSubmited : ''}}
+                </a>
+                <a  ng-click="getTaskImgs('refused')"
+                    ng-class="{true :'item active', false :'item'}[taskType == 'refused']"
+                >
+                    被拒绝 {{taskType == 'refused' ? app.totalRejected : ''}}
+                </a>
+                <a ng-click="getTaskImgs('accepted')"
+                   ng-class="{true :'item active', false :'item'}[taskType == 'accepted']"
+                >
+                    审核通过 {{taskType == 'accepted' ? app.totalAccepted : ''}}
+                </a>
+                <a ng-click="getTaskImgs('systemAccepted')"
+                   ng-class="{true :'item active', false :'item'}[taskType == 'systemAccepted']"
+                >
+                    自动审核通过
+                </a>
+                <a ng-click="getTaskImgs('expired')"
+                   ng-class="{true :'item active', false :'item'}[taskType == 'expired']"
+                >
+                    超时任务
+                </a>
+
+                <a ng-click="downloadImgs()" class="item" style="color: #3498DB;">
+                    {{downloadProgress > 0 ? downloadProgress*100 + '%' : '下载截图压缩包(Vip试用功能)'}}
+                </a>
+            </div>
+        </div>
+
+        <div class="spinner" ng-if="isLoadingMyApp">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+
+        <div style="width:400px;margin: auto;font-size: 24px;margin-bottom: 100px" ng-if="isLoadingMyApp">正在请求你需要的任务截图...</div>
+
+        <div ng-if="app != undefined && (app.submissions == undefined || app.submissions.length == 0)">
+            <div style="text-align: center;">
+                <img style="margin-top: 100px;" src="../images/horse.png">
+            </div>
+            <h1 style="text-align:center;">亲, 该类别下没有相关任务哦</h1>
+        </div>
+
+
+       <!-- -->
+        <div class="" id="accordion" ng-repeat="submission in displaySubmissions" style=" width: 1350px; height:auto;" >
+            <div class=" d_add " ng-repeat="entry in (submission.entries)" >
+                <div class="" style="display: inline-block">
+                    <div class=" panel-recTask">
+                        <div class="col-lg-5 panel-receivetask">
+                            <span style="font-size: 20px;" >领取人:</span>
+                            <span style="font-size: 20px;">{{submission.username}}</span>
+
+                            <span style="margin-left: 146px">提交人:{{entry.uploadName}}</span>
+                        </div>
+                        <div  class="data_sty">日期:{{ entry.createdAt | date:"MM/dd/h:mma"  }}</div>
+                    </div>
+                    <div class="">
+                        <img class="task-imgs" ng-repeat="img in entry.imgs" ng-src="{{img}}" alt="">
+
+                        <div ng-hide="entry.status == 'accepted' && fadeit == false" class=" text-right receive_btn">
+                            <button class="btn reject " ng-click="refusedClick(entry)"
+                                    data-target="#rejectReasonModel" data-toggle="modal"
+                                    ng-show="entry.status == 'uploaded' || entry.status == 'reUploaded'">
+                                拒绝
+                            </button>
+
+                            <button class="btn receive" ng-click="accept(entry)"
+                                    ng-show="entry.status == 'uploaded' || entry.status == 'reUploaded'">
+                                确认接受
+                            </button>
+
+                            <button class="btn receive2" ng-show="entry.status == 'accepted' || entry.status == 'systemAccepted'">
+                                已接受
+                            </button>
+
+                            <button class="btn reject2" ng-show="entry.status == 'refused'">已拒绝</button>
+                            <button class="btn reject2" ng-show="entry.status == 'expired'">已过期</button>
+
+                            <span class="cColor-a" style="background-color: #FCF8E3" ng-show="entry.detail != undefined" >拒绝理由：{{entry.detail}}</span>
+
+                        </div>
+
+                        <div class="cColor-b" ng-if="entry.submitMsg != undefined && entry.submitMsg != ''">对方留言:&nbsp;&nbsp;{{entry.submitMsg}}</div>
+                        <div class="cColor-b" ng-if="entry.revokeStr != undefined && entry.revokeStr != ''">申述结果:&nbsp;&nbsp;{{entry.revokeStr}}</div>
+                        <div class="cColor-b">
+                            设备信息：{{'设备是' + entry.Platform + 'OS是' + entry.OS  +'浏览器' + entry.Browser + ' ' + entry.Version + ')'}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="rejectReasonModel">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:550px;height:350px">
+                    <div class="modal-header" style="height:74px;margin:0 0;background-color:#6eb7e8;border-radius:4px;text-align: center;">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title"  style="font-size:26px;color: #FFFFFF ;padding-top: 5px">请选择拒绝理由</h4>
+                    </div>
+
+                    <div class="modal-body" style="text-align: center;padding-top: 10px;padding-right: 20px;padding-left: 20px">
+
+                        <div style="float: left;;color: #999999;margin-bottom: 10px;margin-top:-4px">选择理由</div>
+                        <select class="form-control" style="color: #999999" ng-change="checkRefusedReason()" ng-model="selectReason">
+
+                            <option ng-repeat="refusedReason in refusedReasons"
+                                    class="se_4" value="{{$index}}">&nbsp;&nbsp;{{refusedReason.des}}</option>
+                        </select>
+
+
+                        <p style="float: left;color: #999999;margin-top: 10px;margin-bottom: 10px">自定义理由<span style="color:orange;font-size: 10px">(*如果您填写了自定义的拒绝理由，对方将只看到自定义理由)</span></p>
+                        <textarea class="form-control" rows="3" maxlength="25" style="margin-top: 10px;resize: none;" ng-model="customRefusedReason"
+                                  placeholder="最多20字符"></textarea>
+
+                        <div style="height:30px;margin-left: 20px;text-align: right;margin-top: 22px">
+                            <span ng-show="required" style="color: red;float: left">拒绝理由必填</span>
+                            <button type="button"  style="width: 110px;margin-top: -24px;display: inline-block;
+                                                                background-color: #3498db;border: 1px solid #3498db;border-radius:4px;color: whitesmoke;height: 32px;
+                                                                font-size: 14px; margin-left: 100px;" data-dismiss="modal" aria-label="Close">取消</button>
+                            <button type="button"  style="width: 110px;margin-top: -24px;display: inline-block;
+                                                                background-color: #3498db;border: 1px solid #3498db;border-radius:4px;color: whitesmoke;height: 32px;
+                                                                font-size: 14px;margin-left: 20px" ng-click="selectRefusedReason()" >确认</button>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!--拒绝弹窗-->
+
+    </div>
+
+
+</div>
+
+<th-footer>
+
+</th-footer>
+
+
+
+<script src="/javascripts/cookieHelper.js"></script>
+</body>
+</html>

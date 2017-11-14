@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>野马运营</title>
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 bootstrap 的 model and dropdown 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+    <link rel="stylesheet" href="../stylesheets/loading.css">
+
+    <!--网站内部js-->
+
+    <!--<script src="/javascripts/doTask.js"></script>-->
+    <script src="/javascripts/keywordsPackage.js"></script>
+    <script src="/javascripts/indexApp.js"></script>
+
+    <!--网站内部css-->
+    <!--<link rel="stylesheet" href="/stylesheets/taskCheck.css"/>-->
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+
+</head>
+<body ng-app="yemaWebApp">
+
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<!--导航栏-->
+<div class="container" ng-controller="indexAppCtrl" >
+    <th-nav></th-nav>
+</div>
+
+<div class="container-fluid" style="margin-top: 60px;width: 960px;" ng-controller="keywordsPackageCtrl">
+    <h3 style="text-align: center;margin-top: 20px;margin-bottom: 20px;font-size: 20px">机刷业务询价</h3>
+
+    <div class="ui divider"></div>
+
+    <div class="column">
+
+        <div class="ui red message">
+            <i class="star icon"></i>
+            关键词套餐（关键词机刷业务）
+            <br>
+            <i class="warning icon"></i>
+            指定关键热词／10词／20词／50词／100词 快速提升排名至TOP3，TOP5，TOP10
+            <br>
+        </div>
+
+        <div style="margin-top: 30px;margin-bottom: 20px">
+            <div class="ui label" style="font-size: 16px;margin-right: 50px;width: 110px">
+                APP名称
+            </div>
+
+            <div class="ui small icon input">
+            <span>
+                <input type="text" ng-model="userInfoObject.appTrackName" placeholder="输入您家的app名字" style="width: 600px;height: 35px;">
+            </span>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;margin-bottom: 20px">
+            <div class="ui label" style="font-size: 16px;margin-right: 50px;width: 110px">
+                iTunes地址
+            </div>
+
+            <div class="ui small icon input">
+            <span>
+                <input type="text" ng-model="userInfoObject.iTunesURL" placeholder="输入您家app的iTunes url" style="width: 600px;height: 35px">
+            </span>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;margin-bottom: 20px">
+            <!--套餐-->
+            <div class="ui label" style="font-size: 16px;margin-right: 50px;width: 110px">
+                套餐
+            </div>
+
+            <div class="ui buttons" ng-repeat="tempTaskPerDay in taskCountPerDayBatch">
+                <button ng-class="{true:'ui positive button', 'false':'ui button'}[($index) == selectedTaskCountPerDay]"
+                        ng-click="taskCountPerDayAction($index)" >{{taskCountPerDayBatch[$index]}}词
+                </button>
+
+                <div ng-if="$index != taskCountPerDayBatch.length - 1" class="or"></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;margin-bottom: 20px">
+            <!--目标排名-->
+            <div class="ui label" style="font-size: 16px;margin-right: 50px;width: 110px">
+                目标排名
+            </div>
+
+            <div class="ui buttons" ng-repeat="temp in objectiveRanking">
+                <button ng-class="{true:'ui positive button', 'false':'ui button'}[($index) == selectedObjectiveRanking]"
+                        ng-click="objectiveRankingAction($index)">TOP{{objectiveRanking[$index]}}
+                </button>
+
+                <div ng-if="$index != objectiveRanking.length - 1" class="or"></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;margin-bottom: 20px">
+            <!--上榜周期-->
+            <div class="ui label" style="font-size: 16px;margin-right: 50px;width: 110px">
+                上榜周期
+            </div>
+
+            <div class="ui small icon input" >
+            <span>
+                <input type="date" ng-model="userInfoObject.onTheCycleStart" placeholder="例:2016-11-11">
+            </span>
+
+            <span>
+                <i class="resize horizontal icon"></i>
+            </span>
+
+            <span>
+                <input type="date" ng-model="userInfoObject.onTheCycleEnd" placeholder="例:2016-11-17">
+            </span>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;margin-bottom: 20px">
+            <div class="ui label" style="font-size: 16px;margin-right: 50px;width: 110px">
+                关键词
+            </div>
+
+            <div class="ui form" style="margin-top: 10px;margin-bottom: 10px">
+                <div class="field">
+                    <textarea style="height: 178px;" ng-model="userInfoObject.searchKeyWord"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;margin-bottom: 20px">
+            <div class="ui label" style="font-size: 16px;margin-right: 50px;width: 110px">
+                联系QQ
+            </div>
+
+            <div class="ui small icon input">
+                <span>
+                    <input type="number" ng-model="userInfoObject.userQQ" placeholder="输入你的QQ号">
+                </span>
+            </div>
+
+            <a class="" style="color: #F43446;margin-left: 10px">
+                *请正确填写您的QQ号,方便我们美女客服和您联系!
+            </a>
+        </div>
+
+        <div class="ui buttons" style="margin-left: 400px;margin-bottom: 24px;margin-top: 20px">
+            <div style="width: 200px;height: 40px;font-size: 16px;" ng-class="{true:'ui right floated primary button', false:'ui right floated loading primary button'}[lockLoading]" ng-click="submitInfo()" ng-if="errorId != 0">
+                提交询价
+            </div>
+
+            <div style="width: 200px;height: 40px;font-size: 16px;" class="ui right floated primary button" ng-if="errorId == 0">
+                询价中...
+            </div>
+        </div>
+
+        <div class="ui divider"></div>
+
+        <div style="margin-bottom: 20px;margin-top: 30px">
+            <div class="ui top attached tabular menu">
+                <div class="active item" style="color: #1a69a4">服务条款</div>
+            </div>
+            <div class="ui bottom attached active tab segment">
+                <p>1.&nbsp;&nbsp;如果需要野马官方免费推荐优化词请联系野马客服QQ:768826903 或 719480449。</p>
+                <p>2.&nbsp;&nbsp;提交申请后，我们会在48小时之内给你报价和修改意见。</p>
+                <p>3.&nbsp;&nbsp;7天起做，下单后1-3天到榜，到榜后开始计费。</p>
+                <p>4.&nbsp;&nbsp;到榜后每日7:00-24:00保证累计保榜6小时。</p>
+                <p>5.&nbsp;&nbsp;所有费用可开具发票。</p>
+                <p>6.&nbsp;&nbsp;根据行业标准每日达榜率为70%，低于70%按照比例收费。</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<th-footer>
+
+</th-footer>
+
+<script src="/javascripts/cookieHelper.js"></script>
+</body>
+

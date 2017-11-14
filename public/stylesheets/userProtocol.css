@@ -1,0 +1,40 @@
+
+.content{
+    width: 980px;
+    margin: 100px  auto;
+}
+.disclaimer{
+    list-style: none;
+}
+strong{
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+ .content li{
+    font-size: 14px;
+    color: #666666;
+    line-height: 28px;
+    margin-top: 28px;
+}
+ol{
+    margin-top: 16px;
+}
+.text-center{
+    font-size: 48px;
+    color: #333333;
+
+}
+.user-rights-obl {
+    list-style: none;
+}
+
+.user-rights-obl li{
+    margin-top: 12px;
+}
+.disclaimer li{
+    margin-top: 12px;
+}
+section{
+    margin-top: 20px;
+}

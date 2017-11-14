@@ -1,0 +1,83 @@
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">快速任务</div>
+    <button class="button button-icon" onclick="location.reload()">
+        <img src="images/xiaoma/shape-1.png" style="width: 20px;height: 20px;margin-right: 8px;margin-top: -2px">
+    </button>
+
+</ion-header-bar>
+
+<ion-view xmlns="http://www.w3.org/1999/html">
+
+    <ion-content style="background-color: #F5F5F5">
+
+        <!--&lt;!&ndash;下拉刷新&ndash;&gt;-->
+        <!--<ion-refresher-->
+                <!--pulling-text="下拉刷新..."-->
+                <!--on-refresh="refreshTaskHall()">-->
+        <!--</ion-refresher>-->
+
+        <!--下载页面相关-->
+        <!--头部-->
+        <div ng-if="taskType == 1">
+            <!--<div class="customHeader" style="padding-top: 0.4em">-->
+                <!--<div class="text">-->
+                    <!--<h4 style="color:white;">💞💞 师徒奖励升级 🎉🎉  🎉🎉  🎉🎉  🎉🎉 <br> 💖每个徒弟前{{masterConfig.masterRMBPreCount}}单任务,你都可以获得{{masterConfig.masterRMBPreRMB}}元/每单💖-->
+                        <!--<br>先打开App试玩后再评论🍀,无卡机不能做任务</h4>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;灰色背景&ndash;&gt;-->
+
+            <!--<div class="dashed" style="height: auto;">-->
+                <!--<h4 style="color: red">&nbsp;评论图离打开App的截图时间间隔三分钟</h4>-->
+                <!--<h4 style="margin-top: -5px">&nbsp;App下载后需保留3天,卸载App前需再次打开</h4>-->
+            <!--</div>-->
+
+            <!--<div class="dashed" style="height: auto;" ng-if="downloadTasks.length == 0 && commentTasks.length == 0">-->
+                <!--<h4 >&nbsp;您太厉害了,任务都被你做完了,么么哒!👄👄👄👄👄</h4>-->
+            <!--</div>-->
+
+
+            <!--ionic card-->
+            <div class="ion-list" ng-repeat="task in downloadTasks">
+                <!--<div class="item item-text-wrap">-->
+                <!--{{task.appName}}-->
+                <!--</div>-->
+                <ion-item href="#/tab/task/{{task.taskId}}"
+                           ng-class="{true:'item-head-notext ion-item card', false: 'item-head ion-item card'}[ task.extraDemandArray.length==0]" type="item-text-wrap" >
+                    <div style="margin-top: -0.7em;">
+                        <img ng-src="{{task.appIcon}}" class="cardicon">
+                        <div class="character" style=" ">
+                           {{task.appName}}
+                        </div>
+                        <span class = "cardplay typegray" >剩余{{task.remainCount}}条</span>
+                        <span class=" typeblue">{{task.taskType}}</span>
+                        <!--<span class=" typeblue" ng-hide="task.formattedPrice==null" >{{task.formattedPrice}}付费应用</span>-->
+                        <!--<span class=" typefree" ng-show="task.formattedPrice==null" >免费应用</span>-->
+                        <br><br>
+                        <span ng-class="{true:'cardwordGray',false:'cardword'}[task.remainCount == 0]">
+                            <span style="font-size: 0.6em;">+</span>
+                            <span style="font-weight: 500;">{{task.doTaskPrice.toFixed(2)}}</span>
+                            <span style="font-size: 0.6em;">元</span>
+                        </span>
+                        <br><br>
+                        <span ng-show="task.appPrice != undefined" class="cardtextright typeblue" style="margin-top: -2em;">task.appPrice</span>
+                        <div class="note" >
+                            <div class="cardtext annotation" ng-repeat="extraDes in task.extraDemandArray" >
+                                {{($index + 1) + '.' +  extraDes}}
+                            </div>
+                            <div style="height:0.01em;"></div>
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
+        </div>
+
+        <ion-infinite-scroll ng-if="downloadHasMore == true" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+        <!--<ion-infinite-scroll ng-if="commentHasMore == true && taskType == 2" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>-->
+
+    </ion-content>
+</ion-view>

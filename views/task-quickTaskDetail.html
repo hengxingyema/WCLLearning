@@ -1,0 +1,83 @@
+<!--快速任务详情-->
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" id="tip">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">快速任务详情</div>
+
+</ion-header-bar>
+
+<ion-view>
+    <ion-content style="background-color: #F5F5F5;">
+        <div class="item item-body" style="text-align: center;height: auto">
+            <p style="font-size: 4.68vw;color: #333333;margin-top: 20px">
+                限时奖励
+            </p>
+
+            <p style="color: #F43446;margin-top: -10px">
+                <span style="font-size: 6.875vw">{{taskDetail.temUserUnitPrice}}</span>元
+            </p>
+
+            <p style="margin-top: -10px;color: #999999;font-size: 3.75vw">
+                <i class="ion-ios-clock-outline" style="font-size: 4.34vw;"> 剩余时间：{{countDownStr}}</i>
+            </p>
+        </div>
+
+        <div class="card" style="border-radius: 10px;width: calc(100% - 20px);margin: 11px auto;box-shadow:none">
+            <div class="item ">
+                <p style="font-size: 4.6875vw;color: #757575">步骤一</p>
+                <hr style="width: calc(100% - 10px)">
+            </div>
+
+            <div class="item item-image" style="border-top-style: none;margin-top: -20px">
+                <p style="font-size: 4.06vw">前往App Store搜索：<span style="color: red">{{taskDetail.searchKeyword}}</span></p>
+                <p style="margin-top: 7px;font-size: 4.06vw">下载此图标应用，约排在<span style="color: red">{{taskDetail.ranking}}</span>位</p>
+                <img ng-src="{{taskDetail.appIcon}}" style="width: 45px;height: 45px;border-radius: 8px;margin-top: 18px">
+
+                <button class="button button-full button-light" id="topUp" ng-click="goAppStore()"
+                        style="background-color: #47A8EF;width:80%;height: 47px;border-radius: 5px;color: #FFFFFF;margin: 15px auto">
+                    前往App Store
+                </button>
+            </div>
+
+        </div>
+
+        <div class="card" style="border-radius: 10px;width: calc(100% - 20px);margin: 11px auto;box-shadow:none">
+            <div class="item ">
+                <p style="font-size: 4.6875vw;color: #757575">步骤二</p>
+                <hr style="width: calc(100% - 10px)">
+            </div>
+
+            <div class="item item-image" style="border-top-style: none;margin-top: -20px">
+                <p style="font-size: 4.06vw">下载完成点击下方按钮，<span style="color: red">试玩应用3分钟</span></p>
+                <p style="margin-top: 7px;color: red;font-size: 4.06vw">打开应用时请“允许”使用数据，否则任务无法完成</p>
+
+                <button class="button button-full button-light" ng-click="openedApp(taskDetail.bundleId)" style="background-color: #47A8EF;width:80%;height: 47px;border-radius: 5px;color: #FFFFFF;margin: 15px auto">
+                    打开应用
+                </button>
+            </div>
+        </div>
+
+        <div class="card" style="border-radius: 10px;width: calc(100% - 20px);margin: 11px auto;box-shadow:none">
+            <div class="item ">
+                <p style="font-size: 4.6875vw;color: #757575">步骤三</p>
+                <hr style="width: calc(100% - 10px)">
+            </div>
+
+            <div class="item item-image" style="border-top-style: none;margin-top: -20px">
+                <p style="font-size: 4.06vw">试玩应用3分钟，返回本页面领取奖励</p>
+
+                <button class="button button-full button-light" ng-click="getTheRewards(taskDetail)"
+                        style="background-color: #EC4949;width:80%;height: 47px;border-radius: 5px;color: #FFFFFF;margin: 15px auto">
+                    领取奖励
+                </button>
+            </div>
+        </div>
+
+        <div id="confirm"></div>
+
+        <div class="" style="margin-top: 20px;background-color: #f5f5f5;height: 20px"></div>
+
+    </ion-content>
+</ion-view>

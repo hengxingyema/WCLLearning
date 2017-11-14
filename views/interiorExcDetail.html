@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>野马运营</title>
+
+    <meta name="theme-color" content="#19B5FE">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 dialog 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--第三方 CSS JS-->
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="../stylesheets/loading.min.css">
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+
+    <link rel="stylesheet" href="../stylesheets/pcAndmobTask.css">
+    <link rel="stylesheet" href="../stylesheets/interiorExcDetail.css">
+
+    <!--<script src="/javascripts/vendor/AngularJS/angular-file-upload.min.js"></script>-->
+
+    <!--JQuery上传图片-->
+
+    <script src="/javascripts/vendor/jqueryFileUploader/js/vendor/jquery.ui.widget.js"></script>
+    <script src="/javascripts/vendor/jqueryFileUploader/js/jquery.iframe-transport.js"></script>
+    <script src="/javascripts/vendor/jqueryFileUploader/js/jquery.fileupload.js"></script>
+    <!--<script src="/javascripts/vendor/jqueryFileUploader/js/jquery.fileupload-image.js"></script>-->
+
+    <!--网站内部js-->
+    <script src="/javascripts/interiorExcDetail.js"></script>
+    <script src="/javascripts/indexApp.min.js"></script>
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+</head>
+
+<body ng-app="yemaWebApp">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<div class="container" ng-controller="indexAppCtrl" >
+    <!--导航-->
+    <th-nav></th-nav>
+</div>
+
+
+<!--任务列表-->
+
+<div class="page-wrapper"  ng-controller="interorDetailControl">
+    <div class="header-wrapper hidden-xs" >
+        <h1 class="header">任务详情</h1>
+
+        <hr class="hr-header"/>
+    </div>
+
+    <div class="media">
+        <div class="media-left">
+            <a href="#"><img  style="position: relative" class="logo" ng-src="{{ oneAppInfo.artworkUrl100 }}" alt="" class="img-thumbnail"/></a>
+        </div>
+        <div class="media-body ">
+            <div class="task-link">{{ oneAppInfo.trackName.substr(0,6)+'...' }}</div>
+            <div>
+                <span class="id hidden-xs">App ID: {{ oneAppInfo.appleId }}</span>
+                <span class="company hidden-xs">{{ oneAppInfo.sellerName.substr(0,12)+"..." }}</span>
+                <span class="id hidden-xs" style="color: red">任务单价:{{oneAppInfo.rateUnitPrice}}Y币</span>
+            </div>
+
+            <div class="download">
+                <button class="button_type"><a  class="download" href="#">{{ oneAppInfo.excKinds }}</a></button>
+                <button class="left button_num"><span>共</span> <span class="num">{{ oneAppInfo.totalExcCount }}</span>条</button>
+
+            </div>
+        </div>
+
+    </div>
+    <hr/>
+
+    <h4>需求截图</h4>
+    <div class="task-demand-info">
+        <div class="color-mob">
+            <!--做任务的需求部分-->
+            <div class="item item-body" style="margin-top:50px">
+                <!--截图一部分-->
+                <div class="capture">
+                    <span class="capture-info">任务手机必须有SIM卡</span>
+                    <div class="capture-top">
+                        <img class="img-size" src="/images/taskInfor/screenshotImg.png">
+                        <span class="capture-tl">截图一</span>
+                    </div>
+
+                    <div class="addTaskInfo">
+                        <p class="task-claim">1.App Store搜索关键字:
+                            <span class="color-ramp">{{oneAppInfo.searchKeyword}}</span>, 大概在第
+                            <span class="color-ramp">{{oneAppInfo.ranKing}}</span>位
+                        </p>
+
+                        <p class="task-claim">2.找到指定App后,
+                            <span class="glyphicon glyphicon-camera color-camera"></span>
+                            <span class="color-camera" style="font-size: 16px">截图</span>, 然后下载
+                            <span class="" ng-show="oneAppInfo.needGet == true">
+                                (本任务需<span class="color-ramp">获取</span>按钮)
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!--截图二部分-->
+                <div class="capture">
+                    <span class="capture-info">任务截图需跳过引导页</span>
+
+                    <div class="capture-top">
+                        <img class="img-size" src="/images/taskInfor/screenshotImg.png">
+                        <span class="capture-tl">截图二</span>
+                    </div>
+
+                    <div class="addTaskInfo">
+                        <p class="task-claim">3.下载完毕,打开App,试用1-2分钟后返回Appstore
+                        <span class="" ng-show="oneAppInfo.registerStatus == 'third'">
+                            (本任务需<span class="color-ramp">第三方登陆</span>)
+                        </span>
+                            <span class="glyphicon glyphicon-camera color-camera"></span>
+                            <span class="color-camera" style="font-size: 16px">截图</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!--截图三部分-->
+                <div class="capture" ng-if="oneAppInfo.taskType != '下载'">
+                    <span class="capture-info">评论页截图不能有键盘</span>
+                    <div class="capture-top">
+                        <img class="img-size" src="/images/taskInfor/screenshotImg.png">
+                        <span class="capture-tl">截图三</span>
+                    </div>
+
+                    <div class="addTaskInfo">
+                        <p class="task-claim">4.打开App Store, 按下面要求评论</p>
+
+                        <!--标题部分-->
+                        <div style="margin-left: 44px;">
+                            <p class="color-ramp">{{oneAppInfo.Score + '星好评'}}</p>
+                            <p class="">{{'标题关键字: ' + oneAppInfo.titleKeyword}}</p>
+                            <p ng-if="oneAppInfo.reviewMustTitleKey != ''" class="comment-top">
+                                标题必须包含:{{oneAppInfo.reviewMustTitleKey}}
+                            </p>
+
+                            <!--评论部分-->
+                            <p class="">{{'评论关键字: ' + oneAppInfo.commentKeyword}}</p>
+                            <p ng-if="oneAppInfo.reviewMustContentKey != ''" class="comment-top">
+                                评论内容必须包含:{{oneAppInfo.reviewMustContentKey}}
+                            </p>
+
+                        </div>
+                        <p class="">
+                            <span class="task-claim">至少包含2个关键字,</span>
+                            <span ng-show="oneAppInfo.needMoreReviewContent == true">
+                                <span class="task-claim">评论字数</span><span class="color-ramp">至少50字。</span>
+                            </span>
+                            <span ng-show="oneAppInfo.needMoreReviewContent != true">
+                                <span class="task-claim">评论字数至少20字。</span>
+                            </span>
+
+                            <span class="glyphicon glyphicon-camera color-camera"></span>
+                            <span class="color-camera" style="font-size: 16px">截图</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="capture">
+                    <div class="capture-top">
+                        <img class="img-size" src="/images/taskInfor/screenshotImg.png">
+                        <span class="capture-tl">备&nbsp;&nbsp;&nbsp;注</span>
+                    </div>
+
+                    <div class="addTaskInfo">
+                        <p class="comment-top">a.3天后再次打开App后,方可卸载</p>
+                        <p ng-if="oneAppInfo.taskType == '评论'" class="comment-top">b.评论标题至少包含1个关键字,至少6个字符</p>
+                        <p ng-if="oneAppInfo.needGet != true" class="comment-top">c.二次评论需要修改评论后方可提交</p>
+                        <p ng-if="oneAppInfo.registerStatus == 'third'" class="comment-top">d.任务含第三方登陆需求，尽量截取个人中心</p>
+                        <p class="color-ramp">用户自定义要求(非官方认可)</p>
+                        <p class="task-claim" ng-if="oneAppInfo.taskRemark != undefined && oneAppInfo.taskRemark != ''">{{oneAppInfo.taskRemark}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+
+    <div class="alert alert-info" role="alert">
+        您现在可以直接从QQ拖拽图片到上传图片框内,然后再上传图片
+        <br>
+        <br>
+        拖拽上传图片为尊贵用户功能,现在免费公测体验
+    </div>
+
+
+    <div class="col-xs-6 submission-info" ng-repeat="task in macTasks" on-repeat-finished-render>
+        <div>
+            <!--页眉-->
+            <div class="taskTitle">
+                <div class="taskt_sp1" >
+                    <span class="">{{$index + 1}}</span>
+                </div>
+
+                <div ng-if="task.status == '待审核'" class="completedTab">
+                    待审核
+                </div>
+                <div ng-if="task.status == '已完成'" class="completedTab">
+                    已完成
+                </div>
+                <div ng-if="task.status == '被拒绝'" class="completedTab">
+                    被拒绝
+                </div>
+                <div ng-if="task.status == '已过期'" class="completedTab">
+                    已过期
+                </div>
+
+
+                <!--申诉逻辑 申诉,申诉失败,申诉成功-->
+                <button style="margin-right: 129px" class="btn btn-default btn-resubmit" data-toggle="modal" data-target="#myModal" ng-click="prepareRevoke(task)"
+                        ng-if="task.status == '被拒绝' && (task.revokeStatus == undefined || task.revokeStatus == '')">
+                    申诉
+                </button>
+
+                <span class="btn-resubmit" ng-if="task.revokeStatus == 'revokeUploaded'" >
+                    等待仲裁
+                </span>
+
+                <span class="btn-resubmit" ng-if="task.revokeStatus == 'revokeFailed'">
+                    申诉失败
+                </span>
+
+                <span class="btn-resubmit" ng-if="task.revokeStatus == 'revokeSucceed'">
+                    申诉成功
+                </span>
+
+                <!--提交逻辑-->
+                <button ng-if="(task.status == '被拒绝' || task.status == '待审核') && task.revokeStatus != 'revokeUploaded'" class="btn btn-primary btn-primary-resubmit" ng-click="prepareUploadImgs(task, $index)">
+                    重新上传
+                </button>
+
+                <button ng-if="task.status == ''" class="btn btn-primary btn-primary-resubmit1"
+                        id="sureUploadBtn" data-loading-text="上传中..."
+                        ng-click="uploadFiles($index, $event)">
+                    确认上传
+                </button>
+
+            </div>
+
+            <!--提交留言-->
+            <div style="display: inline-block;margin-top: 10px;" ng-if="task.taskImages != undefined && task.taskImages.length > 0 && task.status != '已完成'">
+                <span class="detailInfo">
+                    提交留言:
+                </span>
+
+                <span style="font-size: 14px;margin-left: 14px;color: #666666" ng-show="task.mode"
+                      ng-click="openNewPage(task.mackTaskId)">
+                    {{task.submitMsg}}
+                </span>
+
+                <input type="text" class="user-submitMsg" ng-model="task.submitMsg" ng-show="task.mode"
+                       placeholder="请填写至少20字符" maxlength='25'/>
+                <img src="../images/home/pen.png" class="imgpen hidden-xs" ng-hide="task.mode" ng-click="reAssign(task)">
+
+                <button type="button" class="btn btn-primary btn-prim-t" ng-show="task.mode" ng-click="submitMsg(task.submitMsg, task.mackTaskId, task)">
+                    发送
+                </button>
+            </div>
+
+            <!--拒绝理由-->
+            <div ng-if="task.detail != undefined && task.detail.length > 0" class="">
+                <span class="detailInfo">拒绝理由:</span>
+                <span style="height: 35px; width:300px; font-size: 14px; color: #f7798b; padding-left: 3px">{{task.detail}}
+                </span>
+            </div>
+
+            <!--申诉结果-->
+            <div class="" ng-if="task.dealInfo != undefined && task.dealInfo.length > 0">
+                <span class="detailInfo">申诉结果：</span>
+                <span style="font-size: 14px; color: #FDB34A">{{task.dealInfo}}</span>
+            </div>
+
+            <!--内容区域-->
+            <!--任务未做逻辑 / 可以重新上传图片逻辑-->
+            <form id="dropzone" class="fileupload fade well"
+                  action="/upload/img" method="POST" enctype="multipart/form-data"
+                  style="width: 100%; height:300px; padding-bottom: 120px; text-align: center; font-size: 10px">
+
+                <!--内容区域-->
+                <!--显示本地图片-->
+                <span class="submission-screenshot-b" ng-repeat="localImage in task.localTaskImgs track by $index">
+                    <img alt="your image" ng-src="{{localImage}}">
+                </span>
+
+                <!--显示任务图片-->
+
+                <div style="padding-left: 10px; padding-right: 10px; padding-bottom: 20px;"
+                     ng-hide="task.uploadProgress > 0 || task.taskImages.length == 0"
+                     ng-show="task.uploadProgress == 100 ">
+
+                    <span class="submission-screenshot-a" ng-repeat="taskImg in task.taskImages">
+                        <img class="submission-img " ng-src="{{taskImg}}" >
+                    </span>
+                </div>
+
+                <!--与上传任务有关的按钮和逻辑提示-->
+                <div ng-show="task.status == ''" style="width: 100%;margin-top: 10px; text-align: center;">
+
+                    <div  style="margin-bottom: -27px;font-size: 14px">可以从QQ直接拖拽图片到此</div>
+                    <span style="display: block;margin-top: -3px;color: orangered">（vip功能：测试期间免费试用）</span>
+                    <button type="button" class="btn btn-primary btn-primary-customized" ng-click="prepareUploadImgs(task, $index)">
+                        <!--<span class="glyphicon glyphicon-open" aria-hidden="true"></span>-->
+                        上传任务截图
+                        <input class="upload" type="file" nv-file-select="" uploader="uploader" multiple/>
+                    </button>
+
+                    <div style="height: 50px; padding: 10px 20px 0 20px;margin-top: -532px;margin-left: -50px;margin-right: -60px">
+                        <div class="progress" ng-show="task.uploadProgress > 0 && task.isUploading == 1">
+                            <div ng-class="{'progress-bar': true, 'progress-bar-striped':true, active:true}" ng-style="{width: task.uploadProgress + '%'}">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+            <!--尾巴-->
+            <div class="task-footer">
+                <span ng-if="task.type == 'real'" style="font-size: 16px; float: right;">提交人: {{task.uploadName}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!--弹出框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 380px;height:194px;">
+            <div class="modal-content">
+                <div class="modal-header" style="height: 70px;background-color: #6EB7E9">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <p class="modal-title"  id="myModalLabel" style="font-size: 18px;">申诉原因</p>
+                </div>
+                <div class="modal-body">
+                    <textarea style="resize: none" class="form-control" rows="3" ng-model="editRevokeReason"
+                              placeholder="不超过40个字" maxlength='40' required = 'required'></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="userSubmitRevoke(revokedTask, editRevokeReason, $event)">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div style="" >
+        <button class="butt" ng-click="commitConfirm()">返回我的领取</button>
+    </div>
+</div>
+<script src="/javascripts/cookieHelper.js"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

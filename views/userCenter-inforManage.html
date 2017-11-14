@@ -1,0 +1,69 @@
+<h4 class="mytitle" ng-show="totalMoney > 0" >Y币流水 当前共有{{totalMoney}} 冻结{{freezingMoney}} 奖励{{feedingMoney}} Y币</h4>
+<h4 class="mytitle" ng-show="totalMoney == 0" >Y币流水 旧的流水暂无记录</h4>
+
+<h4 class="mytitle" ng-show="cashMessagesArray.length > 0 && type == '现金流水'" >现金流水 当前共有{{projectSwingNow}}计划正在进行中</h4>
+<h4 class="mytitle" ng-show="cashMessagesArray.length == 0 && type == '现金流水'" >现金流水 流水暂无记录</h4>
+
+<hr style="margin-top: 12px;margin-left: 20px;border: 2px solid #3498db;margin-right: 20px">
+
+<div class="ui buttons" style="margin-left: 20px">
+    <button ng-class="{true:'ui positive button', false:'ui button'}[classColor]" ng-click="checkType('Y币流水')">Y币流水</button>
+    <div class="or"></div>
+    <button ng-class="{true:'ui button', false:'ui positive button'}[classColor]" ng-click="checkType('现金流水')">现金流水</button>
+</div>
+
+<table class="ui striped celled fixed line table" style="width: 96%;margin-left: 20px" ng-if="classColor == true">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>日期</th>
+        <th>类型</th>
+        <th class=" seven wide">消息</th>
+        <th>累计奖励</th>
+        <th>累计冻结</th>
+        <th>总额</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat='coinFlow in YCoinMessages'>
+        <td class="date">{{$index + 1}}</td>
+        <td class="date">{{coinFlow.messageDateStr}}</td>
+        <td class="type">{{coinFlow.type}}</td>
+        <td class="text">{{coinFlow.messageText}}</td>
+        <td class="feed" ng-show="coinFlow.feedingMoney != undefined">{{coinFlow.feedingMoney}}</td>
+        <td class="freeze" ng-show="coinFlow.freezingMoney != undefined">{{coinFlow.freezingMoney}}</td>
+        <td class="total" ng-show="coinFlow.totalMoney != undefined">{{coinFlow.totalMoney}}</td>
+    </tr>
+    </tbody>
+
+</table>
+
+<table class="ui striped celled fixed line table" style="width: 96%;margin-left: 20px" ng-if="classColor != true">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>日期</th>
+        <th>类型</th>
+        <th class=" seven wide">消息</th>
+        <th>金额</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat='cashFlow in cashMessagesArray'>
+        <td class="date">{{$index + 1}}</td>
+        <td class="date">{{cashFlow.cashMessageDate}}</td>
+        <td class="type">{{cashFlow.type}}</td>
+        <td class="text">{{cashFlow.messageText}}</td>
+        <td class="type">{{cashFlow.costMoney.toFixed(2)}}</td>
+    </tr>
+    </tbody>
+
+</table>
+<div style="margin-top: 30px; margin-bottom: 30px; text-align: center;">
+    <button class="btn btn-default myPageBtn" ng-show="YCoinMessages.length != 0 && YCoinMessages.length % 20 == 0" ng-click="nextPage()">下一页</button>
+</div>
+<div style="margin-top: 30px; margin-bottom: 30px; text-align: center;">
+    <button class="btn btn-default myPageBtn" ng-show="YCoinMessages.length == 0 || YCoinMessages.length % 20 != 0" >没有更多数据</button>
+</div>

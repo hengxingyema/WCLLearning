@@ -1,0 +1,13 @@
+{
+	"applinks": {
+		"apps": [],
+		"details": {
+			"LG323C4LJS.com.small.horse.help.love": {
+				"paths": [
+					"/xiaozhushou/*",					
+					"/ios/*",					
+				]
+			}
+		}
+	}
+}

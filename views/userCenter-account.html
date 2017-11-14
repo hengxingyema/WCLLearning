@@ -1,0 +1,63 @@
+
+<h4 class="mytitle" >Y币账户</h4>
+<hr style="margin-top: 12px;margin-left: 20px;border: 2px solid #3498db;margin-right: 20px">
+
+<div class="row firt_row">
+    <div class="col-lg-4" >
+        <div class="panel panel-default"style="width: 230px;border-radius: 6px">
+            <div class="panel-body">
+                <div class="leftmoney">
+                    <span> <img src="/images/home/leavemoney.png" alt="" class="moneyimg"></span>
+                    <span>冻结Y币</span>
+                    <span class="glyphicon glyphicon-question-sign"  data-placement="top"
+                          data-toggle="popover"
+                          data-content="还没有结算的Y币将会暂时存放在冻结账户中。" id="glyphicon"
+                          ng-click="addApp('glyphicon')" style="font-size: 0.8em">
+                    </span>
+                </div>
+                <div class="money" style="float: right; margin-right: 50px;">
+                    <span>{{userFreezingYB}}</span><span>Y币</span>
+                </div>
+
+            </div>
+            <div class="panel-footer dotask" >
+                <span ><a href="/doTask"class="do_task" style="color: white;">做任务</a></span>
+                <span style="color: white">|</span>
+                <span ><a href="/myapp" class="send_task"style="color: white;">发任务</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1"style="margin-left: 14px">
+        <div class="panel panel-default"style="width: 230px;border-radius: 6px">
+            <div class="panel-body">
+                <div class="leftmoney">
+                    <span> <img src="/images/home/leavemoney.png" alt="" class="moneyimg"></span>
+                    <span>账户余额</span>
+                </div>
+                <div class="money" style="float: right; margin-right: 50px;">
+                    <span>{{balance}}</span><span>Y币</span>
+                </div>
+
+            </div>
+            <div class="panel-footer dotask" >
+                <span style="margin-left:35px"><a style="color: white" href="/handBook">查看Y币使用手册</a></span>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<div  class=" col-lg-12  copy" >
+    <p  class="url_p"><span style="font-size: 18px;color: #333333">邀请好友:</span>
+        <input type="text" id="inviteUrlcopy" class="from-control" ng-model="inviteUrl">
+        <button class="btn" id="btn" ng-click="copyUrl()" data-placement="top"
+                data-toggle="popover"
+                data-content="复制成功!">复制邀请链接</button>
+    </p>
+    <p  class="invite" >邀请流程:好友  <span style="color: #3498db">通过</span>您的  <span style="color: #3498db">链接注册野马,完成新手任务</span>后,您将获得  <span style="color: #3498db">120Y币</span> 奖励</p>
+</div>
+
+
+
+
+
+

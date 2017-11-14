@@ -1,0 +1,180 @@
+<style>
+    .navbar-brand {
+        position: absolute;
+        display:inline-block;
+        left:100px;
+        top:0px;
+        }
+</style>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%;height: 48px;
+    font-size: 18px;
+    width: 100%;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <li style="margin-right: 60px">
+                <a class="navbar-brand" href="/" target="_top">
+                    <img  src="/images/home/wildhorse_icon.png" >
+                </a>
+            </li>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse-1">
+            <ul class="nav navbar-nav" style="margin-left: 40px;">
+                <li ><a ng-style="{color:myColors[0]}" href="/home" ng-click="butdoTask()">
+                    <span class="badge" ng-show="homeNotice != undefined && homeNotice.length > 0" style="position: absolute;
+                              top: 7px;
+                              display: inline-block;
+                              background-color: #f4556c;
+                              height: 20px;
+                              /*width: 56px;*/
+                              font-size: 12px;
+                              padding-left: -10px;
+                              border-radius: 8px;text-align: center;color: #FFFFFF">{{homeNotice}}</span>
+
+                    首页
+                </a></li>
+                <li ><a ng-style="{color:myColors[1]}" href="/doTask" ng-click="butdoTask()">任务大厅</a></li>
+                <li ><a ng-style="{color:myColors[2]}" href="/myapp" ng-click="butdoTask()">发布任务</a></li>
+
+                <li >
+                    <a ng-style="{color:myColors[3]}" href="/myClaim/{{userObjectId}}" style="position: relative" ng-click="butdoTask()">我的任务
+                        <span class="" ng-show="totalNeedDoTask > 0" style="position: absolute;
+                              top: 7px;
+                              left: 83px;
+                              display: inline-block;
+                              background-color: #f4556c;
+                              width: 26px;
+                              height: 20px;
+                              font-size: 14px;
+                              border-radius: 8px;text-align: center;color: #FFFFFF">{{totalNeedDoTask}}</span>
+                    </a>
+                </li>
+                <li >
+                    <a ng-style="{color:myColors[4]}" href="/taskCheck" style="position: relative" ng-click="butdoTask()">审核任务
+                        <span class="badge" ng-show="pendingCount > 0" style="position: absolute;
+                              top: 7px;
+                              left: 83px;
+                              display: inline-block;
+                              background-color: #f4556c;
+                              width: 26px;
+                              height: 20px;
+                              font-size: 14px;
+                              border-radius: 8px;text-align: center;color: #FFFFFF">{{pendingCount}}</span>
+                    </a>
+                </li>
+
+                <!--<li >-->
+                    <!--<a ng-style="{color:myColors[5]}" href="/keywordsPackage" ng-click="butdoTask()">-->
+                        <!--<span>机刷业务</span>-->
+                        <!--<div class="floating ui red label" style="padding-top: 20px">新</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+
+                <li >
+                    <a ng-style="{color:myColors[6]}" href="/shop" ng-click="butdoTask()">
+                        <i class="shopping bag icon"></i>
+                        <span>积分墙任务</span>
+                        <div class="floating ui purple label" style="padding-top: 20px">首冲+6折!!</div>
+                    </a>
+                </li>
+
+                <!--<li style="width: auto; margin-left: 40px">-->
+                    <!--<a ng-style="{color:myColors[6]}" href="/asoEffect" ng-click="butdoTask()">-->
+                        <!--<i class="line chart icon"></i>-->
+                        <!--<span style="color: gray">ASO效果</span>-->
+                        <!--<div class="floating ui grey label" style="padding-top: 20px">开发中</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" style="margin-left: 40px; position: relative">
+                    <a id="nav-username-display" href="/user" data-toggle="dropdown" class="dropdown" ng-style="{color:myColors[7]}" >
+                    </a>
+
+                    <!--<span class="msgDot " ng-show="unreadMsgCount > 0"-->
+                         <!--style="position: absolute; top: 20px;-->
+                              <!--left: 130px;-->
+                              <!--display: inline-block;-->
+                              <!--background-color: #f4556c;-->
+                              <!--width: 10px;-->
+                              <!--height: 10px;-->
+                              <!--border-radius: 10px;">-->
+                    <!--</span>-->
+                    <ul class="dropdown-menu">
+                        <li><a href="/user#/" >个人中心</a></li>
+                        <li><a href="/user#/account">我的Y币</a></li>
+   <!--                     <li><a href="/user#/inforManage">Y币流水</a></li>-->
+                        <li><a href="/shop" style="color: #00a5ff">ASO商城</a></li>
+                        <li><a ng-click="logout()">退出登陆</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><!--container -->
+
+    <!--新功能更新通知-->
+    <div style="margin-top: 0px" class="ui pink tiny message transition" id="newFeature">
+        <i class="close icon"></i>
+        <div class="header">
+            <i class="announcement icon"></i>
+            <span>{{newUpdateTitle}}</span>
+        </div>
+
+        <!--<div class="ui horizontal segments">-->
+            <!--<div class="ui segment">-->
+                <!--<a class="ui red ribbon label">必读通知</a>-->
+                <!--<div class="ui raised segments">-->
+                    <!--<div class="ui orange segment">-->
+                        <!--<p style="font-size: 14px">-->
+                            <!--<i class="warning icon"></i>-->
+                            <!--领取任务后，6小时内必须完成-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<div class="ui green segment">-->
+                        <!--<p style="font-size: 14px"><i class="warning icon"></i>审核任务定时器每天早上11点运行</p>-->
+                    <!--</div>-->
+                    <!--<div class="ui yellow segment">-->
+                        <!--<p style="font-size: 14px; color: orange"><i class="warning icon"></i>当日任务被拒绝，需再次日早上10点前完成</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui segment">-->
+                <!--<a class="ui blue ribbon label">新功能</a>-->
+                <!--<div class="ui raised segments">-->
+                    <!--<div class="ui green segment">-->
+                        <!--<p style="font-size: 14px;color: purple">【自助投放任务系统~8折】你可以设定每天15点投放任务</p>-->
+                    <!--</div>-->
+                    <!--<div class="ui yellow segment">-->
+                        <!--<p style="font-size: 14px;color: purple">【自助投放任务系统~10%免单】你可以设定在这个周末投放任务</p>-->
+                    <!--</div>-->
+                    <!--<div class="ui red segment">-->
+                        <!--<p style="font-size: 14px;">新用户福利: 现在每邀请1位好友使用野马得8.8元现金奖励</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui red piled segment">-->
+                <!--<a class="ui red ribbon label">ASO自助投放商城 特惠上线</a>-->
+                <!--<div class="ui segments">-->
+                    <!--<div class="ui green segment">-->
+                        <!--<p style="font-size: 14px">首冲优惠上线，冲3000得3520元</p>-->
+                    <!--</div>-->
+                    <!--<div class="ui red segment">-->
+                        <!--<a class="ui red tag label">6折特惠功能(排名在100名-200名关键词)上线,去商城看看吧</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    </div>
+
+</nav>

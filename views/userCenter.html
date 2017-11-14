@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 model dropdonw 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <!--第三方 CSS JS-->
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+    <script src="/javascripts/vendor/AngularJS/angular-ui-router.js"></script>
+
+    <!--网站内部js-->
+
+    <link rel="stylesheet" href="../stylesheets/pers_center.css">
+    <link rel="stylesheet" href="../stylesheets/userTaskHistory.css">
+    <script src="/javascripts/userCenter.js"></script>
+    <script src="/javascripts/indexApp.min.js"></script>
+
+    <title>个人中心</title>
+
+</head>
+<body ng-app="yemaWebApp">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<!--导航栏-->
+<div class="container" ng-controller="indexAppCtrl" >
+    <th-nav></th-nav>
+</div>
+
+<!--个人中心主界面-->
+<div class="container main-body" ng-controller="userCenterCtrl">
+    <div class="row">
+        <div class="col-lg-2" style="margin-left: 150px">
+                <div class="personal">
+                    <div class="personal-title">
+                        <div class="img-normal icon1"  >
+                            <img src="/images/home/user_center.png" alt="" ><a ui-sref="inform">账号中心</a>
+                        </div>
+
+                        <div class="img-normal icon1">
+                            <img src="/images/home/money.png" alt="" ><a ui-sref="account">我的Y币</a>
+                        </div>
+
+                        <div class="img-normal icon1" ng-if="Administrator == 'yangyang'">
+                            <img src="/images/管理员.png" alt="" style="width: 25px;height: 25px">
+                            <a ui-sref="administrator">管理员</a>
+                        </div>
+
+                    <!--    <div class="img-normal icon1">
+                            <img src="/images/taskInfor/infor2.png" alt="" ><a ui-sref="inforManage">Y币流水</a>
+                        </div>-->
+
+                        <!--<div class="img-normal icon1">-->
+                            <!--<img src="/images/taskInfor/Yrecharge.png" alt="" ><a ui-sref="YRecharge" style="color: #00a5ff">Y币充值</a>-->
+                        <!--</div>-->
+                        <!--<div class="img-normal icon1">-->
+                            <!--<img src="/images/taskInfor/history.png" alt="" ><a  ui-sref="taskHistory">任务历史</a>-->
+                        <!--</div>-->
+                    </div>
+
+                    <div class="back-out">
+                        <a onclick="logout()" class="button">退出登陆</a>
+                    </div>
+              </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="setting-content">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<th-footer>
+
+</th-footer>
+
+<script src="/javascripts/cookieHelper.min.js"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+
+</html>
+

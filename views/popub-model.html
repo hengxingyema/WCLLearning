@@ -1,0 +1,88 @@
+<!--绑定手机号码-->
+<div class="input-detail-A" style="width: 100%;height: 100%" ng-if="phone == true && Ali == false">
+    <div style="margin-left: 80px;font-size: 16px;color: #333333;margin-top: -5px">
+        绑定手机号
+    </div>
+
+    <label class="item-input" style="margin-top: 10px;width: 266px;margin-left: -20px">
+        <span class="input-label" style="font-size: 14px;color: #999999">手机号</span>
+        <input type="text" ng-model="mobilePhone">
+    </label>
+
+    <hr style="margin-top: -5px">
+
+    <div class="item-button-right" style="margin-left: -20px">
+        <label class="item-input" style="margin-top: -6px;width: 200px">
+            <span class="input-label" style="font-size: 14px;color: #999999">验证码</span>
+            <input type="text" style="margin-left: 5px" ng-model="verificationCode">
+        </label>
+
+        <button class="button button-full button-light" style="width: 35%;height: 30px;font-size: 12px;background-color: #4191FA;top: 90px;color: #ffffff" id="getSmsBtn"
+                ng-click="verification(mobilePhone)">
+            发送验证码
+        </button>
+    </div>
+
+    <hr style="margin-top: -5px">
+
+    <div class="item-text-wrap" style="background-color: #F5F5F5;height: 42px;width:100%;">
+        <button class="button button-full button-light" style="background-color: #4191FA;border-radius: 5px;color:#FFFFFF;font-size: 5vw" ng-click="savePhone(verificationCode)">
+            提交
+        </button>
+    </div>
+</div>
+
+<!--绑定支付宝-->
+<div class="input-detail-B" style="width: 100%;height: 100%" ng-if="Ali == true && phone == false">
+    <div style="margin-left: 80px;font-size: 16px;color: #333333;margin-top: -5px">
+        绑定支付宝
+    </div>
+
+    <div class="input-info-a" style="margin-left: -27px;">
+        <p class="item-input" style="height: 20px;margin-top: 10px">
+            <span class="input-label" style="font-size: 16px;color: #999999">帐号</span>
+            <input type="text" placeholder="支付宝账号（手机或邮箱)" style="font-size: 14px" ng-model="aliAccount">
+        </p>
+
+        <hr style="margin-left: 10px;">
+        <p class="item-input" style="height: 20px">
+            <span class="input-label" style="font-size: 16px;color: #999999">姓名</span>
+            <input type="text" placeholder="绑定支付宝账号的真实姓名" ng-model="aliPayUserName">
+        </p>
+    </div>
+
+    <hr style="margin-left: -10px;">
+
+    <div class="item-text-wrap" style="background-color: #F5F5F5;height: 42px;width:100%;">
+        <button class="button button-full button-light" style="background-color: #4191FA;border-radius: 5px;color:#FFFFFF;font-size: 5vw" ng-click="saveAliPayInfo(aliAccount, aliPayUserName)">
+            提交
+        </button>
+    </div>
+</div>
+
+<!--开始任务导航-->
+<div class="input-detail-C " style="width: 100%;height: 150%;" rj-close-back-drop ng-if="phone == false && Ali == false">
+    <ion-slide-box on-slide-changed="slideHasChanged($index)"  does-continue="true" slide-interval=2000>
+        <ion-slide>
+            <div class="box blue">
+                <img src="images/xiaoma/steps-one.png" style="width: 90%;height: 90%">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="box yellow">
+                <img src="images/xiaoma/steps-two.png" style="width: 90%;height: 90%">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="box pink">
+                <img src="images/xiaoma/steps-three.png" style="width: 90%;height: 90%">
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="box pink">
+                <img src="images/xiaoma/steps-four.png" style="width: 90%;height: 90%">
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+</div>
+

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>野马运营</title>
+
+    <!--IOS主屏幕设置-->
+    <!--http://blog.deartanker.com/post/3450.html-->
+    <link rel="apple-touch-icon" href="../images/do_task_icon_ios.png"/>
+    <meta name="apple-mobile-web-app-title" content="野马任务">
+    <link rel="apple-touch-startup-image" sizes="640x1136" href="../images/ios_startup.png" />
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--第三方 CSS JS-->
+    <link rel="stylesheet" href="../stylesheets/loading.css">
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+    <link rel="stylesheet" href="../stylesheets/dailyTask.css">
+    <link rel="stylesheet" href="../stylesheets/myClaim.css">
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 dialog 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <!--网站内部js-->
+
+    <script src="/javascripts/myClaim.js"></script>
+    <script src="/javascripts/indexApp.js"></script>
+    <!--<script src="/javascripts/doTask.js"></script>-->
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+</head>
+
+<body ng-app="yemaWebApp">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<div class="container" ng-controller="indexAppCtrl" >
+    <!--导航-->
+    <th-nav></th-nav>
+</div>
+
+<div class="container" ng-controller="myClaimControl" >
+    <div class="modal fade" id="uploadTaskVideo" style="padding: 0px;margin: 0px;position: absolute;top:50px;left: 200px">
+        <div class="modal-dialog" style="display: table-cell;vertical-align: middle;">
+            <div class="modal-content" style="width:960px;height:600px;">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="uploadTaskVideo()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <video src="http://ac-rbmsnntf.clouddn.com/9ac63380e1b03a0f.mp4" controls="controls" id="uploadTask" preload style="width:960px;height:500px">
+                        您的浏览器不支持 video 标签。
+                    </video>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- uploadTaskVideo-->
+    <button class="release3 hidden-xs"  data-target="#uploadTaskVideo" data-toggle="modal"> </button>>
+        <button class="release4 hidden-xs"  ng-click="addFavorite2()">加入收藏夹
+    </button>
+    <!--标题-->
+    <div class="header-wrapper col-lg-12" ng-show="!noApp">
+
+        <h1 class="header hidden-xs" style="display: inline-block">今日认领的任务</h1>
+
+        <button class="btn close_btn hidden-xs" style='float: right; margin-right: 70px; margin-top: 5px; width: 200px' ng-click="turnoffTask()"
+                data-toggle="tooltip" data-placement="bottom" title="此按钮用于清除已经全部完成或已经过期的任务记录">
+            清除结束任务记录
+        </button>
+        <hr class="hidden-xs" style="border: 1px solid  #3498db;width: 1024px">
+    </div>
+
+    <div class="ui orange message hidden-xs" style="height: 70px;width: 800px; margin-top: 160px; margin-left: 150px" ng-if="noApp == false">
+        <i class="warning icon"></i>
+        当日被拒绝任务，需要在次日早上10:30前完成！
+        <br>
+        <i class="star icon"></i>
+        领取完任务1小时内,可以选择放弃 您未完成的任务
+        <br>
+    </div>
+
+    <div ng-show="!noApp" class=" hidden-xs col-lg-10  col-lg-offset-1 copy" >
+        <p class="url_p">
+            <span style="font-size: 18px;color: #333333">分享链接:</span>
+            <input type="text" id="copy"  ng-model="url">
+            <button class="btn" id="btn" ng-click="copyUrl()" data-placement="top"
+                    data-toggle="popover" data-target="#popover"
+                    data-content="复制成功!">分享至手机
+            </button>
+        </p>
+        <p class="message">复制链接，通过QQ或微信发送给你的伙伴，直接在手机上传任务截图，无需你再次整理换评图片</p>
+        <p class="message"></p>
+    </div>
+
+    <div class="modal fade" id="popover">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 320px;">
+                <div class="modal-header" style="height: 74px;background-color:#6eb7e8;border-radius:4px;text-align: center">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" >{{errorMsg}}</h4>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <div class="spinner"  ng-hide="!isLoadingMyApp"  style="margin-top:450px;">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+
+    </div>
+
+
+
+    <div ng-show="noApp">
+        <div style="text-align: center;">
+            <img style="margin-top: 200px;margin-left:-30px;"  src="../images/horse.png"/>
+        </div>
+
+        <h1 style="text-align:center;">亲, 你还没有任何任务哦, 赶紧去"<a href="/doTask">任务大厅</a>"领取任务吧</h1>
+    </div>
+    <hr class="hr-header hidden-xs"/>
+
+    <div class="row " ng-repeat="app in dailyTask">
+        <div class="col-lg-10  col-lg-offset-1 col-xs-12 media dailyTask"  >
+            <div class="media-left" style="position: relative">
+                <a href="/newtaskMobile/{{app.taskObjectId}}">
+                    <img class="logo" ng-src="{{app.artworkUrl100}}" alt="app-icon" class="img-thumbnail" style="display: inline-block" >
+                </a>
+                <div class="noticeNumber" ng-show="app.noticeNumber > 0">{{app.noticeNumber}}</div>
+            </div>
+            <div class="media-body information"  >
+                <div ng-click="openNewPage(app.taskObjectId)">
+                    <!--<a class="task-link" href="/newtaskMobile/{{app.taskObjectId}}">{{app.trackName.substr(0,11)+'...'}}</a>-->
+                    <button class="download" ng-show="app.excKinds == '下载'" >{{app.excKinds}}</button>
+                    <button class="comment" ng-show="app.excKinds == '评论'" >{{app.excKinds}}</button>
+                    <button class="hidden-xs left">共<span style="color:rgb(0,226,57)" >{{app.totalExcCount}}</span>条</button>
+                    <button class="deadline">{{app.deadlineStr}}</button>
+                </div>
+                <div  class="center" ng-click="openNewPage(app.taskObjectId)">
+                    <button  class="proceed" ng-show="app.surplusCount  > 0" >未完成{{app.surplusCount}}</button>
+                    <button  class="pending" ng-show="app.submitted > 0" >审核中{{app.submitted}}</button>
+                    <button  class="rejected" ng-show="app.rejected > 0" >被拒绝{{app.rejected}}</button>
+                    <button  class="finish" ng-show="app.accepted > 0" >已通过{{app.accepted}}</button>
+                    <button  class="abandoned" ng-show="app.abandoned > 0" >已过期{{app.abandoned}}</button>
+                    <button  class="virtula_button hidden-lg" style="width:50px" ng-click="openNewPage(app.taskObjectId)"></button>
+                </div>
+                <div class="assign">
+                    分配备注:<span style="margin-left: 15px" class="num  assignTask" ng-show="app.mode" ng-click="openNewPage(app.taskObjectId)">{{app.detailRem}}</span>
+                    <input  class="input1 hidden-xs" type="text" style="width:400px" ng-hide="app.mode" ng-model="app.detailRem" ng-keyup="keySaveAssign($event,app.detailRem, app.taskObjectId,app)" >
+                    <img src="../images/home/pen.png" class="imgpen hidden-xs" ng-show="app.mode" ng-click="reAssign(app)">
+                    <button  class="btnSave hidden-xs" ng-hide="app.mode" ng-click="saveRemark(app.detailRem, app.taskObjectId,app)">保存</button>
+                    <button  class="virtula_button hidden-lg" style="width:50px" ng-click="openNewPage(app.taskObjectId)"></button>
+                </div>
+            </div>
+
+            <div class="hidden-xs  media-right" ng-show="app.canRevoke == 1">
+                <button class="btn btn-default" style="background-color: white; color: #00a5ff; margin-right: 10px"
+                        data-toggle="modal" ng-click="userRevoke(app.taskObjectId)"
+                        data-target="#myModal">
+                    撤销任务
+                </button>
+            </div>
+
+            <div class=" hidden-xs  media-right">
+                <a href="/interiorExcDetail/{{app.taskObjectId}}">
+                    <button type="button" style="margin-right: 20px;">
+                        上传截图
+                    </button>
+                </a>
+            </div>
+
+        </div>
+   </div>
+
+    <!--确认是否放弃剩余任务-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">确认放弃本任务剩余数量?</h4>
+                </div>
+                <div class="modal-body">一旦放弃本任务,剩余数量将释放回任务大厅,但您将
+                    <span style="color: #f3914c;">无法再次领取</span>此APP本版本的任务.
+                </div>
+                <div class="modal-footer" style="margin-top: -30px;">
+                    <button type="button" class="btn btn-primary" ng-click="revoke()" ng-if="errorId != 0">确认</button>
+                    <button type="button" class="btn btn-primary" ng-if="errorId == 0" style="background-color: #f5f5f5;color: #00acee" disabled>已撤销</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!--任务放弃失败后提示窗-->
+    <div class="modal fade" id="myModalTwo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 440px;height: 219px">
+                <div class="modal-header" style="background-color: #f3914c">
+                    <h4 class="modal-title" id="modalLabel">放弃失败</h4>
+                </div>
+                <div class="modal-body" style="color: #f3914c">{{errorMsg}}</div>
+                <div class="modal-footer" style="margin-top: -30px;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!--任务放弃成功后提示窗-->
+    <div class="modal fade" id="myModalThree" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 380px;height: 194px">
+                <div class="modal-header">
+                    <span>
+                        <img src="/images/finish-img.png" class="finishImg" style="margin-left: 100px; height: 30px">
+                    </span>
+                    <p class="modal-title " id="modalLabel3" style="margin-top: -35px;margin-left: 40px">放弃成功</p>
+                </div>
+                <div class="modal-body" style="color: #6eb7e8">{{errorMsg}}</div>
+                <div class="modal-footer" style="margin-top: -45px;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+<th-footer class="hidden-xs">
+
+</th-footer>
+<script src="/javascripts/cookieHelper.min.js"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

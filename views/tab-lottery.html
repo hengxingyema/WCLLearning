@@ -1,0 +1,55 @@
+<link href="/stylesheets/lottery.css" rel="stylesheet">
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+    </button>
+    <div class="h1 title" style="font-size: 16px;">必中红包</div>
+    <button class="button button-clear button-light" style="font-size: 12px;" ui-sref="lotteryManual">
+        游戏说明
+    </button>
+</ion-header-bar>
+
+<ion-view>
+    <ion-content style="background: #f38441; background-image: url(/images/lottery/background1.png);background-size: 100vw; background-repeat: no-repeat; background-position-y: 13vw">
+
+        <div style="text-align: center">
+            <div style="background-image: url(/images/lottery/header1.png); background-repeat: no-repeat; background-size:80vw; width: 80vw; height: 13vw; margin-left: 10vw">
+                <div style="padding-top: 3vw; padding-bottom: 3vw; height: 13vw;">
+                    <span style="font-size: 5vw; color: #f27549">当前余额: </span>
+                    <span style="font-size: 6vw; color: #e9424e">{{accountBalance}}元</span>
+                </div>
+            </div>
+
+            <div style="background-image: url(/images/lottery/header2.png); background-repeat: no-repeat; background-size: 64vw; width: 64vw; margin-left: 18vw; margin-top: 14px; position:relative; z-index:3;">
+                <div style="height: 18vw; font-weight: bold">
+                    <span style="font-size: 5vw; color: #ffffff">本期奖池:
+                        <span style="font-size: 10vw; color: #ffe730;">{{pool}}</span>
+                        元
+                    </span>
+                </div>
+            </div>
+
+            <img src="/images/lottery/header3.png" style="width: 75vw; margin-top: -50px; position:relative;  z-index: 2;">
+
+            <div style="background: #ffe730; border-radius: 10px; width: 80vw; height: 95vw; margin-left: 10vw; margin-top: -30px; position:relative; z-index:1;">
+                <div style="font-size: 5vw; color: #f65155; font-weight: bold; padding-top: 20px">点击下列数字框即可押注</div>
+                <div style="width: 75vw; margin: auto">
+                    <div class="button-wrapper" ng-repeat="bid in currentBidDic">
+                        <div ng-class="{true: 'button-box-selected', false: 'button-box'}[currentBidDic[$index+1] > 0]" ng-click="bidConfirm(totalMoney, $index+1)">
+                            <div ng-class="{true: 'button-outer-circle-selected', false: 'button-outer-circle'}[currentBidDic[$index+1] > 0]" >
+                                <div ng-class="{true: 'button-inner-circle-selected', false: 'button-inner-circle'}[currentBidDic[$index+1] > 0]" >
+                                    <p style="color: #fd5460; font-size: 7vw; font-weight: bold">{{$index+1}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="color: #fd5460; font-size: 4vw; margin-left: 3vw">{{currentBidDic[$index+1]}}注</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="/images/lottery/background2.png" style="position: relative; z-index: 0; width: 100vw; margin-top: -600px">
+
+        <button class="btn-friend-invite">邀请好友赚现金</button>
+        <button class="btn-record" ui-sref="lotteryResults">>> 中奖记录<< </button>
+    </ion-content>
+</ion-view>

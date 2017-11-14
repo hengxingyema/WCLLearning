@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <title>Bar Chart</title>
+    <script src="/javascripts/vendor/Chart.js"></script>
+    <meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+    <style>
+        canvas{
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" height="200" width="1000"></canvas>
+<canvas width="1000" height="200" id="canvas1" style="margin-top: -50px;"></canvas>
+
+<script>
+
+    var arr=[65,-59,90,-81,56,-55,40];
+    var arr1=[65,-59,90,-81,56,-55,40];
+
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]<0){
+            arr.splice(i,1,0);
+        }
+
+    }
+    for(var e=0;e<arr1.length;e++){
+        if(arr1[e]>0){
+            arr1.splice(e,1,0);
+        }
+        else {
+            arr1.splice(e,1,-arr1[e]);
+        }
+    }
+
+
+    var barChartData = {
+        labels : ["","","","","","",""],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                data : arr
+            }
+        ]
+
+    };
+
+    var barChartData1 = {
+        labels : ["","","","","","",""],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                data : arr1
+            }
+        ]
+
+    };
+    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
+    var canvas1=document.getElementById("canvas1");
+    var context=canvas1.getContext("2d");
+    var myLine1 = new Chart(context).Bar(barChartData1);
+    context.translate(0, canvas1.height);
+    context.scale(1, -1);
+</script>
+</body>
+</html>

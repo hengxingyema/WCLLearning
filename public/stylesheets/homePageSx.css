@@ -1,0 +1,362 @@
+*{margin: 0;
+  padding: 0;}
+hr{margin: 0;
+    padding: 0;}
+#bannerAndAttendance{
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+#myCarousel {
+    display: inline-block;
+    vertical-align:top;
+    width: 850px;
+    height: 280px;
+}
+
+#attendance{
+    display: inline-block;
+    vertical-align:top;
+    margin-left: 20px;
+    width: 230px;
+    height: 280px;
+    border: 1px solid #e5e5e5;
+}
+
+#circleBackground{
+    margin-top: 20px;
+    width: 100%;
+}
+
+#circleImgOffset{
+    position: relative;
+    top: -110px;
+    text-align: center;
+    margin: auto;
+}
+
+#circleContent{
+    line-height: 1;
+}
+
+.attBtn{
+    width: 150px;
+    height: 36px;
+    margin: auto;
+    font-size: 16px;
+    background-color: #5a94ec;
+    border: none;
+}
+
+.head1{
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 9px;
+}
+.noticeDiv{
+    display: inline-block;
+    font-size:15px;
+    margin-left:4px;
+    padding-right: 3px;
+
+}
+.add_border{ border-right: 1px solid #CCCCCC;}
+.noticeDiv1{
+    font-size:16px;
+    margin-left: 15px;
+    display: inline-block;
+}
+.noviceTask{
+    display: inline-block;
+    height: 80px;
+    width: 412px;
+    line-height: 80px;
+    background-repeat: no-repeat;
+    padding-left: 64px;
+}
+/*发布条数*/
+.release{
+    display: inline-block;
+    width: 840px;
+    margin-bottom: 16px;
+    /*border-bottom:1px solid #E5E5E5;*/
+}
+.r_left{
+    display: inline-block;
+    width:468px ;
+    height:68px;
+    border-right: 1px solid #E5E5E5;
+}
+.home_top{
+    color:#999999;font-size:20px;
+    text-align:center
+}
+.home_bottom{
+    margin-top: 24px;
+    color:#4b86e0;font-size:46px;
+    text-align:center;
+}
+.r_right{
+    display: inline-block;
+    width:350px ;
+    height:68px;}
+.r_button{
+    display: inline-block;
+    text-align: right;
+    margin-top:10px;
+    padding-right:20px;
+    font-size:16px;
+    color:#4b86e0 ;
+    width:830px;
+    margin-bottom:10px;
+}
+/*每日任务*/
+.daylife{
+    margin-top: 20px;
+}
+/*上线及入驻*/
+.log{
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width:230px;
+    height:40px;
+    background-color:#f0f6fe;
+    margin-bottom:8px;
+    padding-top: 8px;
+    line-height: 20px;
+    border-radius: 3px;
+    margin-left: 30px;
+}
+.log_left{
+    display: inline-block;
+    margin-left: 16px;
+    font-size:13px;
+    color:#666666;
+    margin-right: 8px;
+    padding-right: 8px;
+    border-right:1px solid  #CCCCCC;
+}
+.log_right{
+    display: inline-block;
+    font-size:13px;
+    color:#666666;
+    margin-right: 8px;
+}
+
+.text1{
+    font-size: 14px;
+    color: #666666;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.myTaskBtn{
+    width: 106px;
+    height: 32px;
+    background-color: #5a94ec;
+    font-size: 14px;
+    border: none;
+}
+
+.myTaskBtnDisabled{
+    width: 106px;
+    height: 32px;
+    background-color: #5a94ec;
+    font-size: 14px;
+    border: none;
+}
+
+.myRelease1{
+    border: 1px solid #e5e5e5;
+    width: 830px;
+    height: auto;
+}
+.re_img{
+    display: inline-block;
+    margin-left: 190px;
+    margin-top: 56px;
+    margin-right: 18px;
+}
+.myTaskLogoWrapper{
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 28px;
+    padding-left: 40px;
+}
+
+.myTaskLogo{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.myProgress{
+    display: inline-block;
+    width: 170px;
+    margin-left:10px;
+    margin-right:10px;
+    height: 16px;
+    margin-bottom: 0;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.my-glyphicon{
+    margin-left: 5px;
+}
+
+.ASOData{
+    display: inline-block;
+    padding-top: 39px;
+    padding-left: 20px;
+}
+
+.asoBtn{
+    height: 32px;
+}
+
+#myTasks{
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#myTask{
+    height: 108px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.myTasksFooter{
+
+    text-align: right;
+    font-size: 14px;
+    color: #999999;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.myTasksFooter1{ text-align: right;
+    font-size: 14px;
+    color: #999999;
+    margin-right: 20px;
+    margin-top: 50px;
+   }
+
+.panelWrapper{
+    margin-bottom: 25px;
+    line-height: 1;
+}
+
+.panel{
+    display: inline-block;
+    width: 400px;
+    height: 130px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.orangeBtn{
+    line-height: 1;
+    background-color: #fb8545;
+    height: 24px;
+    font-size: 12px;
+    color: white;
+}
+/*不同按钮颜色*/
+/*领取Y币和可领取*/
+.bt1
+{
+    background-color: #fb8545;
+    color: white;
+}
+/*已领完*/
+.bt2
+{background-color: #dbdbdb;}
+/*未满足条件*/
+.bt3
+{background-color:#f8daca ;}
+.orangeBtnDisabled {
+    line-height: 1;
+    background-color: #cccccc;
+    height: 24px;
+    font-size: 12px;
+    color: white;
+}
+
+.orangeBtnDisabled:hover{
+    line-height: 1;
+    color: white;
+}
+/*首次充值*/
+.todayTaskBox{
+    width: 230px;
+    height: 110px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1;
+    vertical-align: top;
+}
+.bg{
+    margin-top: 10px;
+    width: 230px;
+    height: 110px;
+    padding-top: 3px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1;
+    vertical-align: top;
+    background-color:#fff7f8;}
+
+.new1{margin-top: 18px;
+    margin-bottom: 7px;
+ font-size:18px;
+color:#f66e81;}
+
+.new2{
+    margin-bottom: 10px;
+    font-size: 13px;
+    color:#F998A3;
+}
+.text1{
+    font-size:14px;
+    color: #333333;
+}
+
+.text2{
+    font-size:12px;
+    color: #999999;
+}
+
+.ycoin {
+    float: right;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #5a94ec;
+
+}
+
+/*重要消息*/
+.important{
+    background-color:#f9f9f9;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 1105px;
+}
+
+.trackName-task {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+    line-height:normal;
+    width: 220px;
+    height: 20px;
+    overflow: hidden;
+    text-color: #333333;
+    white-space: nowrap;
+}

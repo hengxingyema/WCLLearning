@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <title>野马运营 - APP运营工具丨应用推广,换评,换量平台丨专业ASO优化丨APP推广榜单优化丨手游推广,试玩丨试客,私单,App store,冲榜,刷榜</title>
+
+    <meta name="keywords" content="app运营工具,app运营菜鸟,鸟哥笔记aso,免费aso优化,ios换评,苹果榜单,app推广,手游推广,应用推广,ios榜单,关键词覆盖,关键词优化,排名优化,积分墙,钱咖,应用试客,app推广,鼠宝,粉咖,钱小咖,app推广公司"/>
+    <meta name="description" content="野马是App运营者的首选，你可以进行高效率换评，免费提高给你ASO优化建议，还可以直接购买App好评低至2.4元/条，下载激活2元/条"/>
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 dialog 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <!--网站内部css-->
+    <link rel="stylesheet" href="/stylesheets/homePageSx.css"/>
+
+    <!--网站内部js-->
+
+    <script src="/javascripts/homePage.js"></script>
+    <script src="/javascripts/indexApp.js"></script>
+    <!--第三方css-->
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+</head>
+<body ng-app="yemaWebApp">
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<!--导航栏-->
+<div class="container" ng-controller="indexAppCtrl" >
+
+    <th-nav></th-nav>
+
+    <div ng-controller="homePageCtrl">
+        <!--轮播Banner与签到-->
+        <div id="bannerAndAttendance">
+            <!--轮播-->
+            <div id="myCarousel">
+                <div class="carousel slide" style="z-index: 2;" >
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators"  >
+                        <li data-target="#myCarousel" class="active" ng-repeat="banner in bannerUrl">
+                        </li>
+                    </ol>
+                    <!-- 轮播（Carousel）项目 -->
+                    <div  class="carousel-inner" >
+                        <div  ng-repeat="banner in bannerUrl"  ng-class="{'item':true, 'active':$index==0}" >
+                            <a ng-href="{{banner.clickBanner}}" target="_blank">
+                                <img style="height: 280px;" class='foo' ng-src="{{banner.bannerUrl}}">
+                            </a>
+                        </div>
+                    </div>
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                    </a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                    </a>
+                </div>
+            </div>
+
+            <!--签到-->
+            <div id="attendance">
+                <img id='circleBackground' src="/images/homepage/back.png"/>
+                <div id="circleImgOffset">
+                    <div id ="circleContent" >
+                        <div style="font-size: 14px; color: #333333; margin-bottom: 16px;">已连续签到</div>
+                        <span style="font-size:40px;color:#5a94ec;">{{latestDays}}</span>
+                        <span style="font-size: 12px; color: #333333">天</span>
+                    </div>
+
+                    <div style="margin-top: 44px;">
+                        <button type="button" class="btn btn-primary attBtn" ng-click="butCheckIns()" ng-show="isCheckIns == 0">
+                            签到 +{{todayYB}} Y币
+                        </button>
+                        <button type="button" class="btn btn-primary attBtn" ng-show="isCheckIns == 1" disabled>
+                            已签到
+                        </button>
+                    </div>
+
+                    <div style="width: 150px; margin: auto; margin-top: 14px; font-size: 12px; color: #999999;">
+                        <span ng-if="todayYB < 10">明日签到得<span class="" style="color: red"> {{continueCheck}} </span>Y币<br>
+                            <a class="ui pointing red basic label">签到10天为一个周期</a>
+                        </span>
+                        <span ng-if="todayYB == 10" style="color: red">
+                            已完成本次签到周期(10天)
+                            <a style="margin-left: -33px" class="ui pointing red basic label">下个周期继续签到初始奖励+1(最多4)</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--重要消息-->
+        <div class="important" ng-if="totalUndoCount > 0 || totalRefusedCount > 0 || pendingCount > 0">
+
+                <div class="carousel2">
+                    <div style="display: inline-block">
+                    <img src="/images/homepage/main1.png" /></div>
+
+                    <div class="noticeDiv add_border" ng-if="totalUndoCount > 0">
+                        &nbsp&nbsp您有
+                        <a style="color:#3498db; font-size: 18px;">{{totalUndoCount}}</a>
+                        条任务还未完成,请去
+                        <a href="/myClaim/self" style="color:#3498db ;text-decoration:underline">领取任务</a>
+                        完成。
+                    </div>
+                    <div class="noticeDiv add_border" ng-if="totalRefusedCount > 0">
+                        &nbsp&nbsp您有
+                        <a style="color:red; font-size: 18px;">{{totalRefusedCount}}</a>
+                        条任务被拒绝,请去
+                        <a href="/myClaim/self" style="color:#3498db ;text-decoration:underline">领取任务</a>
+                    完成。
+                    </div>
+                    <div class="noticeDiv" ng-if="pendingCount > 0" >
+                        &nbsp&nbsp您有
+                        <a style="color:#3498db; font-size: 18px;">{{pendingCount}}</a>
+                        条任务未审核,请去
+                        <a href="/taskCheck" style="color:#3498db ;text-decoration:underline">审核换评</a>
+                        中审核
+                    </div>
+            </div>
+
+        </div>
+
+        <!--发布条数-->
+        <div class="ui horizontal piled segments">
+            <div class="ui segment">
+                <p>野马上线 <a class="ui blue circular label">{{onlineTime}}</a>  天</p>
+            </div>
+            <div class="ui segment">
+                <p>已经入驻野马App <a class="ui orange circular label">{{enterAppCount}}</a>  </p>
+            </div>
+            <div class="ui segment">
+                <p>累计发布任务数 <a class="ui teal tag label">{{releaseTotalCount}}</a> </p>
+            </div>
+            <div class="ui segment">
+                <p>已经完成App下载/好评总数 <a class="ui red tag label">{{receiveTotalCount}}</a> </p>
+            </div>
+        </div>
+
+        <h3 class="ui header" ng-if="userCanGetYbObject != ''">
+            <i class="users icon"></i>
+            <div class="content">
+                 野马运营, 一个只服务于App运营者的网站
+                <div class="sub header">
+                    欢迎加入, 下面是我们为您准备的新人礼包
+                </div>
+            </div>
+
+            <div class="ui ordered steps">
+                <a ng-class="{true:'active step', false:'step disabled', lala:'completed step disabled'}[userCanGetYbObject.newUserOneGetYB]"
+                   data-id="newUserOneGetYB" onclick="userCanGetYB(this)">
+                    <div class="content">
+                        <div class="title">领取 105Y币</div>
+                        <div class="description">连续第一天可领</div>
+                    </div>
+                </a>
+                <a ng-class="{true:'active step', false:'step disabled', lala:'completed step disabled'}[userCanGetYbObject.newUserTwoGetYB]"
+                   data-id= "newUserTwoGetYB" onclick="userCanGetYB(this)">
+                    <div class="content">
+                        <div class="title">领取 105Y币</div>
+                        <div class="description">连续第二天可领</div>
+                    </div>
+                </a>
+                <a ng-class="{true:'active step', false:'step disabled', lala:'completed step disabled'}[userCanGetYbObject.newUserThreeGetYB]"
+                   data-id= "newUserThreeGetYB" onclick="userCanGetYB(this)">
+                    <div class="content">
+                        <div class="title">领取 105Y币</div>
+                        <div class="description">连续第三天可领</div>
+                    </div>
+                </a>
+                <a ng-class="{true:'active step', false:'step disabled', lala:'completed step disabled'}[userCanGetYbObject.canGet50YB]"
+                   data-id= "canGet50YB" onclick="userCanGetYB(this)">
+                    <div class="content">
+                        <div class="title">领取 50Y币</div>
+                        <div class="description">需成功完成 5 条任务</div>
+                    </div>
+                </a>
+                <a ng-class="{true:'active step', false:'step disabled', lala:'completed step disabled'}[userCanGetYbObject.canGet100YB]"
+                   data-id= "canGet100YB" onclick="userCanGetYB(this)">
+                    <div class="content">
+                        <div class="title">领取 100Y币</div>
+                        <div class="description">需成功完成 20 条任务</div>
+                    </div>
+                </a>
+            </div>
+        </h3>
+
+        <!--主信息界面-->
+        <div>
+            <div style="display:inline-block; width: 850px; padding-right: 20px; margin-bottom: 30px; vertical-align: top;   ">
+                <!--新手任务-->
+                <div  ng-hide="noviceTaskObject.noviceTaskAcceptReward == -1 && noviceTaskObject.noviceReward == -1">
+                    <div class="head1" style="margin-top: 10px ">新手任务</div>
+                    <div class='noviceTask' style="background-image: url('/images/homepage/new1.png');margin-bottom: 20px">
+                        <span class="text1">
+                            <span style="margin-right: 38px;">领取任务,完成任务并上传</span>
+                            <button class="btn btn-primary myTaskBtn" ng-show="noviceTaskObject.noviceReward > 0" data-id= "uploadHaveReceive" onclick="clickToReceive(this)" id="receiveAward">
+                                <span> 可领取{{noviceTaskObject.noviceReward}}Y币</span>
+                            </button>
+                            <button class="btn btn-primary myTaskBtnDisabled" ng-show="noviceTaskObject.noviceReward == 0" disabled>
+                                <span>未满足条件</span>
+                            </button>
+                            <button class="btn btn-primary myTaskBtnDisabled" ng-show="noviceTaskObject.noviceReward == -1" disabled>
+                                <span>已经领取</span>
+                            </button>
+                        </span>
+                    </div>
+
+                    <div class="noviceTask" style="background-image: url('/images/homepage/new2.png')">
+                        <span class="text1">
+                            <span style="margin-right: 100px;">所做任务审核通过</span>
+                            <button class="btn btn-primary myTaskBtn" ng-show="noviceTaskObject.noviceTaskAcceptReward > 0" data-id= "finishNoviceTask" onclick="clickToReceive(this)">
+                                <span>可领取{{noviceTaskObject.noviceTaskAcceptReward}}Y币</span>
+                            </button>
+
+                            <button class="btn btn-primary myTaskBtnDisabled" ng-show="noviceTaskObject.noviceTaskAcceptReward == 0" disabled>
+                                <span>未满足条件</span>
+                            </button>
+
+                            <button class="btn btn-primary myTaskBtnDisabled" ng-show="noviceTaskObject.noviceTaskAcceptReward == -1" disabled>
+                                <span>已经领取</span>
+                            </button>
+                        </span>
+                    </div>
+                    <hr>
+                </div>
+
+                <!--我发布的任务-->
+                  <div  style="margin-top: 20px">
+                    <div class="head1 ">
+                        <span style="font-size: 18px;"> 我发布的任务</span>
+                        <span style="font-size: 14px;color: #999999;margin-left: 20px"> 野马承诺,下午3点前发布的换评任务，当天会全部完成</span>
+                        <a href="/user#/inforManage" target="_blank" class="ycoin">我的Y币变动明细</a>
+                    </div>
+                      <div  class="myRelease1">
+                <div class="myRelease">
+                    <div class="" ng-hide="!noApp">
+                        <div class="re_img" >
+                            <img src="images/homepage/myRelease.png"/>
+                        </div>
+                        <div ng-show="noApp" style="display: inline-block">
+                            <h1 style="font-size: 22px ;color:#999999">您还没有任何任务哦, 赶紧去"<a href="/myapp"style="text-decoration: underline">发布任务吧</a>"</h1>
+                        </div>
+                    </div>
+
+                    <div id="myTasks" ng-hide="noApp">
+                        <div id="myTask" ng-repeat="app in myReleaseTask">
+                            <div class="myTaskLogoWrapper">
+                                <img class="myTaskLogo" ng-src="{{app.artworkUrl100}}">
+                            </div>
+
+                            <div style="display: inline-block; margin-left: 22px; padding-top: 28px; vertical-align: top; width: 264px;">
+                                <div ng-show="app.remainCount != 0">
+                                    <div style="height: 32px; line-height: 32px">
+                                        <div class="trackName-task">{{app.trackName}}</div>
+                                        <div style="margin-left: 40px" class="progress myProgress">
+
+                                            <!--<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" ng-style="app.succeedProgressStyle">-->
+                                            <!--</div>-->
+                                            <div  class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" ng-style="app.receProgressStyle">
+                                            </div>
+
+                                        </div>
+                                        <div style="display: inline-block; vertical-align: middle; line-height:normal;">
+                                        <span style="font-size: 12px">
+                                            <span style="color: #5a94ec">{{app.excCount - app.remainCount}}</span>/{{app.excCount}}
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 5px; font-size: 14px;">
+                                        <span style="color: #5a94ec">{{app.taskType}}</span>
+                                    </div>
+                                </div>
+
+                                <div ng-show="app.remainCount == 0">
+                                    <div style="display: inline-block; line-height: 1; vertical-align: middle; width: 150px;">
+                                        <div style="margin-top: 7px;margin-bottom: 12px;">
+                                            <div style="font-size: 18px;color: #90ea5f;">已被领完<span class="glyphicon glyphicon-ok-circle my-glyphicon"></span></div>
+                                        </div>
+                                        <div style="font-size: 14px;">
+                                            <span style="color: #666666;">任务类型:</span>
+                                            <span style="color: #5a94ec">{{app.taskType}}</span>
+                                        </div>
+                                    </div>
+                                    <div style="display: inline-block; vertical-align: middle">
+                                        <button type="button" class="btn btn-primary myTaskBtn"
+                                                onclick="javascrtpt:window.location.href='/myapp'">发布新任务
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ASOData">
+                                <button class="btn btn-default asoBtn" ng-click="jump(app)">实时排名</button>
+                                <button class="btn btn-default asoBtn" ng-click="jump1(app)" style="margin-left: 10px;">ASO排名</button>
+                                <button class="btn btn-default asoBtn" ng-click="jump2(app)" style="margin-left: 10px;">评论统计</button>
+                                <button class="btn btn-default asoBtn" ng-click="jump3(app)" style="margin-left: 10px;">下载量统计</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                  </div>
+                      <div class="myTasksFooter">数据合作伙伴 ASO100</div>
+                  </div>
+                  </div>
+
+
+                <!--邀请好友-->
+                <div class="panelWrapper" >
+
+                        <div class="head1" style="margin-top:10px ">
+                            邀请好友奖励
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal2"
+                                    style="margin-left: 10px;margin-top: 5px">
+                                复制邀请好友链接
+                            </button>
+
+
+                    </div>
+                    <div >
+                    <div class="panel">
+                        <div  class="text1"style="color: #5a94ec; margin-bottom: 10px">邀请注册奖励</div>
+                        <div class="text1" style="font-size:14px; color: #333333; margin-bottom: 6px">邀请好友注册,好友注册成功</div>
+                        <div class="text1" style="font-size:12px; color: #999999; margin-bottom: 12px">奖励20Y币/人</div>
+                        <button class="btn btn-warning orangeBtn" data-id= "inviteUserReward" onclick="clickToReceive(this)" ng-show="noviceTaskObject.canReceive > 0">
+                            可领{{noviceTaskObject.canReceive}}Y币
+                        </button>
+                        <button class="btn orangeBtnDisabled" ng-show="noviceTaskObject.canReceive == 0" disabled>
+                            已经领完
+                        </button>
+                        <button class="btn orangeBtnDisabled" ng-show="noviceTaskObject.canReceive == -1" disabled>
+                            未邀请好友
+                        </button>
+                    </div>
+
+                        <div class="panel" style="margin-left: 24px;margin-top: -200px">
+                            <div style="font-size:20px; color: #5a94ec; margin-bottom: 10px">引导新人奖励</div>
+                            <div style="font-size:14px; color: #333333; margin-bottom: 6px">引导好友顺利完成所有新手任务,获得奖励</div>
+                            <div style="font-size:12px; color: #999999; margin-bottom: 12px">奖励100Y币/人</div>
+                            <button class="btn btn-warning orangeBtn" data-id= "guideUserRewardYB" onclick="clickToReceive(this)" ng-show="noviceTaskObject.successCanReceive > 0">
+                                可领{{noviceTaskObject.successCanReceive}}Y币
+                            </button>
+
+                            <button class="btn orangeBtnDisabled" ng-show="noviceTaskObject.successCanReceive == 0" disabled>
+                                已经领完
+                            </button>
+
+                            <button class="btn orangeBtnDisabled" ng-show="noviceTaskObject.successCanReceive == -1" disabled>
+                                未引导好友
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body" style="height:120px;width:460px;">
+                            点击"确定"按钮即复制网页链接,或Ctrl+C复制到剪切板
+                            <div >
+                            <input  type="text" id="invitecopy" class="from-control" ng-model="inviteUrl" size="70" style="margin-left: 30px;border-radius: 6px;margin-top: 30px;"  />
+                                </div>
+                        </div>
+
+                        <div class="modal-footer" style="background-color: #f5f5f5;height:74px;border-radius: 10px;">
+
+                            <button class="btn btn-info" ng-click="copyUrl('output')" data-placement="top" id="output"
+                                    data-toggle="popover"
+                                    data-content="复制成功!">确认
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+
+            </div>
+
+            <div style="display:inline-block; width: 230px; margin-left: 20px;margin-top: 0px; margin-bottom:20px">
+                <!--每日任务-->
+                <div>
+
+                    <form ng-show="noviceTaskObject.hasFirstRecharge != 0" name="alipayment" action="/pay/buy/99/yCoin_total_limit_99" method="post" target="_blank">
+                        <div class=" bg">
+                            <div>
+                                <div class="new1" >首次充值,双倍奖励</div>
+                                <div class="new2" >充值99元,获1980Y币</div>
+
+                                <button type="submit" class="btn btn-danger btn-sm">首次充值</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form ng-show="noviceTaskObject.hasFirstRecharge == 0" name="alipayment" action="/pay/buy/500/yCoin_120_500" method="post" target="_blank">
+                        <div class="head1">充值</div>
+                        <div class="todayTaskBox" style=" background-color:#fff7f8;">
+                            <div>
+                                <div class="text1" style="margin-top: 16px; margin-bottom: 6px">购买Y币</div>
+                                <div class="text2" style="margin-bottom: 10px">充值500元(得6000Y币)</div>
+
+                                <button type="submit" class="btn btn-danger btn-sm">充值500元</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <div class="head1 daylife" >每日任务</div>
+
+                    <div class="todayTaskBox" style="border:1px solid #fb8545" ng-if="isTaskExpert == true">
+                        <div>
+                            <div class="text1" style="margin-top: 14px; margin-bottom: 6px ;font-size: 16px;color:#fb8545 ">任务达人(持续15次免费领Y币)</div>
+                            <div class="text2"  style="margin-bottom: 10px ;font-size: 12px; color:#fbbc9b ">
+                                第{{noviceObject.luxuryUserStep}}次任务达人,可领取{{noviceObject.luxuryYCoin}}Y币
+                            </div>
+
+                            <button type="button" ng-show="luxurySucceed == undefined" class="btn  btn-sm bt1" ng-click="receiveYCoin()">领取 {{noviceObject.luxuryYCoin}} Y币</button>
+                            <button type="button " style="background-color:#999999 ;color: white;border: 1px solid #DEDEDE " ng-show="luxurySucceed == 0" class="btn " disabled="disabled">已领完</button>
+                            <button type="button" ng-show="luxuryMessage.length > 0 && luxurySucceed != 0" class="btn btn-warning btn-sm" disabled="disabled">{{luxuryMessage}}</button>
+
+                        </div>
+                    </div>
+
+                    <div class="todayTaskBox">
+                        <div>
+                            <div class="text1" style="margin-top: 16px; margin-bottom: 6px">上午10点前 发布任务</div>
+                            <div class="text2" style="margin-bottom: 10px">领取发布任务条数的Y币(最多5Y币)</div>
+
+                            <button type="button" ng-show="releaseTaskY > 0" class="btn btn-primary myTaskBtnDisabled" ng-click="dayTaskBtn('releaseTaskY')">领取 {{releaseTaskY}} Y币</button>
+                            <button type="button" style="background-color:#999999 ;color: white;border: 1px solid #DEDEDE " ng-show="releaseTaskY == 0" class="btn  " disabled="disabled">已领完</button>
+                            <button type="button" ng-show="releaseTaskY == undefined" class="btn btn-info btn-sm" disabled="disabled">未满足条件</button>
+
+                        </div>
+                    </div>
+
+                    <div class="todayTaskBox">
+                        <div>
+                            <div class="text1" style="margin-top: 16px; margin-bottom: 6px">下午4点前 完成当天领取的任务</div>
+                            <div class="text2" ng-show="doTaskY > 0" style="margin-bottom: 10px">预计可领完成任务条数的{{doTaskY}} Y币</div>
+                            <div class="text2" ng-show="doTaskY == undefined || doTaskY == 0" style="margin-bottom: 10px">预计可领完成任务条数的Y币</div>
+
+                            <button type="button" ng-show="doTaskY > 0" class="btn btn-danger btn-sm" ng-click="dayTaskBtn('doTaskY')">领取 {{doTaskY}} Y币</button>
+                            <button type="button" style="background-color:#999999 ;color: white;border: 1px solid #DEDEDE " ng-show="doTaskY == 0" class="btn " disabled="disabled">已领完</button>
+                            <button type="button" ng-show="doTaskY == undefined" class="btn btn-info btn-sm" disabled="disabled">未满足条件</button>
+
+                        </div>
+                    </div>
+
+                    <div class="todayTaskBox">
+                        <div>
+                            <div class="text1" style="margin-top: 16px; margin-bottom: 6px">下午5点&nbsp前审核完当天发布的任务</div>
+                            <div class="text2" ng-show="checkTaskY > 0" style="margin-bottom: 10px">预计可领审核任务条数的 {{checkTaskY}} Y币</div>
+                            <div class="text2" ng-show="checkTaskY == undefined || checkTaskY == 0" style="margin-bottom: 10px">预计可领审核任务条数的Y币</div>
+
+                            <button type="button" ng-show="checkTaskY > 0" class="btn btn-danger btn-sm" ng-click="dayTaskBtn('checkTaskY')">领取 {{checkTaskY}} Y币</button>
+                            <button type="button" ng-show="checkTaskY == 0"  style="background-color:#999999 ;color: white;border: 1px solid #DEDEDE " class="btn " disabled="disabled">已领完</button>
+                            <button type="button" ng-show="checkTaskY == undefined" class="btn btn-info btn-sm" disabled="disabled">未满足条件</button>
+                        </div>
+                    </div>
+
+                </div>
+                <!--邀请好友奖励-->
+            </div>
+
+        </div>
+    </div>
+</div>
+<th-footer></th-footer>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+<script src="/javascripts/cookieHelper.min.js"></script>
+</html>

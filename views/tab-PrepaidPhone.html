@@ -1,0 +1,68 @@
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">手机充值</div>
+
+</ion-header-bar>
+
+<ion-view style="background-color: #F5F5F5;margin-top: 20px">
+
+    <ion-content style="">
+        <div class="list">
+            <div class="item input-info">
+                <p class="item-input" style="height: 30px;margin-left: -15px">
+                    <span class="input-label" style="font-size: 16px;color: #666666">手机号码</span>
+                    <input type="text" style="font-size: 18px" ng-model="userInfoObject.mobilePhone">
+                </p>
+            </div>
+        </div>
+
+        <div class="list" style="margin-top: 15px">
+            <div class="item" ng-repeat="item in clientSideList">
+                <div>
+                    <label name="nba" style="margin-top: 10px">
+                        {{ item.text }}
+                    </label>
+                    <input type="radio" checked="checked" name="sport" ng-value="item.value" ng-model="topUp.clientSide">
+                </div>
+            </div>
+        </div>
+
+        <div class="list list-borderless" style="margin-top: 5px">
+            <div class="item item-text-wrap" style="background-color: #F5F5F5;">
+                <p>实际支出 <span style="color: red">{{ topUp.clientSide }}</span> 元（余额 <span style="color: red">{{userInfoObject.currentMoney.toFixed(2)}}</span> 元）</p>
+                <p ng-if="status == 0 && errorId == 0">{{userInfoObject.mobilePhone}} 充值 {{topUp.clientSide}} 元 充值中...</p>
+                <p ng-if="status == 1 && errorId == 0">{{userInfoObject.mobilePhone}} 充值 {{topUp.clientSide}} 元 充值完成</p>
+                <p ng-if="status == 1 && errorId != 0 ">{{userInfoObject.mobilePhone}} 充值 {{topUp.clientSide}} 元 充值失败</p>
+                <button class="button button-full button-light" style="background-color: #4191FA;height: 47px;border-radius: 5px;color: #FFFFFF"
+                        ng-click="phonePay()" id="topUp">
+                    提交
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
+
+<script id="contact-modal.html" type="text/ng-template">
+    <div class="modal">
+        <ion-header-bar>
+            <h1 class="title">Edit Contact</h1>
+        </ion-header-bar>
+        <ion-content>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input type="text" ng-model="contact.name">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Info</span>
+                    <input type="text" ng-model="contact.info">
+                </label>
+            </div>
+            <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
+        </ion-content>
+    </div>
+</script>

@@ -1,0 +1,83 @@
+.button-wrapper {
+    display: inline-block;
+    width: 21vw;
+    height: 25vw;
+    margin: 0vw 2vw 0vw 2vw;
+    text-align: center;
+}
+
+.button-box {
+    display: inline-block;
+    width: 19vw;
+    height: 19vw;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1vw solid #ffa874;
+    margin: 2vw 2vw 1vw 2vw;
+    text-align: center;
+}
+
+.button-box-selected {
+    display: inline-block;
+    width: 19vw;
+    height: 19vw;
+    background-color: #fd5460;
+    border-radius: 4vw;
+    border: 1vw solid #ffa874;
+    margin: 2vw 2vw 1vw 2vw;
+    text-align: center;
+}
+
+.button-outer-circle {
+    margin: 2vw 2vw 2vw 2vw;
+    padding: 1vw 1vw 1vw 1vw;
+    width: 13vw;
+    height: 13vw;
+    background-color: #fff021;
+    border-radius: 6.5vw;
+}
+
+.button-outer-circle-selected {
+    margin: 2vw 2vw 2vw 2vw;
+    padding: 1vw 1vw 1vw 1vw;
+    width: 13vw;
+    height: 13vw;
+    background-color: #fff895;
+    border-radius: 6.5vw;
+}
+
+
+.button-inner-circle {
+    width: 11vw;
+    height: 11vw;
+    border-radius: 5.5vw;
+    background-color: #ffdf2f;
+}
+
+.button-inner-circle-selected {
+    width: 11vw;
+    height: 11vw;
+    border-radius: 5.5vw;
+    background-color: #ffffff;
+}
+
+.btn-friend-invite {
+    margin-bottom: 5px;
+    width: 70vw;
+    height: 10vw;
+    border-radius: 5vw;
+    border: 4px solid #fad14b;
+    background-color: #fd5460;
+    margin-left: 15vw;
+    color: #ffffff;
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.btn-record {
+    margin-top: 5px;
+    width: 70vw;
+    margin-left: 15vw;
+    font-size: 5vw;
+    color:#7c4321;
+}

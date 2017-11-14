@@ -1,0 +1,116 @@
+<!--提交审核-->
+
+<!--资料-->
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">提交审核</div>
+
+</ion-header-bar>
+
+<ion-view style="background-color: #f5f5f5;margin-top: 20px">
+    <ion-content>
+        <ion-item class="item-text-wrap">
+            <div class=" highTaskDetail-B">
+                <p style="font-size:16px;color: #666666;font-weight: 500">小马温馨提示：</p>
+                <p class="highTaskCss">1. 每个任务都需要进行提审方能获取奖励</p>
+                <p class="highTaskCss">2. 确保提审信息与做任务时使用的信息一致，避免审核不通过，影响获得奖励</p>
+                <p class="highTaskCss">3. 您所提交的所有信息，小马官方将给予保密</p>
+                <p class="highTaskCss">4. 审核期：工作日3日，法定节假日5日内告知结果，期间请勿卸载应用，耐心等待奖励到账</p>
+            </div>
+        </ion-item>
+
+        <ion-item style="text-align: center">
+            <i class="ion-ios-clock-outline"></i>
+            <span>任务倒计时：{{countDownStr}}</span>
+        </ion-item>
+
+        <ion-item class="item-text-wrap">
+            <div class="item-avatar" style="margin-left: -10px">
+                <img ng-src="{{taskDetail.appIcon}}" style="width: 44px;height: 44px;border-radius: 8px;margin-top: 5px;margin-left: 8px">
+                <p style="font-size: 18px;color: #666666;margin-top: 12px">{{taskDetail.screenShotOne.searchKeyword}}</p>
+                <span class="item-note" style="margin-right: 10px;color: #F43446;font-size: 10px;margin-top: -40px">
+                    + <span style="font-size: 30px">{{taskDetail.doTaskPrice.toFixed(2)}}</span>元
+                </span>
+            </div>
+
+            <hr style="margin-top: -20px">
+
+            <div class="highTaskDetail-A" style="line-height: 24px;margin-left: 10px">
+                <p>
+                    <span style="font-size:16px;color: #666666;font-weight: 500">资料填写</span>
+                </p>
+                <div class="item-input-inset">
+                    <p style="margin-left: -10px;font-size: 16px">手机号</p>
+                    <p class="item-input-wrapper" style="margin-left: 40px">
+                        <input type="text" placeholder="请输入手机号" style="height: 40px;width: auto">
+                    </p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="highTaskDetail-C">
+                <p style="margin-left: 10px;font-size:16px;color: #666666;font-weight: 500">上传资料</p>
+
+                <p class="highTaskCss">请参照示例，截取相应图片，点击上传图片，提交审核，即可完成任务（点击图片可看大图）</p>
+            </div>
+
+            <div class="row row-wrap" style="margin-left: -10px">
+                <div class="col col-40 item-body" ng-click="showBigImage()" style="margin-left: 12px;margin-right: 8px">
+                    <p>图片示例</p>
+                    <div>
+                        <img src="/images/app/popup1.jpg" style="width: 42.18vw;height: 75vw">
+                    </div>
+
+                </div>
+
+                <div class="col col-40 item-body">
+                    <p>上传图片</p>
+                    <!--<button style="width: 38.18vw;height: 75vw;border: 1px solid #E5E5E5;background-color: #FFFFFF" ng-click="choosePicMenu()">-->
+                        <!--<i class="ion-plus-round" style="font-size: 80px;color: #E6E6E6;"></i>-->
+                        <!--<p style="text-align: center;margin-top: -10px">点击上传</p>-->
+                    <!--</button>-->
+
+                    <button style="width: 38.18vw;height: 75vw;border: 1px solid #E5E5E5;background-color: #FFFFFF"
+
+                            class="upload-img-button">
+                        <i class="ion-plus-round" style="font-size: 80px;color: #E6E6E6;"></i>
+                        <p style="text-align: center;margin-top: -10px">点击上传</p>
+                        <!--accept="image/*"-->
+                        <input class="" type="file" id="up" nv-file-select="" uploader="uploader" id="timer"  style="margin-top: -400px;height: 650px"/>
+                    </button>
+                </div>
+
+                <!--点击上传任务后的进度条-->
+                <div class="progress" ng-hide="!progressNum" >
+                    <div ng-class="{'progress-bar': true, 'progress-bar-striped':true,'progress-bar-success':true,active:true}" role="progressbar" ng-style="{width: progressNum + '%'}">
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="list list-borderless" style="margin-top: 5px;margin-bottom: 10px">
+                <div class=" item-text-wrap" style="background-color: #F5F5F5">
+                    <button class="button button-full button-light" style="background-color: #4191FA;height: 47px;border-radius: 5px;color: #FFFFFF">
+                        提交审核
+                    </button>
+                </div>
+            </div>
+
+            <div id="rightDisplay" ng-if="bigImage" class="popover-backdrop"
+                 style="position: fixed;top: 0;left: 0;z-index: 10; width: 100%;height: 100%;"
+                 ng-click="hideBigImage()">
+                <img class="img-responsive"
+                     style="position:relative;top: 3px;bottom:100px;margin-top: 3%;margin-left: 5%;margin-right: 8%;z-index: 11;display: block;opacity: 1  ;
+              height:97%;width: 90%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+                     src="/images/app/popup1.jpg"/>
+            </div>
+
+        </ion-item>
+    </ion-content>
+</ion-view>

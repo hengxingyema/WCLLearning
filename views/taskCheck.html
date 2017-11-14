@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>野马运营</title>
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 dialog 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+    <link rel="stylesheet" href="/stylesheets/taskCheck.css">
+    <link rel="stylesheet" href="../stylesheets/loading.css">
+
+    <!--网站内部js-->
+    <script src="/javascripts/taskCheck.js"></script>
+    <script src="/javascripts/indexApp.js"></script>
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+
+</head>
+<body ng-app="yemaWebApp">
+
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<!--导航栏-->
+<div class="container" ng-controller="indexAppCtrl" >
+    <th-nav></th-nav>
+</div>
+
+<div ng-controller="taskCheckCtrl">
+    <!--<div id="myCarousel" class="carousel slide" style="z-index: 1">-->
+        <!--&lt;!&ndash; 轮播（Carousel）指标 &ndash;&gt;-->
+        <!--<ol class="carousel-indicators" >-->
+            <!--<li data-target="#myCarousel" class="active" ng-repeat="banner in bannerUrl"></li>-->
+        <!--</ol>-->
+        <!--&lt;!&ndash; 轮播（Carousel）项目 &ndash;&gt;-->
+        <!--<div class="carousel-inner">-->
+            <!--<div ng-repeat="banner in bannerUrl"  ng-class="{'item':true, 'active':$index==0}" >-->
+                <!--<img class='foo' ng-src="{{banner}}" style="width: 100vw; margin-top: 50px;">-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<a class="carousel-control left" href="#myCarousel"-->
+           <!--data-slide="prev">&lsaquo;-->
+        <!--</a>-->
+        <!--<a class="carousel-control right" href="#myCarousel"-->
+           <!--data-slide="next">&rsaquo;-->
+        <!--</a>-->
+
+    <!--</div>-->
+
+    <div style="margin-left: 50px; margin-top: 70px;margin-bottom: 20px;margin-right: 50px">
+        <div class="ui info message">
+            <i class="close icon"></i>
+            <div class="header">
+                审核任务注意点
+            </div>
+            <ul class="list">
+                <li>前一日下午6点前提交的任务，请在次日早上10：50点前审核，若不审核，会被默认审核通过哦</li>
+                <li>下午5点前审核任务，可以去首页领取每日任务奖励</li>
+                <li>上午10：55 - 11：10审核任务系统维护,昨日任务请尽早审核</li>
+            </ul>
+        </div>
+
+        <div class="ui orange message">
+            <i class="star icon"></i>
+            野马ASO商城上线,现在使用野马商城（定时!定点!指定周期!）
+        </div>
+    </div>
+
+    <div style="margin-left: 50px;margin-bottom: 20px">
+        <div class="ui buttons">
+            <button ng-class="{true:'ui positive button', 'false':'ui button'}[classColor]"
+                    ng-click="sendTaskType('now')">
+                已经发布的任务
+            </button>
+            <div class="or"></div>
+            <button ng-class="{true:'ui positive button', 'false':'ui button'}[colorClass]"
+                    ng-click="sendTaskType('timer')">
+                定时投放的任务
+            </button>
+        </div>
+        <span style="color: red"><i class="warning icon"></i>
+            商城里面的定时任务不会显示在此定时投放任务中
+        </span>
+
+    </div>
+
+    <div style="margin-top: 30px;">
+        <div class="spinner" ng-hide="!isLoadingMyApp">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div style="width:400px;margin: auto;font-size: 24px;margin-bottom: 100px" ng-hide="!isLoadingMyApp">正在请求你所发布任务的最新信息...</div>
+
+        <div ng-show="!isLoadingMyApp && taskAudit.length == 0">
+            <div style="text-align: center;">
+                <img style="margin-top: 100px;" src="../images/horse.png">
+            </div>
+            <h1 style="text-align:center;">亲, 你还没有发布任何任务哦, 赶紧去"<a href="myapp">发布任务</a>"试试吧</h1>
+        </div>
+    </div>
+
+    <div class="ui pointing menu" >
+        <a ng-click="loadTaskByApp('all')" ng-class="{true :'item active', false :'item'}[menuIndex == -1]">
+            <i class="cubes icon"></i>
+            所有任务
+        </a>
+        <a ng-click="loadTaskByApp(app.appObjectId, $index)"
+           ng-class="{true :'item active', false :'item'}[menuIndex == $index]"
+           ng-repeat="app in myApps | limitTo:20" id="" >
+            <img class="ui avatar image" ng-src="{{app.artworkUrl100}}">
+            <!--<span>{{app.trackName | limitTo:4}}</span>-->
+        </a>
+
+        <div ng-if="myApps.length > 20" class="ui right dropdown item">
+            More
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item" ng-click="loadTaskByApp(app.appObjectId, $index + 20)" ng-repeat="app in myApps| startFrom:20">
+                    <img class="ui avatar image" ng-src="{{app.artworkUrl100}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="classColor == true">
+
+
+        <!-- /excise/-->
+
+        <div class="ui grid" ng-if="taskTimeList.length > 0">
+            <div class="two wide column" style="margin-left: 27px;">
+                <div class="ui vertical fluid tabular menu" ng-repeat="time in taskTimeList" >
+
+                    <div ng-class="{true :'item active', false :'item'}[$index == taskIndex]"
+                         ng-click="selectedDate($index)"  style="position: relative">
+                        {{time.releaseDate | date:"yyyy-MM-dd"}}
+
+                        <div ng-if="time.totalUploaded != undefined && time.totalUploaded > 0" class="ui teal left pointing label" style="position: absolute;right: 8px">{{time.totalUploaded}}</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="thirteen wide stretched column">
+                <div class="ui segment">   <table class="ui striped celled fixed single line table">
+                    <thead>
+                    <tr>
+                        <th class="taskTitle-info-two" style="width: 10px;"></th>
+                        <th class="taskTitle-info-one" style="width: 90px; height: 60px">App</th>
+                        <th class="taskTitle-info-two hidden-sm hidden-md" style="width: 40px">类型</th>
+                        <th class="taskTitle-info-two hidden-sm hidden-md" style="width: 60px;">关键词</th>
+                        <th class="taskTitle-info-two hidden-sm hidden-md" style="width: 60px">发布时间</th>
+                        <th class="taskTitle-info-two" style="width: 50px">进度</th>
+                        <th class="taskTitle-info-two" style="width: 45px">任务状态</th>
+                        <th class="taskTitle-info-two" style="width: 40px">待审</th>
+                        <th class="taskTitle-info-two" style="width: 40px">未交</th>
+                        <th class="taskTitle-info-two" style="width: 40px">拒绝</th>
+                        <th class="taskTitle-info-two" style="width: 30px">通过</th>
+                        <th class="taskTitle-info-two" style="width: 30px">过期</th>
+                        <th class="taskTitle-info-two" style="width: 90px; height: 60px">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--ng-class="{true:'disabled', false:''}[task.taskOverview != undefined && task.taskOverview.totalTimeout + task.taskOverview.totalAccepted >= task.excCount]"-->
+                    <tr ng-class="{true:'positive', false:''}[task.remainCount > 0]" ng-repeat="task in selectTimeTask.tasks">
+                        <td class="hidden-sm hidden-md" style="">{{$index + 1}}</td>
+
+                        <td>
+                            <img class="ui avatar image" ng-src="{{task.artworkUrl100 }}">
+                            <span>{{task.trackName}}</span>
+                        </td>
+
+                        <td class="hidden-sm hidden-md" style="margin-left: 25px;">{{task.taskType}}</td>
+                        <td class="hidden-sm hidden-md" style="margin-left: 25px;">{{task.searchKeyword}}</td>
+                        <td  class="hidden-sm hidden-md" style="margin-left: 25px;">{{task.createdAt | date:"h:mma"}}</td>
+                        <td style="margin-left: 45px;">{{task.excCount - task.remainCount}}/{{task.excCount}}</td>
+
+                        <td ng-if='task.taskOverview == undefined' class="ui active centered inline loader"></td>
+                        <td class="task-state" ng-if='task.taskOverview != undefined && task.taskOverview.totalTimeout + task.taskOverview.totalAccepted != task.excCount && task.cancelled == true' style="color:#f4995d">
+                            已撤销
+                        </td>
+
+                        <td class="task-state" ng-if='task.taskOverview != undefined && task.taskOverview.totalTimeout + task.taskOverview.totalAccepted >= task.excCount' style="color: #999999">
+                            已完成
+                        </td>
+                        <td class="task-state" ng-if='task.taskOverview != undefined && task.taskOverview.totalTimeout + task.taskOverview.totalAccepted < task.excCount && task.cancelled == false'>
+                            进行中
+                        </td>
+
+                        <td ng-if='task.taskOverview == undefined' class="ui active centered inline loader"></td>
+                        <td ng-if='task.taskOverview != undefined' ng-class="{true:'warning', false:''}[task.taskOverview.totalSubmited > 0]">
+                            <i ng-if="task.taskOverview.totalSubmited > 0" class="attention icon"></i>
+                            {{task.taskOverview.totalSubmited}}
+                        </td>
+
+                        <!--<td ng-if='task.taskOverview == undefined' class="ui active centered inline loader"></td>-->
+                        <td ng-if='task.taskOverview != undefined' class="task-info-a">
+                            {{task.taskOverview.totalUndo}}</td>
+
+                        <!--<td ng-if='task.taskOverview == undefined' class="ui active centered inline loader"></td>-->
+                        <td ng-if='task.taskOverview != undefined' class="task-info-a">{{task.taskOverview.totalRejected}}</td>
+
+                        <!--<td ng-if='task.taskOverview == undefined' class="ui active centered inline loader"></td>-->
+                        <td class="task-info-a">{{task.taskOverview.totalAccepted}}</td>
+
+                        <!--<td ng-if='task.taskOverview == undefined' class="ui active centered inline loader"></td>-->
+                        <td ng-if='task.taskOverview != undefined' class="task-info-a">{{task.taskOverview.totalTimeout}}</td>
+                        <td>
+                            <div class="ui buttons">
+                                <button class="ui positive button" ng-click="lookCheck(task.taskId)">查看</button>
+                                <div class="or"></div>
+                                <button ng-class="{true :'ui disabled button', false :'ui button'}[task.cancelled == true]"
+                                        ng-click="confirmCancel(task.taskId, 'now')">撤销</button>
+                            </div>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table> </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="colorClass == true">
+
+        <!-- /excise/-->
+
+        <div class="ui grid" ng-if="timerList.length > 0">
+            <div class="two wide column" style="margin-left: 27px;">
+                <div class="ui vertical fluid tabular menu" ng-repeat="time in timerList" >
+
+                    <div ng-class="{true :'item active', false :'item'}[$index == taskIndex]"
+                         ng-click="timerSelectedDate($index)"  style="position: relative">
+                        {{time.releaseDate | date:"yyyy-MM-dd"}}
+
+                        <div ng-if="time.totalUploaded != undefined && time.totalUploaded > 0" class="ui teal left pointing label" style="position: absolute;right: 8px">{{time.totalUploaded}}</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="thirteen wide stretched column">
+                <div class="ui segment">
+                    <table class="ui striped celled fixed single line table">
+                        <thead>
+                            <tr>
+                                <th class="taskTitle-info-two" style="width: 10px;"></th>
+                                <th class="taskTitle-info-one" style="width: 90px; height: 60px">App</th>
+                                <th class="taskTitle-info-two hidden-sm hidden-md" style="width: 40px">类型</th>
+                                <th class="taskTitle-info-two hidden-sm hidden-md" style="width: 60px;">关键词</th>
+                                <th class="taskTitle-info-two hidden-sm hidden-md" style="width: 40px">发布时间</th>
+                                <th class="taskTitle-info-two" style="width: 35px">状态</th>
+                                <th class="taskTitle-info-two" style="width: 40px">投放时间</th>
+                                <th class="taskTitle-info-two" style="width: 40px">持续天数</th>
+                                <th class="taskTitle-info-two" style="width: 40px">投放日期</th>
+                                <th class="taskTitle-info-two" style="width: 80px; height: 60px">操作</th>
+                            </tr>
+                        </thead>
+
+                        <tr ng-class="{true:'positive', false:''}[task.taskCountPerDay > 0]" ng-repeat="task in selectTimeTask.tasks">
+                            <td class="hidden-sm hidden-md" style="">{{$index + 1}}</td>
+
+                            <td>
+                                <img class="ui avatar image" ng-src="{{task.artworkUrl100 }}">
+                                <span>{{task.trackName}}</span>
+                            </td>
+
+                            <td class="hidden-sm hidden-md" style="margin-left: 25px;">{{task.taskType}}</td>
+                            <td class="hidden-sm hidden-md" style="margin-left: 25px;">{{task.searchKeyword}}</td>
+                            <td class="hidden-sm hidden-md" style="margin-left: 25px;">{{task.createdAt | date:"h:mma"}}</td>
+
+                            <td class="task-state">
+                                待投放
+                            </td>
+
+                            <td >
+                                {{task.taskOverview.taskHour}}:00
+                            </td>
+
+                            <td class="task-info-a">
+                                {{task.taskOverview.taskLastDay}} 天
+                            </td>
+
+                            <td class="task-info-a" ng-if="task.taskOverview.delayTaskDay == 0">
+                                今天
+                            </td>
+
+                            <td class="task-info-a" ng-if="task.taskOverview.delayTaskDay == 1">
+                                明天
+                            </td>
+
+                            <td class="task-info-a" ng-if="task.taskOverview.delayTaskDay == 2">
+                                后天
+                            </td>
+
+                            <td class="task-info-a" ng-if="task.taskOverview.delayTaskDay == 3">
+                                三天后
+                            </td>
+
+                            <td>
+                                <div class="ui buttons">
+                                    <button class="ui positive button" data-toggle="modal" data-target="#myModal" ng-click="timerLookCheck(task.taskId)">查看</button>
+                                    <div class="or"></div>
+                                    <button class="ui button" ng-click="confirmCancel(task.taskId, 'timer')">
+                                        <span style="color: red">撤销</span>
+                                    </button>
+                                </div>
+                            </td>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel" style="text-align: center">定时任务详情</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <p>
+                                                <img class="img-circle" style="width: 30px;height: 30px;" ng-src="{{timerTaskObject.appIcon}}">
+                                                <span style="margin-left: 10px">{{timerTaskObject.appTrackName.substring(0,20)}}</span>
+                                                <span style="margin-left: 10px;">任务类型:<span style="color: red"> {{timerTaskObject.taskType}}</span></span>
+                                                <span style="margin-left: 10px">任务数量:<span style="color: red">  {{timerTaskObject.taskCount}}  </span>条</span>
+                                            </p>
+
+                                            <hr>
+
+                                            <div style="line-height: 25px">
+                                                <div>
+                                                    <span>搜索关键词:  <span style="color: red">{{timerTaskObject.searchKeyword}}</span>  </span>
+                                                    <span style="margin-left: 20px">是否需要获取:
+                                                        <span ng-if="timerTaskObject.needGet == 'needGet'" style="color: red">是</span>
+                                                        <span ng-if="timerTaskObject.needGet == undefined" style="color: red">否</span>
+                                                    </span>
+                                                </div>
+
+                                                <div>是否需要第三方注册:
+                                                    <span ng-if="timerTaskObject.needThird == 'needThird'" style="color: red">是</span>
+                                                    <span ng-if="timerTaskObject.needThird == undefined" style="color: red">否</span>
+                                                </div>
+
+                                                <div ng-if="timerTaskObject.taskType == '评论'">
+                                                    <p style="margin-top: 5px">标题关键词:&nbsp;&nbsp;&nbsp;{{timerTaskObject.commentKeys}}</p>
+                                                    <p style="margin-top: 5px">内容关键词:&nbsp;&nbsp;&nbsp;{{timerTaskObject.commentContentKeys}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th-footer>
+
+</th-footer>
+
+
+
+<script src="/javascripts/cookieHelper.js"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<!--<script>-->
+    <!--$('.ui.dropdown')-->
+            <!--.dropdown()-->
+    <!--;-->
+<!--</script>-->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+

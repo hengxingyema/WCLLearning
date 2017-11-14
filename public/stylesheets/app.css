@@ -1,0 +1,934 @@
+
+/*小马判断浏览器*/
+.xiaoma-head{
+    color:white;
+    text-align: center;
+    margin-top: 80.5px;
+}
+.xiaoma-content{
+    text-align: center;
+    height:340px;
+}
+.safari-btn {
+    background-color: white;
+    border-radius: 20px;
+    border: 5px solid #4d96f4;
+    width: 215px;
+    height:40px;
+    color: #4095f9;
+    font-size: 13px;
+    text-align: center;
+    margin: auto;
+}
+.popup-title{
+    color: black;
+}
+
+
+/*footer底部图标*****************************/
+.buttondown {
+    background-color: white;
+    position: absolute;
+    left: 10em;
+    text-align: center;
+    color: black;
+
+}
+.buttoncom {
+
+    position: absolute;
+    left: 3em;
+    background-color: black;
+    text-align: center;
+    color: white
+}
+
+.bar-home-on{
+    background:url(/images/app/home1.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+}
+.bar-home-off{
+    background:url(/images/app/home.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+
+}
+.bar-taskhall-on{
+    background:url(/images/app/taskhall1.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+
+
+}
+.bar-taskhall-off{
+    background:url(/images/app/taskhall.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+
+}
+.bar-mytask-on{
+    background:url(/images/app/mytask1.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+}
+.bar-mytask-off{
+    background:url(/images/app/mytask.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+
+}
+.bar-get-on{
+    background:url(/images/app/get1.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+
+
+}
+.bar-get-off{
+    background:url(/images/app/get.png) no-repeat center top;
+    background-size:0.9em 0.9em;
+
+}
+
+/*footer底部图标*****************************/
+/*顶部按键*****************************/
+.label-in{
+    font-size: 14px;
+    color:#999999;
+}
+.selectable{
+    font-size: 13px;
+    color:#333333;
+}
+.btn1{
+    position: absolute;
+    left:25.3%;
+    border-bottom-left-radius: 0.3em;
+    border-top-left-radius: 0.3em;
+    background-color: white;
+    width:25%;
+    height:0.5em;
+    border:0.05em solid white;
+    color:black;
+    text-align: center;
+
+}
+.btn2{
+    position: absolute;
+    right:25.3%;
+    border-bottom-right-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+    top: 0.4em;
+    background-color: black;
+    width:25%;
+    height:0.5em;
+    border:0.05em solid white;
+    color:white;
+    text-align: center;
+}
+
+.h1,h2,h3,h4,h5{
+    color:white
+
+}
+/*默认字体*/
+.typetitle{
+    margin-top: 0.2em;
+    font-size: 1em;
+    color:black;
+
+}
+/*APP块一*/
+.button-small{
+    margin-top: 1em;
+
+}
+
+.one-head {
+    height: 145px;
+    background: linear-gradient(#4191fa, #4191fa);
+}
+
+.headh1{
+    margin-left: 5%;
+    margin-top: 20px;
+    font-size: 46px;
+    color:white;
+    /*font-weight: 400;*/
+}
+.head h4{
+    margin-left: 6%;
+    font-size: 15px;
+}
+/*APP快二*/
+.blocktwo{
+    color: white;
+    height: 63px;
+    background: linear-gradient(#4191fa, #4191fa);
+
+}
+
+.blocktwo h5{
+    color: #eaf5ff;
+    line-height: 22px;
+    float:left;
+    font-size: 16px;
+    margin-top: -11px;
+    margin-left: 4%;
+}
+/*APP块三*/
+
+.button-calm{
+    width:29%;
+    border-radius: 2em;
+    margin-left: 37%;
+}
+.blockthree h5 {
+    font-size: 0.85em;
+    margin-left: 4%;
+    color: #67a4ff;
+    margin-top: 0px;
+    line-height: 1.5em;
+    border: 1px dashed #67a4ff;
+    width:92%;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+
+}
+.invite{
+    /*filter: alpha(opacity=50);*/
+    /*-moz-opacity: 0.5;*/
+    /*opacity: 0.5;*/
+    width:10.5em;
+    height: 3.0em;
+    position: absolute;
+    left:20%;
+    border-radius: 0.3em;
+    background-color: #f0f0f0;
+    border: 0px;
+
+}
+.makesure{
+    height:2.3em;
+
+    border-radius: 0.3em;
+    border: 0px;
+    background-color: #4c90f8;
+    float:right;
+    margin-right:17%;
+}
+.invite-input{
+    float: left;
+    margin-left: 19%;
+    background-color: #f0f0f0;
+    text-align: center;
+    border-radius: 0.4em;
+}
+.invite-no-input{
+    margin-top: -10px;
+    margin-left: 4%;
+    background-color: #eaf5fe;
+    text-align: center;
+    border-radius: 0.4em;
+    height: 33px;
+    color:#6cb2eb;
+    width: 78px;
+    font-size: 14px;
+    border: 0px;
+}
+
+/*页面二****************************************/
+
+.customHeader{
+    margin-top: -0.1em;
+   background-color:#ff3b30;
+}
+.customHeader h4{
+    display: inline-block;
+    margin-top: 0.6em;
+    margin-left: 4%;
+    line-height:17px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.dashed{
+    margin-top: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border: 1.6px dashed #CCCCCC;
+    border-radius: 0.5em;
+    height:3em;
+    font-weight: 400;
+}
+.dashed h4{
+    margin-top: 0.85em;
+    color:#999999;
+    font-size: 1em;
+    font-weight: 400;
+}
+.item-head{
+    margin-top: 0.8em;
+    border-radius: 0.5em;
+    height: auto;
+    margin-bottom: 0.8em;
+    outline:none;
+}
+.item-head-notext{
+    margin-top: 0.8em;
+    border-radius: 0.5em;
+    height:4.3em;
+    margin-bottom: 0.8em;
+    outline:none;
+
+}
+
+
+
+
+.character {
+
+    width: 40%;
+    border: 0px solid black;
+    margin-left: 3.15em;
+    height: 2em;
+    margin-top: 0.2em;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.cardicon{
+    position: absolute;
+    height:3.2em;
+    width:auto;
+    border: 0.8px solid #CCCCCC;
+    border-radius: 0.7em;
+   left:0.5em;
+    top:0.5em;
+
+}
+.cardtexthead {
+    float: left;
+    margin-left: 0.2em;
+    margin-top: -0.2em;
+}
+.cardtext {
+    float: left;
+}
+.cardtextright{
+    position: absolute;
+    right: 3%;
+    top:5.5em;
+}
+.cardplay{
+    margin-left: 4.7em;
+    margin-top: -0.15em;
+    float:left;
+}
+
+.typeblue{
+    font-size:0.7em ;
+    color:#67bdff;
+    border-radius: 0.2em;
+    border: 0.1em solid #67bdff;
+    float: right;
+    margin-top: 0em;
+    margin-right: -3em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+.typefree{
+    font-size:0.7em ;
+    color:#999999;
+    border-radius: 0.2em;
+    float: right;
+    margin-top: 0.16em;
+    margin-right: -1.65em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+ .typegray{
+    font-size:0.6em ;
+    color:#999999;
+     border-radius: 0.2em;
+    border: 0.1em solid #bebebe;
+     padding-left: 0.2em;
+     padding-right: 0.2em;
+}
+ .typelightgray{
+    font-size:0.7em ;
+    color:#b5b5b5;
+     border-radius: 0.2em;
+    border: 0.1em solid #d7d7d7;
+     padding-left: 0.2em;
+     padding-right: 0.2em;
+}
+ .cardword{
+     font-size: 1.2em;
+     color: red;
+     float: right;
+     margin-top: -4.1em;
+     margin-right: -1.5em;
+
+ }
+/*.cardwordchange{*/
+    /*margin-left: 10%;*/
+    /*font-size: 1.7em;*/
+    /*color: #999999;*/
+    /*margin-top: 0.1em;*/
+    /*position: absolute;*/
+    /*right: 3%;*/
+    /*top:8%;*/
+/*}*/
+.cardwordGray{
+    font-size: 1.2em;
+    color:#999999;
+    float: right;
+    margin-top: -3.8em;
+    margin-right: -1.5em;
+}
+
+ .annotation{
+     margin-left: 1%;
+     width:70%;
+     font-size: 0.8em;
+     color:#999999;
+     line-height: 32px;
+    margin-bottom: -1.2em;
+
+ }
+.note {
+    margin-top: -4.2em;
+    margin-left: -0.5em;
+
+
+}
+
+ /*任务详情*/
+.upload-pic-button {
+    height:1.8em;
+    width: 100%;
+    position: absolute;
+    left:0;
+    bottom: 0;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    color:white ;
+    background:#3498db ;
+    border: 2px solid #3498db;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+
+    /**zoom: 1*/
+}
+.upload-pic-button  input {
+    position: absolute;
+    font-size: 24px;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+
+.upload-img-button {
+    position: absolute;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    color:white ;
+    background:#3498db ;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+
+    /**zoom: 1*/
+}
+
+.upload-img-button  input {
+    position: absolute;
+    font-size: 24px;
+
+    /*right: 0;*/
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+/*详细任务页面*/
+.detailicon{
+    position: absolute;
+    left:1.5em;
+    width:44px;
+    height:44px;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    top:-15px;
+
+}
+.texthead{
+    font-size: 1.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    left:3.2em;
+    top: -0.9em;
+    height:3em;
+    border: 0px solid black;
+    line-height: 1em;
+    width:40%;
+}
+.rightside{
+    margin-top: -0.6em;
+margin-right: 0.5em;
+    float:right;
+    font-size: 1.7em;
+}
+/*****************任务详情底部按键**************************/
+.button-assertive {
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    bottom: -0.4em;
+    height: 3em;
+}
+.progress{
+    width:100%;
+}
+/*任务被拒绝*/
+.refused{
+    background-color: red;
+    width:100%;
+    height:4em;
+    position: absolute;
+    bottom:0;
+}
+
+
+/*任务步骤*/
+.textstep{
+   margin-top: -1.5em;
+    margin-left:4%;
+
+}
+.textstep h4{
+    color:black;
+}
+.card-page{
+    border-radius: 0.8em;
+    margin-top:1em;
+    margin-left: 4%;
+    width:92%;
+    height:auto;
+
+}
+.headimg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1.7em;
+}
+.item h2{
+    position: absolute;
+    left: 0.7em;
+    top: 0.5em;
+    color:white;
+}
+.entry {
+    color: #b2b2b2;
+    font-size: 0.8em;
+    position: absolute;
+    right: 4%;
+    top:0.5em;
+}
+.detailtext{
+    margin-top: 1.7em;
+    margin-bottom: 1.5em;
+}
+.example{
+    position: absolute;
+    right:1em;
+    bottom: 0.3em;
+}
+/*底部按键*/
+.btn3{
+    margin-bottom: 2em;
+    margin-top: 0.2em;
+    background-color: #67bdff;
+    color:white;
+    margin-left:15%;
+    width:70%;
+    border-radius: 0.5em;
+    border: 0px;
+}
+.btn4{
+    position: absolute;
+    background-color: #67bdff;
+    color:white;
+    left:15%;
+    width:70%;
+    border-radius: 0.5em;
+    border: 0px;
+    bottom:2em;
+}
+/*提现页面****************************************/
+.accountcontent{
+    background-color:#F5F5F5;
+}
+.accounthead{
+    background-color: white;
+    height:5.4em;
+    margin-top: -1em;
+    border-bottom: 1px solid #e5e5e5;
+
+}
+.accountimg{
+    float:left;
+    margin-left: 5%;
+    height: 4.2em;
+    margin-top: 0.5em;
+}
+.accountID{
+    margin-top: 1.2em;
+}
+.accountID h4{
+    color:#999999;
+    float:left;
+    margin-left: 5%;
+    margin-top: 1.5em;
+}
+.pay{
+    background-color: white;
+    margin-top: 1em;
+    height:3.4em;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5 ;
+}
+.accountpay{
+    line-height: 3.1em;
+    color:black;
+    font-size: 1.1em;
+    margin-left: 5%;
+}
+/*个人资产区域*/
+.personal{
+    margin-top: 1em;
+    background-color: white;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5 ;
+
+    height:11em;
+}
+.deposit h5{
+    margin-left: 5%;
+     color:#999999;
+    height:2.2em;
+ }
+
+.depositsecond h5{
+    margin-left: 5%;
+    color:#999999;
+    margin-top: 0em;
+
+
+}
+/*申请提现区域*/
+.apply{
+    background-color: white;
+    margin-top: 1em;
+    height:4em;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5 ;
+}
+/*底部标注*/
+.accountfoot{
+    height: 5em;
+}
+
+/*复制*/
+.selectable{
+    -webkit-user-select: text;
+}
+
+/*提交文字*/
+.subImg {
+    width: 75px;
+    height: 75px;
+
+    margin-top:-39px;
+    /*margin-left: 30px;*/
+    /*margin-right: 1px;*/
+   z-index: 99999;
+    postion:fixed;
+    float: right;
+
+}
+
+.nameTrack {
+    width: 60px;
+    height: 20px;
+    display: inline-block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    margin-bottom: -4px;
+}
+
+
+.list-title {
+    font-size: 13pt;
+    color: #666666;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.col-27 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 27.5%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 27.5%;
+    -ms-flex: 0 0 27.5%;
+    flex: 0 0 27.5%;
+}
+
+ion-content{
+    overflow-scroll: true;
+}
+.scroll-content {
+    -webkit-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    user-select: auto !important;
+}
+
+.selectable {
+    -webkit-user-select: auto;//控制网页内容选择范围
+}
+
+#qrcode {
+    width:160px;
+    height:160px;
+    margin-top:15px;
+}
+
+#qrcodeA {
+    width:100px;
+    height:100px;
+    margin: 10px auto;
+}
+
+.col-54 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 54%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 54%;
+    -ms-flex: 0 0 54%;
+    flex: 0 0 54%;
+}
+
+.col-36 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 36%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 36%;
+    -ms-flex: 0 0 36%;
+    flex: 0 0 36%;
+}
+
+.list i{
+    float: right;
+    font-size: 35px;
+    margin-right: -30px;
+}
+
+.input-label {
+    font-size: 20px;
+    color: #666666
+}
+
+.input-info input {
+    margin-left:-30px;
+    font-size: 18px;
+    margin-top: 7px;
+}
+
+.input-info-a input{
+    margin-left:-40px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.input-detail input{
+    margin-left:-20px;
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color:    #CDCDCD;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color:    #CDCDCD;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color:    #CDCDCD;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color:    #CDCDCD;
+}
+
+.material-img img{
+    float:right;
+    width: 60px;
+    height: 60px;
+    /*margin-top: 3px;*/
+    border-radius: 30px;
+    margin-right: 10px;
+}
+
+.er-popup{
+    background-color: #FFFFFF;
+    height: 73vw;
+    width: 90vw;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.er-popup .popup-head{
+    display: none;
+}
+
+.et-popup{
+    background-color: #FFFFFF;
+    height: 60%;
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.et-popup .popup-head{
+    display: none;
+}
+
+.cl-right {
+    background-color: #ffffff;
+    height: 50px;
+    width: 100px;
+    margin: auto;
+}
+
+/*长提示*/
+.clt-right {
+    background-color: #ffffff;
+    height: 50px;
+    width: 250px;
+    margin: auto;
+}
+
+/*截图界面*/
+
+.item-avatar .quickTask-A {
+    font-size: 14px;
+    color: #333333;
+}
+
+.item-A {
+    width: 50px;
+    border: 1px solid #E5E4E3;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 2px 4px;
+    color: #AAAAAA;
+}
+
+.item-B {
+    width: 50px;
+    border: 1px solid #E5E4E3;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 2px 4px;
+    color: #CFCFCF;
+}
+
+.gray {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+
+    filter: grayscale(100%);
+
+    filter: #CFCFCF;
+}
+
+/*高额任务任务详情*/
+.highTaskDetail-A .highTaskCss {
+    font-size: 14px;
+    color: #A8A8A8;
+}
+
+.col-34 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25.31vw;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 25.31vw;
+    -ms-flex: 0 0 25.31vw;
+    flex: 0 0 25.31vw;
+}
+
+.row-wrap img{
+    width: 90px;height: 160px
+}
+
+/*提交审核*/
+.highTaskDetail-B .highTaskCss{
+    font-size: 14px;
+    color: #A8A8A8;
+    padding-left:15px;
+    text-indent:-15px;
+    line-height: 25px;
+}
+
+.highTaskDetail-C .highTaskCss{
+    font-size: 14px;
+    color: #A8A8A8;
+    margin-left:10px;
+    line-height: 25px;
+}
+
+.col-40 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 40vw;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 40vw;
+    -ms-flex: 0 0 40vw;
+    flex: 0 0 40vw;
+}
+
+/*二维码界面*/
+.alert-info input{
+    width: auto;
+    height: auto;
+}
+
+/*手机充值*/
+input[type="radio"] {
+    float: right;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+/*收徒攻略*/
+.title-a {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.comment-a {
+    font-size: 14px;
+    color: #808080;
+}
+

@@ -1,0 +1,467 @@
+html{
+    font-family:"Microsoft YaHei",微软雅黑;
+}
+p,hr{
+    margin: 0;
+    padding: 0;
+}
+
+.part2{
+    display: inline-block;
+}
+
+.releaseTaskVideo{
+    width: 100px;
+    height: 100px;
+    /*background-color: red;*/
+    z-index: 2;position: absolute;
+    top:60%;
+    left:18%;
+    outline:none;
+}
+.getTaskVideo{
+    width: 100px;
+    height: 100px;
+    /*background-color:black;*/
+    z-index: 2;
+    position: absolute;
+    top:60%;
+    left: 40%;
+}
+.uploadTaskVideo{
+    width:100px;
+    height: 100px;
+    /*background-color:green;*/
+    z-index: 2;
+    position: absolute;
+    top:60%;left: 60%;
+}
+
+.release1{
+    position: fixed;
+    right: -3px;
+    width: 44px;
+    height: 140px;
+    top: 70%;
+    background:url(/images/doTask/video1.png);
+    border: 0px solid #3498db;
+    border-radius: 10px;
+}
+
+.publishTask{
+    float: right;
+    font-size: 20px;
+    color: #666666;
+    margin-top: 46px;
+    margin-bottom: 22px;
+    border: 2px solid #e0e0e0;
+    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+
+}
+
+.publishTask:hover{
+    color: #3498db;
+    text-decoration: none;
+    border: 2px solid #3498db;
+}
+
+.appIcon{
+    width: 80px;
+    height: 80px;
+    border-radius:12px;
+    display: inline;
+}
+
+.appIcon-small{
+    display: inline-block;
+    margin: 20px 14px 20px 26px;
+    border: 1px solid #dddddd;
+    width: 76px;
+    height: 76px;
+    border-radius: 16px
+}
+
+.appName{
+    /*margin-top: 3px;*/
+    /*margin-bottom: 13px;*/
+    font-size: 18px;
+    color: #4c4c4c;
+    /*padding: 0;*/
+}
+/*y_add是Y币-免费应用的模块*/
+.y_add{
+    padding-left: 20px;
+    margin-left: 30px;
+    margin-top: -30px;
+    text-align: right;
+}
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.infoBubble{
+    text-align: right;
+    border-radius: 4px;
+    margin-right: 6px;
+    font-size: 16px;
+    color: #58b7f7;
+    margin-top: 10px;
+    /*height:30px;*/
+    /*padding: 5px 5px 5px 5px;*/
+
+}
+.infoBubble1{
+    border: 1px solid #f78649;
+    border-radius: 4px;
+    margin-right: 6px;
+    font-size: 16px;
+    color: #f78649;
+    height: 26px;
+    padding: 5px 5px 5px 5px;
+
+}
+
+.infoBubble2{
+    border: 1px solid #da70d6;
+    border-radius: 4px;
+    margin-right: 6px;
+    font-size: 16px;
+    color: #da70d6;
+    height: 30px;
+    padding: 5px 5px 5px 5px;
+
+}
+
+
+.mybtn{
+    margin-right: 3px;
+    postion:absolute;
+    top:5px ;
+    left:20px;
+    width: 120px;
+    height: 36px;
+    border: 1px solid #3498db;
+    color: #3498db;
+    background: transparent;
+    font-size: 18px;
+    border-radius: 4px;
+    /*margin-left: 10px;*/
+    right: 80px;
+}
+
+.myTask{
+    float: right;
+    width: 130px;
+    height: 36px;
+    color: white;
+    font-size: 18px;
+    border-radius: 4px;
+    right: 80px;
+    border: 1px solid #00b7ff;
+    background: #00b7ff;
+}
+.haschange{
+
+    float: right;
+    width: 130px;
+
+    position:absolute;
+
+    height: 36px;
+    color: white;
+    font-size: 18px;
+    border-radius: 4px;
+    margin-left: 50px;
+    border: 1px solid #9d9d9d;
+    background: #9d9d9d;
+    margin-right: 80px;
+
+}
+.haschange1{
+    padding-top: 22px;
+    padding-bottom:22px;
+    float: right;
+    width: 27px;
+
+    /*height: 152px;*/
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+    /*border: 1px solid #9d9d9d;*/
+    background-color: #88CA7B;
+    margin-right: 40px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 23px;
+}
+.haschange2{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    float: right;
+
+    width: 27px;
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+    background-color: #88CA7B;
+    text-align: center;
+    cursor: pointer;
+    line-height: 25px;
+}
+.btn-inactive{
+    float: right;
+    width: 300px;
+    height: 44px;
+    border: 0px solid #9a9a9a;
+    color: white;
+    background: #9a9a9a;
+    font-size: 20px;
+    border-radius: 4px;
+    margin-left: 44px;
+}
+
+
+.noRemain{
+    float: right;
+    width: 300px;
+    height: 44px;
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+    margin-left: 44px;
+    border: 1px solid #9e9e9e;
+    background: #9e9e9e;
+}
+
+
+.reverse{
+    color: white;
+    background: #3498db;
+    width: 130px;
+    height: 36px;
+    font-size: 18px;
+    border-radius: 4px;
+    margin-left: 50px;
+
+}
+
+
+
+.taskPanel:hover{
+    box-shadow: 0 0 5px 2px #888888;
+    /*border: 1px solid #e5e9ef;*/
+    /*box-shadow: 0 0 3px 3px #e5e9ef;*/
+    border-radius: 4px;
+    /*margin: 2px;*/
+}
+
+.myPageBtn{
+    height: 40px;
+    font-size:18px;
+    color: #333333;
+    border: 1px solid #dddddd;
+    margin:0 10px 0 10px;
+}
+
+.synwords{
+    color: #fff727;
+}
+
+.modal-body span{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.choose{
+
+    float:right;
+    width: 58px;
+    height: 25px;
+    top: 16px;
+    left:70px;
+    background-color: limegreen;
+    position: absolute;
+    border: 1px solid red;
+   border-radius: 4px;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.confirmGet{
+    width: 220px;
+    background-color: #3498db;
+    color: white;
+    font-size: 20px;
+}
+
+.btn-close{
+    width: 150px;
+    border: 1px solid #adadad;
+    color: #333333;
+    font-size: 20px;
+}
+
+.danger{
+    border: 1px solid #FFFFFF;
+    /*text-align: center;*/
+    background-color: #FFFFFF;
+    color: #999999;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.danger-a {
+    border-radius: 10px;
+}
+
+
+
+/*新写*/
+
+.img-one {
+    border: 1px solid #f59d3e;
+    border-radius: 13px;
+    color:#F59D3E;
+    font-size: 14px;
+    padding: 4px 5px;
+}
+
+.img-two {
+    border: 1px solid #c179ee;
+    border-radius: 13px;
+    color:#C179EE;
+    font-size: 14px;
+    padding: 4px 5px;
+
+}
+
+.img-tem {
+    border: 1px solid #cccccc;
+    border-radius: 13px;
+    margin-left: 9px;
+    font-size: 14px;
+    padding: 4px 10px;
+    color: #666666;
+
+}
+
+.img-temp {
+    /*border: 1px solid #999999;*/
+    border-radius: 13px;
+    margin-left: 9px;
+    font-size: 14px;
+    padding: 4px 8px 4px 8px;
+    background-color: #A9C5E2;
+    color: #FFFFFF;
+}
+
+.task-appIcon-small {
+    margin: 20px 0 0 20px;
+    width: 68px;
+    height: 68px;
+    border-radius: 10px;
+}
+
+.task-appInfo {
+    /*line-height: 25px;*/
+}
+
+.appTrackName {
+    font-size: 20px;
+    color: #333333;
+    margin-top: 25px;
+    margin-bottom: 6px;
+}
+
+.task-rateUnitPrice {
+    color: #F43446;
+    float: right;
+    margin-top: -45px
+}
+
+.task-type {
+    font-size: 14px;
+    color: #3498DB;
+    margin-left: -5px;
+}
+
+.taskFormattedPrice {
+    float: right;
+    margin-top: -22px;
+    color: #999999;
+    font-size: 14px;
+    margin-right: 7px;
+ }
+
+/*任务需求部分样式*/
+.task-demand {
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.attach-criteria {
+    margin-bottom: 20px;
+}
+
+.needGet {
+    color: #FFFFFF;
+    border: 1px solid #A9C5E2;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 6px 10px;
+    background-color: #A9C5E2;
+    margin-top: 13px;
+}
+
+.demand {
+    border: 1px solid #E6E6E6;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.demand-one {
+    margin-left: 15px;
+    margin-top: 17px;
+    margin-bottom: 16px;
+}
+
+.demand-gps {
+    font-size: 12px;
+    color: #F4B07A;
+}
+
+.demand-two {
+    font-size: 16px;
+    color: #666666;
+    margin-top: 5px;
+    margin-bottom: 6px;
+}
+
+.demand-vital {
+    color: #67BDFF;
+}
+
+.title-and-comment {
+    margin-left: 24px;
+    margin-top: 2px;
+}
+
+.title-and-comment-info {
+    color: #999999;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+/*修改*/
+.around{
+    /*height: 24px;*/
+    display: inline-block;
+    border-left: 1px solid #CCCCCC;
+
+    margin-left: 10px;
+}
+
+

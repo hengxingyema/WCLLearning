@@ -1,0 +1,29 @@
+<div style="text-align: center;font-size: 20px;top: 20px">关键词套餐</div>
+<table class="ui celled table">
+    <thead>
+    <tr>
+        <th>APP名字</th>
+        <th>iTunesURL</th>
+        <th>套餐量</th>
+        <th>目标排名</th>
+        <th>上榜周期开始日期</th>
+        <th>上榜周期结束日期</th>
+        <th>联系QQ</th>
+        <th>关键词</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="temp in keywordInfoArray" class="ng-scope">
+        <td>{{temp.appTrackName}}</td>
+        <td>{{temp.iTunesURL}}</td>
+        <td>{{temp.packageCount}}</td>
+
+        <td>{{temp.rankingCount}}</td>
+        <td>{{temp.onTheCycleStart}}</td>
+        <td>{{temp.onTheCycleEnd}}</td>
+        <td>{{temp.userQQ}}</td>
+        <td>{{temp.searchKeyWord}}</td>
+    </tr>
+    </tbody>
+</table>

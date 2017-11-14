@@ -1,0 +1,188 @@
+<link rel="stylesheet" href="/stylesheets/revoke.css"/>
+
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>野马运营</title>
+
+    <meta name="theme-color" content="#19B5FE">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--第三方 CSS JS-->
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="../stylesheets/loading.min.css">
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+
+    <link rel="stylesheet" href="../stylesheets/interiorExcDetail.css">
+    <link rel="stylesheet" href="../stylesheets/pcAndmobTask.css">
+
+    <script src="/javascripts/vendor/AngularJS/angular-file-upload.min.js"></script>
+
+    <!--网站内部js-->
+
+    <script src="/javascripts/revoke.js"></script>
+    <script src="/javascripts/indexApp.min.js"></script>
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+</head>
+
+<body ng-app="yemaWebApp">
+<!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+
+<!--导航栏-->
+<div class="container" ng-controller="indexAppCtrl" >
+    <th-nav></th-nav>
+</div>
+
+<!--申诉任务列表-->
+<div ng-controller="revokeControl">
+
+    <div ng-if="errorId == -100" style="margin-top: 100px;text-align: center;color: red;font-size: 20px">
+        {{errorMsg}}
+    </div>
+
+    <div ng-if="revokeMackList.length == 0 && errorId != -100" style="margin-top: 100px;text-align: center;color: red;font-size: 20px">
+        没有申述内容
+    </div>
+
+    <div ng-repeat="revokeItem in revokeMackList" style="border-radius: 20px;border: 4px dashed #999999;margin-bottom: 130px;margin-top:30px;width:95%;margin-left: 2.5%;padding: 20px;"><br>
+        <div class=".col-md-2" style="float: left">
+            <div style="color:lightblue;font-size: 25px;">{{revokeItem.doTaskUserPhone}} </div>
+            <div style="color:lightblue;font-size: 25px;">昵称:{{revokeItem.doTaskUserName}} </div>
+            <a class="btn btn-info" style="width:300px;" ng-href="{{'/interiorExcDetail/' + revokeItem.receiveTaskId}}">查看任务详情</a>
+        </div>
+
+        <div class=".col-md-8" style="display: inline-block;">
+            <div  style="color:lightblue;font-size: 25px;">拒绝原因:{{revokeItem.refusedReason}} </div>
+            <div style="color:lightblue;font-size: 25px;">申诉:{{revokeItem.revokeReason}} </div>
+
+            <div style="background-color: #999">
+                <div ng-repeat="taskImg in revokeItem.taskImgs" style="margin-left: 0px;margin-top: 150px;" >
+                    <div class="gallery cf">
+                        <div>
+                            <img ng-src="{{taskImg}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class=".col-md-2" style="float:right;">
+
+          <!-- 申诉成功 ng-click="revokeSucceed(revokeItem, $event)"-->
+            <button ng-if="revokeItem.revokeStatus == 'revokeUploaded'" type="button" class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#myModal"
+                    ng-click="selectTask(revokeItem)"
+            > 申诉成功
+            </button>
+
+            <br><br>
+
+        <!--    申诉失败 ng-click="revokeFailed(revokeItem, $event)"-->
+            <button ng-if="revokeItem.revokeStatus == 'revokeUploaded'" type="button" class="btn btn-danger"
+                    data-toggle="modal"
+                    data-target="#myModal1"
+                    ng-click="selectTask(revokeItem)"
+            >  申诉失败
+            </button>
+        </div>
+
+    </div>
+
+    <!--申诉成功的弹窗-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 380px;height:194px;">
+            <div class="modal-content">
+                <div class="modal-header" style="height: 70px;background-color: #5CB85C">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <p class="modal-title"  id="" style="font-size: 18px;text-align: center">申诉成功</p>
+                </div>
+                <div class="modal-body">
+                      <textarea style="resize: none" class="form-control" rows="1" ng-model="revokeReason"
+                                placeholder="不超过20个字" maxlength='20' required = 'required'></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="revokeSucceed(revokeReason, $event)">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+
+    </div>
+
+    <!--申诉失败的弹窗-->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 380px;height:194px;">
+            <div class="modal-content">
+                <div class="modal-header" style="height: 70px;background-color: #D9534F">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <p class="modal-title"  id="myModalLabel" style="font-size: 18px;text-align: center">申诉失败</p>
+                </div>
+
+                <div class="modal-body">
+                            <textarea style="resize: none" class="form-control" rows="1" ng-model="revokeFailure"
+                                      placeholder="不超过20个字" maxlength='20' required = 'required'>
+
+                            </textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="revokeFailed(revokeFailure, $event)">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+<script src="/javascripts/cookieHelper.js"></script>
+
+<script>
+var flag = true,//状态true为正常的状态,false为放大的状态
+        imgH,//图片的高度
+        imgW,//图片的宽度
+        img = document.getElementsByTagName('img')[0];//图片元素
+img.onclick =  function(){
+    //图片点击事件
+    imgH = img.height; //获取图片的高度
+    imgW = img.width; //获取图片的宽度
+    if(flag){
+        //图片为正常状态,设置图片宽高为现在宽高的2倍
+        flag = false;//把状态设为放大状态
+        img.height = imgH*2;
+        img.width = imgW*2;
+    }else{
+        //图片为放大状态,设置图片宽高为现在宽高的二分之一
+        flag = true;//把状态设为正常状态
+        img.height = imgH/2;
+        img.width = imgW/2;
+    }
+
+}
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

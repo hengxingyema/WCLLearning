@@ -1,0 +1,515 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.row{
+    overflow: hidden;
+
+}
+[class*=" change"]{
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+}
+.main{
+    width: 1001px;
+    margin: 100px auto;
+    border: 1px solid #f4f4f4;
+}
+.row_first_left,.row_second_left{
+    background-color: #f4f4f4;
+
+}
+#myTab {
+    text-align: center;
+    font-size: 14px;
+    color: black;
+    width: 235px;
+}
+#myTab li a:hover{
+    background-color: white;
+}
+.addtask_first{
+    height: 200px;
+    /*border: 1px solid red;*/
+}
+.infor_danger{
+    margin-top: -50px;
+}
+.addtask_second{
+    height: 200px;
+}
+.addtaskper{
+    height: 26px;
+    border: 1px solid #eeeeee;
+}
+.assign{
+    margin-top: 5px;
+}
+.appicon{
+    width: 75px;
+    height: 75px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+.appname{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 14px;
+    color: #666666;
+}
+
+.write ,.task{
+    background-color:#f4f4f4;
+    margin-left: 70px;
+}
+.task{
+    background-color: white;
+}
+.add{
+    margin-top: 10px;
+    height: 40px;
+    background-color: white;
+
+}
+
+
+.addtask,.rewrite{
+    display: inline-block;
+
+}
+#addtask{
+    margin-top: 50px;
+}
+
+.trackName{
+    font-size: 24px;
+    color: #333333;
+    margin-top: 4%;
+}
+.appinfo{
+    margin-left: 48px;
+}
+.appinfor-author,.appinfor-id,.appinfor-time{
+    margin-top: 24px;
+    display: inline-block;
+    margin-right: 70px;
+    font-size: 14px;
+    color: #333333;
+}
+.outchange{
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 5%;
+    margin-left: 10px;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+}
+.add-botton{
+    margin-top:20px;
+    margin-left: 45%;
+    background-color: #3498db;
+}
+.notice{
+    margin-left: 40%;
+    font-size: 13px;
+    color: #999999;
+    margin-top: 10px;
+}
+
+
+.media-object{
+    width: 65px;
+    height: 65px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+.appName{
+    font-size: 14px;
+    color: #333333;
+    margin-top: 30px;
+}
+.media-info{
+    margin-top: 20px;
+}
+.media-sellername,
+.media-info-updateDate,
+.media-info-appId
+{
+
+    margin-right: 30px;
+    font-size: 12px;
+    color: #666666;
+
+}
+.delete{
+    background-color: white;
+    border-style: none;
+    position: absolute;
+    right:20px
+}
+.choose{
+    margin-top: -6px;
+    margin-left: 115px;
+    margin-right: 2px;
+}
+.form{
+    margin-right: 60px;
+
+}
+.exchange {
+    width: 40px;
+    height: 18px;
+
+}
+.delimage{
+    background-color: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 2px;
+    height: 25px;
+
+}
+.success,.false{
+    width: 610px;height:20px;
+    position: absolute;right: 0;
+    margin-top:10px;
+    text-align: center;
+    line-height: 5px;
+}
+
+.choose .save{
+    background-color: #3498db;
+    height: 25px;
+    line-height: 5px;
+    color:white;
+    text-align: center;
+    margin-left: 70px;
+    margin-top: -7px;
+
+}
+  /*addtask begin*/
+.exchang_pattern{
+    height: 100px;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+.top_title{
+    margin-left: 10px;
+}
+.exc__record_title{
+    font-size: 24px;
+    padding-left: 10px;
+    border-left: 4px solid #3498db;
+}
+.add_exchistory_botton{
+    border:1px solid #3498db;
+    width: 160px;
+    height: 35px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 4px;
+    color: #3498db;
+    background-color: white;
+    outline:none;
+    margin-top: 5px;
+}
+.preversion{
+    /*height: 180px;*/
+
+}
+.media{
+    margin-top: 0;
+}
+.media-heading{
+    font-size: 16px;
+    color: #000000;
+    margin-top: 20px;
+}
+.app_list span{
+    font-size: 12px;
+    margin-right: 40px;
+
+}
+.app_list{
+    /*height: 180px;*/
+    /*border: 1px solid red;*/
+}
+
+.search{
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+.search_button{
+    margin-left: -80px;
+    background-color: white;
+    border-style:none  none solid none;
+    height: 28px;
+    display: inline-block;
+    margin-top: 2px;
+
+}
+.search_input{
+    width: 400px;
+    display: inline-block;
+
+}
+
+.media-info{
+    margin-top: 15px;
+    font-size: 12px;
+    color: #7a7a7a;
+}
+
+
+.media-info-a{
+
+    margin-top: 5px;
+    font-size: 12px;
+    color: #7a7a7a;
+}
+hr{
+    height: 2px;
+    border-color: #e0e0e0;
+}
+
+.remove_icon{
+    background-color: #ffffff;
+    margin-top: 20px;
+
+}
+
+
+
+
+
+/*按钮美化*/
+.a-upload {
+    margin-top: 2px;
+    height: 25px;
+    width: 95px;
+    padding-left: 3px;
+    line-height: 22px;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+    color: #3498db;
+    background: white;
+    border: 1px solid #3498db;
+    border-radius: 2px;
+    overflow: hidden;
+    display: inline-block;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 16px;
+    right: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #3498db;
+    background: white;
+    border-color: #3498db;
+    text-decoration: none
+}
+/*弹窗部分*/
+.input-group{
+    width: 500px;
+}
+.placehold-line{
+    margin-top: 15px;
+}
+.btn-search{
+    background-color: white;
+    border: 1px solid #aab2bd;
+    border-left-style: none;
+}
+.app_info{
+    border: 1px solid #e0e0e0 ;
+
+    float: left;
+    width: 340px;
+    height: 100px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+.media_right{
+    float: right;
+    margin-top: -50px;
+    margin-right: 20px;
+}
+.button_bottom{
+    background-color: #3498db;
+    width: 60px;
+    color: white;
+    outline: none;
+
+}
+.button_add{
+    color:white;
+    width: 60px;
+    background-color: #dddddd;
+
+}
+.pagination {
+    width: 150px;
+    margin:  10px 300px;
+}
+.pagination span{
+    margin-right: 20px;
+}
+.curHistoryDelete{
+    width:200px;
+    position: absolute;
+    right: 20px;
+}
+/*need begin*/
+.form-horizontal{
+    margin-left: 10%;
+}
+.form-group span {
+    margin-left: 30px;
+}
+.title{
+    width: 100px;
+    font-weight: bold;
+}
+.group{
+    margin-left: 10%;
+
+}
+.button_save{
+    width: 100px;
+    margin-left:45%;
+    background-color: white;
+    border: 1px solid #3498db;
+    color: #3498db;
+}
+
+.keyword{
+    width: 200px;
+}
+.beizhu{
+    width: 500px;height: 100px;
+}
+
+.synwords{
+    color: #fff727;
+}
+
+.mytitle{
+    font-size: 24px;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+    margin-bottom: 32px;
+    margin-top: 80px;
+}
+/*任务进度*/
+.yesterdaybtn,.dailybtn{
+    width: 330px;
+    margin-left: 20px;
+    height: 60px;
+    font-size: 30px;
+    line-height: 60px;
+    color: #333333;
+    background-color: #dddddd;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+.panel-receivetask span{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 64px;
+    margin-left: 10px;
+    color: #666666;
+
+
+}
+.receiveimg{
+    display: inline-block;
+    width: 32px;height: 32px;
+    border: 1px solid red;
+    border-radius: 4px;
+    margin-left: 10px;
+    line-height: 64px;
+
+}
+.receivebtn{
+    background-color: #3498db;
+    color: white;
+    margin-left: 20px;
+    height: 36px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.receiveinfor div{
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.receiveinfor img{
+    width: 30%;
+    height: 400px;
+    object-fit: contain;
+    border: 1px  solid #e0e0e0;
+    margin-left: 14px;
+
+}
+.receive_btn{
+    margin-right: 30px;
+    font-size: 20px;
+}
+
+.receive_btn .reject{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: #f7aa58;
+    width: 100px;
+    border: 1px solid #f7aa58;
+    border-radius: 4px;
+    background-color: white;
+}
+.receive_btn .receive{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: #3498db;
+    width: 100px;
+    border: 1px solid  #3498db;
+    border-radius: 4px;
+    background-color: white;
+
+}
+.receive_btn .receive2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: white;
+    width: 100px;
+    border: 1px solid  #dddddd;
+    border-radius: 4px;
+    background-color: #dddddd;
+
+}
+.btn_sure{
+    width: 80px;
+    background-color: #3498db;
+    color: white;
+    border: 1px solid  #3498db;
+    border-radius: 4px;
+
+}

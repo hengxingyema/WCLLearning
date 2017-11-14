@@ -1,0 +1,27 @@
+<!--引用内部CSS-->
+<link rel="stylesheet" href="/stylesheets/app.css"/>
+
+
+<ion-tabs class="tabs-icon-top  tabs-background-light tabs-color-calm"  ng-class="{'tabs-item-hide': $root.hideTabs}">
+
+    <ion-tab title="首页"  icon="bar-home-on" icon-on="bar-home-on" icon-off="bar-home-off" href="#/tab/home">
+        <ion-nav-view name="tab-home"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="任务大厅" icon="bar-taskhall-on" icon-on="bar-taskhall-on" icon-off="bar-taskhall-off"  href="#/tab/taskHall">
+        <ion-nav-view name="tab-taskHall"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="我的任务" icon="bar-mytask-on" icon-on="bar-mytask-on" icon-off="bar-mytask-off"  href="#/tab/myTask">
+        <ion-nav-view name="tab-myTask"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="提现" icon="bar-get-on" icon-on="bar-get-on" icon-off="bar-get-off"  href="#/tab/account">
+        <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+
+    <!--<ion-tab title="赚钱游戏" icon="ion-ios-game-controller-b-outline" icon-on="ion-ios-game-controller-b-outline" icon-off="ion-ios-game-controller-b-outline"  href="#/tab/lottery">-->
+        <!--<ion-nav-view name="tab-lottery"></ion-nav-view>-->
+    <!--</ion-tab>-->
+
+</ion-tabs>

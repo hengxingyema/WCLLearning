@@ -1,0 +1,553 @@
+
+.header-wrapper{
+    margin-top: 79px;
+}
+
+.header{
+    font-size: 30px;
+    color: #3498db;
+    margin-bottom: 9px;
+    margin-left: 50px;
+}
+
+.dailyTask {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 18px;
+    margin-bottom: 15px;
+    padding-top: 18px;
+}
+
+.dailyTask:hover{
+    box-shadow: 0 0 5px 2px #888888;
+    border-radius: 4px;
+
+}
+.information{
+    padding-left: 20px
+}
+.num{
+    font-size: 16px;
+    color: #f78649;
+}
+.logo{
+    width: 112px;
+    height: 112px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+}
+.task-link{
+    font-size: 24px;
+    color:black;
+    cursor: default;
+    outline: none;
+
+}
+.task-link:hover{
+    text-decoration: none;
+}
+.infor button{
+    margin-right: 30px;
+    cursor: default;
+    outline: none;
+
+}
+.left,.surplus{
+    width: 90px;
+    background-color: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+    font-size: 18px;
+    margin-left: 10px;
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+}
+.download{
+    width: 70px;
+    background-color: white;
+    color:rgb(149,242,158);
+    border: 1px solid rgb(149,242,158);
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+}
+.comment{
+    width: 70px;
+    background-color: white;
+    color:rgb(255,196,158);
+    border: 1px solid rgb(255,196,158);
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+}
+.deadline{
+    width:200px;
+    background-color: white;
+    color:rgb(255,152,158);
+    border: 1px solid rgb(255,152,158);
+    /*text-align: center;*/
+    font-size: 18px;
+    border-radius: 6px;
+    margin-left: 10px;
+    cursor: default;
+    outline: none;
+}
+.center{
+    margin-top: 12px;
+}
+.assign{
+    margin-top: 10px;font-size: 18px;
+color: #999999;
+}
+.pending{
+
+    font-size: 18px;
+    background-color: white;
+    color: #3498db;
+    margin-right: 20px;
+    border: 1px solid  #3498db;
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+
+}
+.rejected{
+    font-size: 18px;
+    background-color:#f7798b;
+    color: white;
+    margin-right: 20px;
+    border: 1px solid  #f7798b;
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+
+}
+.abandonde{
+    font-size: 18px;
+    background-color:white;
+    color:#f7798b;
+    margin-right: 20px;
+    border: 1px solid  #f7798b;
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+
+}
+
+.proceed{
+    /*height:28px;*/
+    font-size: 18px;
+    background-color: #e68900;
+    color: white;
+    margin-right: 20px;
+    border: 1px solid  #e68900;
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+
+}
+.finish{
+    font-size: 18px;
+    background-color:white;
+    color:rgb(0,226,57);
+    margin-right: 20px;
+    border: 1px solid  rgb(0,226,57);
+    border-radius: 6px;
+    cursor: default;
+    outline: none;
+
+}
+.abandoned{
+    font-size: 18px;
+    background-color:white;
+    color: #f7798b;
+    margin-right: 20px;
+    border: 1px solid  #f7798b;
+    border-radius: 6px; cursor: default;
+    outline: none;
+
+}
+.noticeNumber{
+    background-color: #f4556c;
+    width: 30px;
+    height: 20px;
+    font-size: 14px;
+    border-radius: 8px;text-align: center;color: #FFFFFF;position: absolute;top: -10px;left:100px
+}
+
+.media-right button{
+    width: 91px;
+    height: 36px;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #3498db;
+    margin-top: 39px;
+}
+
+.btnSave{
+    width: 54px;
+    background-color: white;
+    font-size: 16px;
+    color: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+}
+@media (max-width: 768px) {
+    .logo{
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+    }
+    .dailyTask {
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        padding-top: 12px;
+    }
+
+    .dailyTask:hover{
+        box-shadow: 0 0 4px 2px #888888;
+        border-radius: 4px;
+
+    }
+    .task-link{
+        font-size: 18px;
+
+    }
+
+    .appid{
+        font-size: 14px;
+        margin-bottom: 14px;
+        color: #7a7a7a;
+
+    }
+
+    .company{
+        font-size: 18px;
+        margin-bottom: 14px;
+        margin-left: 40px;
+        color: #7a7a7a;
+
+    }
+    .information{
+        padding-left: 0px
+    }
+    .center{
+        margin-top: 8px;
+    }
+    .left {
+        font-size: 12px;
+        height:20px;
+        width:65px;
+        color: #3498db;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+        margin-left: 2px;
+
+    }
+    .surplus{
+        font-size: 12px;
+        height:20px;
+        width:80px;
+        color: #3498db;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+        margin-left:2px;
+
+    }
+
+    .download{
+        font-size: 12px;
+        height:20px;
+        width: 50px;
+        color: #3498db;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+    }
+    .comment{
+        font-size: 12px;
+        height:20px;
+        width: 50px;
+        color:rgb(255,196,158);
+        border: 1px solid rgb(255,196,158);
+        border-radius: 2px;
+    }
+    .deadline{
+        width:140px;
+        height:20px;
+        background-color: white;
+        color:rgb(255,152,158);
+        border: 1px solid rgb(255,152,158);
+        /*text-align: center;*/
+        font-size: 12px;
+        border-radius: 2px;
+    }
+    .rejected{
+        height:20px;
+        font-size: 12px;
+        background-color:#f7798b;
+        color: white;
+        margin-right: 5px;
+        border: 1px solid  #f7798b;
+        border-radius: 2px;
+
+    }
+    .abandoned{
+        height:20px;
+        font-size: 12px;
+        background-color:white;
+        color: #f7798b;
+        margin-right: 5px;
+        border: 1px solid  #f7798b;
+        border-radius: 2px;
+
+    }
+    .virtula_button{
+        height:20px;
+        font-size: 12px;
+        background-color:white;
+        color: white;
+        margin-right: 5px;
+        border: 1px solid  white;
+        outline: none;
+
+
+    }
+
+    .proceed{
+        height:20px;
+        font-size: 12px;
+        background-color: #e68900;
+        color: white;
+        margin-right: 5px;
+        border: 1px solid  #e68900;
+        border-radius:2px;
+    }
+    .pending {
+        height: 20px;
+        font-size: 12px;
+        background-color:white;
+        color: #3498db;
+        margin-right: 5px;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+    }
+
+    .finish{
+        height:20px;
+        font-size: 12px;
+        background-color:white;
+        color: rgb(0,226,57);
+        margin-right: 5px;
+        border: 1px solid  rgb(0,226,57);
+        border-radius: 2px;
+
+    }
+
+
+    .noticeNumber{
+        background-color: #f4556c;
+        width:20px;
+        height:15px;
+        font-size: 12px;
+        border-radius:4px;text-align: center;color: #FFFFFF;position: absolute;top: -4px;left:60px
+    }
+
+    .assign{
+        margin-top:8px;
+        font-size: 12px;
+        color: #999999;
+
+    }
+
+    .num{
+        font-size: 12px;
+        color: #f78649;
+    }
+    .hr_bottom{
+        margin-top: 10px;
+    }
+
+
+}
+
+
+
+@media (max-width: 640px) {
+    .logo{
+        width:70px;
+        height:70px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+    }
+    .dailyTask {
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom:6px;
+        margin-bottom:6px;
+        padding-top: 6px;
+    }
+
+    .dailyTask:hover{
+        box-shadow: 0 0 2px 2px #888888;
+        border-radius: 3px;
+
+    }
+
+    .task-link{
+        font-size:14px;
+        /*margin-bottom: 14px;*/
+    }
+
+    .appid{
+        font-size: 10px;
+        margin-bottom:8px;
+        color: #7a7a7a;
+
+    }
+
+    .information{
+        padding-left: 0px
+    }
+    .center{
+        margin-top:6px;
+    }
+    .left {
+        font-size: 10px;
+        height:18px;
+        width:55px;
+        color: #3498db;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+        margin-left: 2px;
+
+    }
+    .surplus{
+        font-size: 10px;
+        height:18px;
+        width:60px;
+        color: #3498db;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+        margin-left:2px;
+
+    }
+
+    .download{
+        font-size: 10px;
+        height:18px;
+        width:50px;
+        color: #3498db;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+    }
+    .comment{
+        font-size: 10px;
+        height:18px;
+        width: 50px;
+        color:rgb(255,196,158);
+        border: 1px solid rgb(255,196,158);
+        border-radius: 2px;
+    }
+    .deadline{
+        width:140px;
+        height:18px;
+        background-color: white;
+        color:rgb(255,152,158);
+        border: 1px solid rgb(255,152,158);
+        /*text-align: center;*/
+        font-size: 10px;
+        border-radius: 2px;
+    }
+    .rejected{
+        height:20px;
+        font-size: 10px;
+        background-color:#f7798b;
+        color: white;
+        margin-right: 5px;
+        border: 1px solid  #f7798b;
+        border-radius: 2px;
+
+    }
+    .abandoned{
+        height:20px;
+        font-size: 10px;
+        background-color:white;
+        color: #f7798b;
+        margin-right: 5px;
+        border: 1px solid  #f7798b;
+        border-radius: 2px;
+
+    }
+    .virtula_button{
+        height:20px;
+        font-size: 10px;
+        background-color:white;
+        color: white;
+        margin-right: 5px;
+        border: 1px solid white;
+        outline: none;
+
+
+    }
+
+    .proceed{
+        height:20px;
+        font-size: 10px;
+        background-color: #e68900;
+        color: white;
+        margin-right: 5px;
+        border: 1px solid  #e68900;
+        border-radius:2px;
+    }
+    .pending {
+        height: 20px;
+        font-size: 10px;
+        background-color:white;
+        color: #3498db;
+        margin-right: 5px;
+        border: 1px solid #3498db;
+        border-radius: 2px;
+    }
+
+    .finish{
+        height:20px;
+        font-size: 10px;
+        background-color:white;
+        color: rgb(0,226,57);
+        margin-right: 5px;
+        border: 1px solid  rgb(0,226,57);
+        border-radius: 2px;
+
+    }
+
+
+    .noticeNumber{
+        background-color: #f4556c;
+        width:20px;
+        height:15px;
+        font-size: 10px;
+        border-radius:4px;text-align: center;color: #FFFFFF;position: absolute;top:-4px;left:55px
+    }
+
+    .assign{
+        margin-top:8px;
+        font-size: 10px;
+        color: #999999;
+
+    }
+
+    .num{
+        font-size: 10px;
+        color: #f78649;
+    }
+    .hr_bottom{
+        margin-top: 10px;
+    }
+
+
+}
+

@@ -1,0 +1,323 @@
+
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" id="tip">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">截图任务详情</div>
+
+</ion-header-bar>
+
+<ion-view hide-tabs="true">
+    <ion-content style="margin-bottom: 3em;">
+
+        <div class="content " style="margin-top: 2.5em;">
+
+            <div class="col-demo"><img ng-src="{{taskDetail.appIcon}}" class="detailicon">  </div>
+            <div class="texthead">
+                <span style="font-size: 0.7em;">{{taskDetail.screenShotOne.searchKeyword}}<br></span>
+                <span style="font-size: 0.6em;color:#67bdff">{{taskDetail.taskType}}</span>
+                <!--<span style="font-size: 0.6em;margin-left: 2em;color:#cccccc;">大小30M</span>-->
+               </div>
+
+                <div class="rightside">
+                    <span style="color:red;">+{{taskDetail.doTaskPrice.toFixed(2)}}<span style="font-size: 0.4em;">元</span></span><br>
+                    <span style="color:#999999;font-size: 0.5em;margin-left:1.8em;">{{taskDetail.appPrice}}</span>
+                </div>
+        </div>
+
+        <!--操作错误提示-->
+
+        <hr style="margin-top: 0.5em; background-color: #cccccc;width: 92%;margin-left: 4%;display: inline-block;" size="0.001">
+
+        <div class="alert" role="alert" ng-show="errorId" style="left:4%;line-height: 1em;color: red;border: 1px dashed red;width:90%;margin-left: 5%;">被拒绝原因:{{errorMsg}}</div>
+        <div class="textstep">
+            <h4>任务步骤
+                <span style="font-size: 12px;color: #BDBDBD" ng-if="taskDetail.doTaskStatus == undefined">(剩余时间:&nbsp;&nbsp;&nbsp;{{countDownStr}})</span>
+                <span style="font-size: 12px;color: #BDBDBD" ng-if="taskDetail.doTaskStatus != undefined">(剩余时间:&nbsp;&nbsp;&nbsp;0)</span>
+            </h4>
+        </div>
+
+        <!--卡片一-->
+        <div class="card card-page">
+            <div class="item item-text-wrap">
+            <img src="/images/app/tab.png" class="headimg">
+                <h2 style="font-size: 0.9em;margin-top: -0.05em;">截图一</h2>
+                <span class="entry">任务手机必须有SIM卡</span>
+                <div class="detailtext">
+                    <p style="font-size: 0.9em;">1.打开APP Store搜索关键字
+                        <span style="color:#67bdff">{{taskDetail.screenShotOne.searchKeyword}}</span>
+                        ,找到对应任务图标截图后下载,大概在第
+                        <span style="color:#67bdff">{{taskDetail.screenShotOne.ranKing}}</span>位.
+                    </p>
+                    <p style="font-size: 0.9em;margin-top: 0em;">2.找到指定APP后,
+                        <img src="/images/app/screenShotS.png" style="height: 0.8em;">
+                        <span  style="color:#fc7f6a">截图</span>,然后下载
+                    </p>
+                    <p style="color: #00a5ff" ng-if="taskDetail.screenShotOne.needGet == true || (taskDetail.taskType == '评论' && taskDetail.screenShotOne.needGet == true)">
+                        (本任务需获取按钮)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--卡片二-->
+        <div class="card card-page" style="margin-top: 1em;">
+            <div class="item item-text-wrap">
+                <img src="/images/app/tab.png" class="headimg">
+                <h2 style="font-size: 0.9em;margin-top: -0.05em;">截图二</h2>
+                <span class="entry">打开应用后请跳过引导页</span>
+                <div class="detailtext">
+                    <p style="font-size: 0.9em;">2.下载后,打开APP,跳过引导页,试用3分钟后截图.
+                        <span ng-if="taskDetail.screenShotTwo.registerStatus == 'third' || (taskDetail.taskType == '评论' && taskDetail.screenShotTwo.registerStatus == 'third')">
+                            (本任务需要<span style="color:#67bdff">第三方登陆(请截取个人中心图)</span>)</span>
+                        <img src="/images/app/screenShotS.png" style="height: 0.8em;" >
+                        <span  style="color:#fc7f6a">截图</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+            <!--卡片三-->
+        <div class="card card-page" style="margin-top: 1em;" ng-if="taskDetail.taskType == '评论'">
+            <div class="item item-text-wrap">
+                <img src="/images/app/tab.png" class="headimg">
+                <h2 style="font-size: 0.9em;margin-top: -0.05em;">截图三</h2>
+                <span class="entry">评论页截图不能有键盘</span>
+                <div class="detailtext">
+                    <p style="font-size: 0.9em;">3返回AppStore进行评论<br>
+                    <p style="font-size: 0.9em;">
+                        <span style="color: #333333;">
+                            {{'标题关键字: ' + taskDetail.screenShotThird.titleKeyword}}
+                        </span>
+
+                        <span style="color:#999999;" ng-if="taskDetail.screenShotThird.reviewMustTitleKey != undefined && taskDetail.screenShotThird.reviewMustTitleKey.length > 0">&nbsp;&nbsp;必须包含
+                            <span style="color:#67bdff">{{taskDetail.screenShotThird.reviewMustTitleKey}}</span>
+                        </span><br>
+
+                        <span style="color: #333333;">{{'评论内容关键字: ' + taskDetail.screenShotThird.commentKeyword}}</span>
+                        <span style="color:#999999;"  ng-if="taskDetail.screenShotThird.reviewMustContentKey != undefined && taskDetail.screenShotThird.reviewMustContentKey.length > 0">&nbsp;&nbsp;内容必须包含
+                            <span style="color:#67bdff">{{taskDetail.screenShotThird.reviewMustContentKey}}</span>
+                            </span>
+                    </p>
+
+                    <p style="font-size: 0.9em;">
+
+                       <span class="task-claim">评论内容至少包含2个关键字</span><br>
+                        <span ng-show="taskDetail.screenShotThird.needMoreReviewContent == true">
+                            <span class="task-claim">评论字数</span>
+                            <span style="color:#67bdff">至少50字。</span>
+                        </span>
+                        <span ng-show="taskDetail.screenShotThird.needMoreReviewContent != true">
+                            <span class="task-claim">评论字数至少20字。</span>
+                        </span>
+
+                       <img src="/images/app/screenShotS.png" style="height: 0.8em;">
+                       <span  style="color:#fc7f6a">截图</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--定制评论-->
+        <div class="card card-page" style="margin-top: 1em;" ng-if="taskDetail.taskType == '定制评论'">
+            <div class="item item-text-wrap">
+                <img src="/images/app/tab.png" class="headimg">
+                <h2 style="font-size: 0.9em;margin-top: -0.05em;">截图三</h2>
+                <span class="entry">评论页截图不能有键盘</span>
+                <div class="detailtext">
+                    <p style="font-size: 0.9em;">3.返回AppStore进行评论</p>
+                    <div style="font-size: 0.9em;color: #333333;">标题关键字:<span style="color: red"> (点击复制) </span>
+                        <div class="selectable alert alert-info Copy" on-tap="copyTitleKeyword('A')" id="titleKeywordA">
+                            {{taskDetail.customHeaderComments}}
+                        </div>
+                    </div>
+
+                    <div style="font-size: 0.9em;color: #333333;">评论内容关键字:<span style="color: red"> (点击复制) </span>
+                        <div class="selectable alert alert-info Copy" on-tap="copyTitleKeyword('B')" id="commentKeywordA">
+                            {{taskDetail.customContentComments}}
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.9em;">
+                        <img src="/images/app/screenShotS.png" style="height: 0.8em;">
+                        <span  style="color:#fc7f6a">截图</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--备注-->
+        <div ng-if="(taskDetail.userDetailInfo != undefined && taskDetail.userDetailInfo != '')" class="card card-page" style="margin-top: 1em;" >
+            <div class="item item-text-wrap">
+                <img src="/images/app/tab.png" class="headimg">
+                <h2 style="font-size: 0.9em;margin-top: -0.05em;">备注</h2>
+                <div class="detailtext">
+                    <p style="font-size: 0.9em;" ng-bind-html="taskDetail.userDetailInfo">
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <hr style="margin-top: -0.5em; background-color: #cccccc;width: 92%;margin-left: 4%;display: inline-block;" size="0.001";>
+
+        <div class="textstep" >
+            <h4>任务示例</h4>
+        </div>
+
+
+        <!--任务示例-->
+        <div>
+            <div style="display: inline-block;;text-align:center;margin-right: 6px;margin-top: -10px;" ng-style="setwidth(taskDetail.taskType)">
+            <div>搜索图</div>
+            <img class="img-responsive"
+                 style="margin-top: 5px;margin-left: 10%;z-index: 11;display: block;opacity: 1  ;
+                   height:auto;width: auto; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+                 ng-click="showAle()";
+                 src="/images/app/popup1.jpg">
+            </div>
+            <div style="display: inline-block;text-align:center;margin-right: 6px"ng-style="setwidth(taskDetail.taskType)" >
+            <span>打开图</span>
+            <img class="img-responsive"
+                 style="margin-top: 5px;margin-left: 10%;z-index: 11;display: block;opacity: 1  ;
+                height:auto;width: auto; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"ng-click="showAle1()";
+                 src="/images/app/popup2.jpg">
+                </div>
+            <div ng-if="taskDetail.taskType!='下载'" style="display: inline-block;text-align:center;"ng-style="setwidth(taskDetail.taskType)">
+                <div >评论图</div>
+                <img class="img-responsive"
+                     style="margin-top: 5px;margin-left: 10%;z-index: 11;display: block;opacity: 1  ;
+                height:auto;width: auto; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"ng-click="showAle2()"
+                     src="/images/app/popup3.jpg">
+            </div>
+        </div>
+
+        <div class="card card-page"  ng-if="(taskDetail.taskType != '评论' && taskDetail.taskType != '下载') && (taskDetail.userDetailInfo != undefined && taskDetail.userDetailInfo != '')"  style="margin-top: 1em;">
+            <div class="item item-text-wrap">
+                <img src="/images/app/tab.png" class="headimg">
+                <h2 style="font-size: 0.9em;margin-top: -0.05em;">要求</h2>
+                <div class="detailtext">
+                    <p style="font-size: 0.9em;" ng-bind-html="taskDetail.userDetailInfo">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="textstep" ng-if="taskDetail.doTaskImgs.length>=0" style="margin-top: 19px;">
+            <h4>我的传图</h4>
+        </div>
+
+        <div style="bottom: 30px">
+            <div class="item item-image" ng-repeat="img in taskDetail.doTaskImgs" style="margin-left: 3%;width:30%;height:180px;float: left;"
+                 ng-style="setwidth1(taskDetail.doTaskImgs.length)">
+                <img style="border: 1px solid #999999;   width: 100%;height:100%;display: inline-block;" ng-src="{{img}}" ng-click="showAle3($index)">
+            </div>
+        </div>
+
+        <!--任务操作状态按钮-->
+        <!--<button ng-show="lockTaskId != undefined && taskDetail.doTaskStatus == undefined" style="position: relative;margin-top: 20px"-->
+                <!--ng-hide="errorId == 0"-->
+                <!--ng-click="unlockTask()" class="button btn3">放弃任务-->
+        <!--</button>-->
+
+
+        <img src="/images/app/submit-zi.png" ng-click="clickImg()" class="subImg"
+             ng-if="userSpecialNeeds != '' && lockTaskId != undefined && taskDetail.doTaskStatus != 'accepted' && taskDetail.doTaskStatus != 'systemAccepted'">
+
+    </ion-content>
+
+    <div ng-show="dataStatus == 1" class="bar bar-footer button-assertive">
+
+        <!--&lt;!&ndash;领取任务&ndash;&gt;-->
+        <!--<button style="font-size: 18px" class="button button-block button-assertive" ng-click="lockTask()"-->
+                <!--ng-show="lockTaskId == undefined && (taskDetail.doTaskStatus != 'accepted' && taskDetail.doTaskStatus != 'systemAccepted')">-->
+            <!--领取任务-->
+        <!--</button>-->
+
+        <!--领取成功后 上传图片按钮-->
+        <button style="font-size:18px;margin-top: -2px;height:3em;"
+                ng-show="(nowUpladedImgs != 1 && lockTaskId != undefined &&
+                (taskDetail.doTaskStatus != 'accepted' && taskDetail.doTaskStatus != 'systemAccepted' && taskDetail.doTaskStatus != 'expired')
+                || taskDetail.doTaskStatus == 'refused')
+                && progressNum <= 0"
+                class="upload-pic-button">
+            <!--accept="image/*"-->
+            <input ng-if="uploadButtonTitle != '确认提交任务'" class="upload" type="file" id="up"  nv-file-select="" uploader="uploader" id="timer" ng-hide="uploadButtonTitle == '确认提交任务'" multiple/>
+            {{uploadButtonTitle}}
+        </button>
+
+        <!--点击上传任务后的进度条-->
+        <div class="progress" ng-hide="!progressNum" >
+            <div ng-class="{'progress-bar': true, 'progress-bar-striped':true,'progress-bar-success':true,active:true}" role="progressbar" ng-style="{width: progressNum + '%'}">
+            </div>
+        </div>
+
+        <!--任务已经完成-->
+        <button ng-click="backlastpage()" ng-if="nowUpladedImgs == 1"
+                class="button button-block button-assertive" style="font-size:18px;margin-top: -2px;height:3em;">
+            确认提交任务
+        </button>
+        <button ng-click="backlastpage()" ng-if="taskDetail.doTaskStatus == 'accepted' || taskDetail.doTaskStatus == 'systemAccepted'"
+                class="button button-block button-assertive" style="font-size:18px;margin-top: -2px;height:3em;">
+            任务已经完成 点击返回
+        </button>
+        <!--任务被拒绝-->
+        <!--<button ng-show="taskDetail.doTaskStatus == 'refused'" ng-click="getNowFormatDate()"-->
+        <!--class="button button-assertive" style="height: 3em;">-->
+        <!--<span style="font-size:18px;">被拒绝</span>-->
+        <!--</button>-->
+        <!--任务已经超时-->
+        <button ng-if="taskDetail.doTaskStatus == 'expired'" class="button button-assertive" style="font-size:18px;margin-top: -2px;height: 3em;">
+            任务已经超时
+        </button>
+    </div>
+
+
+    <div  ng-if="bigImage"
+         ng-click="hideBigImage()" style="position: absolute;width: 100%;height: 100%;background-color: black;z-index: 100000;">
+        <img class="img-responsive"
+             style="position:relative;top: 3px;bottom:100px;margin-top: 3%;margin-left: 5%;margin-right: 8%;z-index: 11;display: block;opacity: 1  ;
+              height:97%;width: 90%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+             src="/images/app/popup1.jpg">
+    </div>
+    <div id="rightDisplay1" ng-if="bigImage1"
+         ng-click="hideBigImage1()"style="position: absolute;width: 100%;height: 100%;background-color: black;z-index: 100000;">
+        <img class="img-responsive"
+             style="position:relative;top: 3px;bottom:100px;margin-top: 3%;margin-left: 5%;margin-right: 8%;z-index: 11;display: block;opacity: 1  ;
+              height:97%;width: 90%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+             src="/images/app/popup2.jpg">
+    </div>
+    <div id="rightDisplay2" ng-if="bigImage2"
+         style="position: absolute;width: 100%;height: 100%;background-color: black;z-index: 100000;"
+         ng-click="hideBigImage2()">
+        <img class="img-responsive"
+             style="position:relative;top: 3px;bottom:100px;margin-top: 5%;margin-left: 5%;margin-bottom: 10%;margin-right: 8%;z-index: 11;display: block;opacity: 1  ;
+              height:95%;width: 90%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+             src="/images/app/popup3.jpg">
+    </div>
+    <div id="rightDisplay3"  ng-if="imgshow "
+         style="position: absolute;width: 100%;height: 100%;background-color: black;z-index: 100000;"
+         ng-click="imghidden()">
+        <img class="img-responsive"
+             style="position:relative;top: 3px;bottom:50%;margin-top: 5%;margin-left: 5%;margin-right: 8%;z-index: 11;display: block;opacity: 1  ;
+              height:95%;width: 90%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+             ng-src="{{taskDetail.doTaskImgs[img_index]}}" >
+
+    </div>
+
+
+</ion-view>
+
+
+
+
+
+<!--<script id="my-modal.html" type="text/ng-template">-->
+    <!--<div class="modal">-->
+        <!--<ion-header-bar>-->
+            <!--<h1 class="title">我的模型标题</h1>-->
+        <!--</ion-header-bar>-->
+        <!--<ion-content>-->
+            <!--Hello!-->
+        <!--</ion-content>-->
+    <!--</div>-->
+<!--</script>-->

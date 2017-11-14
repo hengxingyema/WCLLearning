@@ -1,0 +1,120 @@
+<!--收徒任务界面-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/js/social-share.min.js" ></script>-->
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/css/share.min.css" rel="stylesheet">-->
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">收徒任务</div>
+    <button class="button button-icon" onclick="location.reload()">
+        <img src="images/xiaoma/shape-1.png" style="width: 20px;height: 20px;margin-right: 8px;margin-top: -2px">
+    </button>
+
+</ion-header-bar>
+
+<ion-view style="font-family: PingFang-SC-Regular">
+    <ion-content style="background-color: #F5F5F5" overflow-scroll='true'>
+
+        <!--虚线框-->
+        <div class="dashed" style="height: auto;border-color: red">
+            <h4 style="color: red;font-size: 3.75vw;padding: 1px 8px;line-height: 5.125vw">本期：每个徒弟前20单任务，您都可获得0.5元，之后您将获得徒弟收益的10% (奖励自动到您账户)</h4>
+        </div>
+
+        <div class="row" style="margin-top: 15px;">
+            <div class="col col-54 item item-body">
+                <div class="list" style="margin-left: 20px">
+                    <p style="font-size: 9.5vw;color: #F43446;font-weight: 100">{{userInfoObject.apprenticeMoney.toFixed(2)}}</p>
+                    <p style="font-size: 3.43vw;color: #999999;margin-top: -19px;margin-bottom: 7px">累计学徒奖励</p>
+                </div>
+            </div>
+
+            <div class="col col-54 item item-body" >
+                <div class="list" style="margin-left: 15px">
+                    <p style="font-size: 9.5vw;color: #F43446">{{userInfoObject.apprenticeCount}}</p>
+                    <p style="font-size: 3.43vw;color: #999999;margin-top: -19px;margin-bottom: 7px">徒弟数量</p>
+
+                </div>
+            </div>
+        </div>
+
+        <ul class="list" style="margin-top: -5px">
+            <li class="item" style="color: #999999;font-size: 3.43vw;">
+                今日收徒 <span style="color: #F43446">{{userInfoObject.apprenticeCount}}</span> 名，合计奖励
+                <span style="color: #F43446">{{userInfoObject.apprenticeMoney.toFixed(2)}}</span> 元
+            </li>
+        </ul>
+
+        <div style="margin-top: 35px">
+            <div style="margin-left: 5%;">
+                <p style="font-size: 3.75vw">
+                    <span style="color: #F43446;">方法一：</span>
+                    <span style="color: #333333;">点击分享内容，邀请好友加入小马</span>
+                </p>
+                <p style="margin-top: -10px">
+                    <button class="button button-clear button-small" style="background-color: #49B4EC;width: 30%;">
+                        <img src="/images/xiaoma/qq.png" style="width: 18px;height: 18px;margin-right: 5px">
+                        <span style="font-size: 14px;color: #FFFFFF">QQ</span>
+                    </button>
+
+                    <button class=" button button-clear button-small" style="background-color: #EC6C49;width: 30%;">
+                        <img src="/images/xiaoma/webo.png" style="width: 18px;height: 18px;margin-right: 5px">
+                        <span style="color: #FFFFFF">微博</span>
+                    </button>
+                    <button class="button button-clear button-small" style="background-color: #4DCF3B;width: 30%;">
+                        <img src="/images/xiaoma/weChatTwo.png" style="width: 18px;height: 18px;margin-right: 5px">
+                        <span style="color: #FFFFFF">微信</span>
+                    </button>
+                </p>
+            </div>
+
+            <div style="margin-left: 5%;margin-top: 29px">
+                <p style="font-size: 3.75vw">
+                    <span style="color: #F43446;">方法二：</span>
+                    <span style="color: #333333;">长按下面图片保存，发送给好友</span>
+                </p>
+
+                <div id="qrcodeA" on-hold="onlod()"></div>
+            </div>
+
+            <div style="margin-left: 5%;">
+                <p style="font-size: 3.75vw">
+                    <span style="color: #F43446;">方法三：</span>
+                    <span style="color: #333333;">点击复制下面链接，发布到其他平台完成收徒</span>
+                </p>
+
+                <div class="selectable card" on-tap="copyUrl()" id="my_div_id" style="height: auto;padding: 10px 10px;margin-left: 1%;">
+                    <span style="font-size: 3.75vw;color: #333333;">{{inviteUrl}}</span>
+                </div>
+
+            </div>
+
+            <!--&lt;!&ndash;MOB SHARE BEGIN&ndash;&gt;-->
+            <div class="-mob-share-ui-button -mob-share-open ">分享</div>
+            <div class="-mob-share-ui mob-share-ui-theme -mob-share-ui-theme-slide-bottom" style="display: none;">
+                <ul class="-mob-share-list">
+                    <li class="-mob-share-weibo"><p>新浪微博</p></li>
+                    <li class="-mob-share-qzone"><p>QQ空间</p></li>
+                    <li class="-mob-share-qq"><p>QQ好友</p></li>
+                </ul>
+                <div class="-mob-share-close">取消</div>
+            </div>
+            <div class="-mob-share-ui-bg"></div>
+            <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=1a61c5a09d8f0"></script>
+            <!--MOB SHARE END-->
+
+            <!--MOB SHARE END-->
+
+            <div class="item-image" style="margin-top: 40px;margin-bottom: 50px">
+                <p><i class="ion-chatbubble-working" style="font-size: 6vw;color: #999999"></i> </p>
+                <div style="font-size: 4.37vw;color: #666666;text-decoration:underline;" ui-sref="enlighteningStrategy">
+                    查看收徒攻略
+                </div>
+            </div>
+
+            <div class="" style="margin-top: 20px;background-color: #f5f5f5;height: 20px"></div>
+
+        </div>
+    </ion-content>
+</ion-view>
+

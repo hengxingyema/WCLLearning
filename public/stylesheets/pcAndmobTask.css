@@ -1,0 +1,571 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/*页面头部部分样式*/
+.max{width:100%;height:auto;}
+.min{width:100px;height:auto;}
+
+
+.main{
+    margin-top: 90px;
+    margin-left: 5px;
+}
+
+
+.app-icon {
+    /*display: inline-block;*/
+    height:100px;
+    width: 100px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    vertical-align: top;
+}
+
+.media-body{
+    padding-left: 5px;
+}
+
+.task-name {
+    font-size: 24px;
+    margin-top: 6px;
+    color:#000000;
+}
+
+.app-id {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #7a7a7a;
+}
+
+.company {
+    font-size:16px;
+    margin-bottom: 8px;
+    color: #7a7a7a;
+    margin-left:40px;
+}
+
+.app-info {
+    font-size:14px;
+    color: white;
+    margin-top: 8px;
+
+}
+
+.button_type{
+    background-color: #79c3f7;
+    border: 1px solid #79c3f7 ;
+    border-radius:4px;
+    height:30px;
+    color: white;
+    font-size: 18px;
+    width: 70px;
+    text-align: center;
+}
+
+.button_rateUnitPrice{
+    /*background-color: #79c3f7;*/
+    /*border: 1px solid #79c3f7 ;*/
+    border-radius:4px;
+    height:30px;
+    color: red;
+    font-size: 18px;
+    width: 70px;
+    text-align: center;
+}
+
+.button_num{
+    background-color:white;
+    border: 1px solid #acddfe ;
+    border-radius:4px;
+    height:30px;
+    color: #acddfe;
+    font-size: 16px;
+    width: 110px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.button_surplus{
+    background-color:white;
+    border: 1px solid #acddfe ;
+    border-radius:4px;
+    height:30px;
+    color: #acddfe;
+    font-size: 16px;
+    width:110px;
+    margin-left:10px;
+    text-align: center;
+}
+
+/*需求截图APP信息样式*/
+
+.task-demand-info{
+    /*border: 1px solid #999999;*/
+    margin: 20px 16px;
+    border-radius: 8px;
+}
+
+.ion-item{
+    margin-top: 30px;
+}
+
+/*需求头部*/
+/*.cardicon{*/
+    /*position: absolute;*/
+    /*height:68px;*/
+    /*width:68px;*/
+    /*border: 0.1em solid #CCCCCC;*/
+    /*border-radius: 1em;*/
+    /*left:2em;*/
+
+/*}*/
+
+/*.cardtextright{*/
+    /*!*position: absolute;*!*/
+    /*!*right: 3%;*!*/
+    /*float: right;*/
+/*}*/
+
+/*.cardword{*/
+    /*margin-right: 15px;*/
+    /*font-size: 1.7em;*/
+    /*color: red;*/
+    /*margin-top: -30px;*/
+/*}*/
+
+/*.character {*/
+    /*width: 50%;*/
+    /*border: 0 solid black;*/
+    /*margin-left: 4.5em;*/
+    /*height: 2em;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    /*margin-top: -0.3em;*/
+/*}*/
+
+/*.typetitle{*/
+    /*font-size: 20px;*/
+    /*color:black;*/
+    /*margin-left:39px;*/
+    /*margin-top: 20px;*/
+/*}*/
+
+/*.cardplay{*/
+    /*margin-left: 105px;*/
+    /*margin-top: 15px;*/
+    /*float:left;*/
+    /*font-size:16px;*/
+    /*color:#999999;*/
+/*}*/
+
+/*.typelightgray{*/
+    /*font-size: 16px;*/
+    /*margin-top: 15px;*/
+    /*color:#cccccc;*/
+    /*float: right;*/
+    /*margin-right: -60px;*/
+/*}*/
+
+
+
+.color-mob{
+    /*margin: 10px 0px;*/
+}
+
+.appTrackName{
+    margin-top: 39px;
+}
+
+
+/*需求截图样式*/
+
+.capture {
+    border: 1px solid #cccccc;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px #cccccc;
+}
+
+.capture-info {
+    float: right;
+    font-size: 13px;
+    color: #b3b3b3;
+    margin-right: 16px;
+    margin-top: 6px;
+}
+
+.capture-top{
+    position: relative;
+    width: 78px;
+    height: 35px
+}
+
+.img-size {
+    width: 78px;
+    height: 30px;
+}
+
+.capture-tl {
+    position: absolute;
+    top: 5px;
+    left: 14px;
+    color: white;
+}
+
+.addTaskInfo {
+    /*line-height: 24px;*/
+    margin-left: 15px;
+    padding-bottom: 14px;
+    margin-top: 10px;
+}
+
+.task-claim {
+    font-size: 16px;
+    color: #666666;
+}
+
+.color-ramp {
+    font-size: 16px;
+    color: #67bdff;
+}
+
+.color-camera{
+    /*width: 31px;*/
+    /*height: 15px;*/
+    color: #fc7f6a;
+}
+
+.comment-top{
+    font-size: 14px;
+    color: #999999;
+}
+
+
+
+/*上传图片css样式*/
+.progress{
+    width: 94%;
+    margin-top: 10px;
+    margin-left:10px;
+}
+
+
+/*按钮美化*/
+
+.text-center{
+    font-size: 26px;
+    margin-left: 25px;
+}
+
+.screenshot{
+    border: 1px solid #e0e0e0;
+}
+
+.image-center img{
+    margin: 10px auto;
+}
+.submission-screenshot {
+    margin-left: 5%;
+}
+
+.submission-screenshot img{
+
+    border: 1px solid #e0e0e0;
+    width: 100px;
+    height: 150px;
+    object-fit: contain;
+
+}
+.cust1,.cust2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 94%;
+    height: 5%;
+    font-size: 24px;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: 2px solid #3498db;
+}
+.cust1 a{
+    text-decoration: none;
+}
+.text-right{
+    font-size: 18px;
+}
+/*需求截图PC端*/
+.needImg{
+    margin-bottom: 30px;
+}
+#screenShot{
+    /*background:url(/images/appDetail/screenshot-background.png);*/
+    width: 640px;
+    padding: 36px 54px 60px 30px;
+    margin: auto;
+    border: 1px solid #999999;
+    background-color: #00a5ff;
+    /*box-shadow:2px 2px 3px #aaaaaa;*/
+}
+.appicon{
+    display: inline-block;
+    margin: 0 26px 40px 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 20px
+}
+.trackName{
+    padding-left: 19px;
+}
+.trackName_one{
+    font-size: 24px;
+    color: #333333;
+    width: 330px;
+    margin-top: 10px
+}
+
+.taskType{
+    color: #ffffff; font-size: 20px;
+}
+.synwords{
+    color: #fff727;
+}
+
+.serach_app{
+    font-size: 20px; color: #ffffff;
+    list-style-position: inside;
+    padding:0;
+    margin:0;
+}
+
+.serach_app li{
+    margin-bottom: 30px;
+}
+
+.serach_app p{
+    margin-bottom: 20px;
+}
+
+.beizhu{
+    border: 1px solid #cdf1ff; font-size: 18px;
+    margin-top: 20px; margin-bottom: 70px;
+    padding: 18px 20px 18px 20px;"
+}
+
+.btn_primary{
+    margin-bottom: 30px;
+    background-color: #3498db;
+    color: white;
+    width: 95%;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+}
+
+.warning{
+    background-color: #eb3030;
+    border: 2px solid #eb3030;
+}
+
+.modal-dialog{
+    width: 50%;
+    height: 200px;
+    text-align: center;
+}
+
+.uploadname{
+    width: 80%;
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+
+
+
+@media (max-width: 768px){
+
+    .beizhu{
+        border: 1px solid #cdf1ff; font-size: 18px;
+        margin-top: 20px; margin-bottom:15px;
+        padding: 10px 10px 10px 10px;"
+    }
+
+    .modal-dialog{
+        width: 90%;
+        height: 200px;
+        text-align: center;
+    }
+    .uploadname{
+        width: 70%;
+        height: 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+    }
+    .media-body{
+        padding-left:5px;
+    }
+    .button_type{
+        background-color: #79c3f7;
+        border: 1px solid #79c3f7 ;
+        border-radius:2px;
+        height:20px;
+        color: white;
+        font-size: 10px;
+        width:40px;
+        padding: 0px;
+    }
+
+    .button_num{
+        background-color:white;
+        border: 1px solid #acddfe ;
+        border-radius:2px;
+        height:20px;
+        color: #acddfe;
+        font-size: 10px;
+        width:55px;
+        margin-left:4px;
+        text-align: center;
+        padding: 0px;
+    }
+    .button_surplus{
+        background-color:white;
+        border: 1px solid #acddfe ;
+        border-radius:2px;
+        height:20px;
+        color: #acddfe;
+        font-size: 10px;
+        width:60px;
+        margin-left:4px;
+        text-align: center;
+        padding: 0px;
+    }
+
+    .num{
+        text-decoration: none;
+        font-size: 10px;
+        color: #f55e5a;
+    }
+    .task-link {
+        font-size: 16px;
+        margin-top: 4px;
+        color:#000000;
+        margin-bottom: 0px;
+    }
+
+    .submit {
+        margin-right: 15px;
+    }
+
+    .text-center{
+        font-size: 26px;
+        margin-left: 10px;
+    }
+
+    .submission-screenshot{
+        margin-left: 2px;
+    }
+    .submission-screenshot img{
+
+        border: 2px solid #e0e0e0;
+        width: 100px;
+        height: 200px;
+        object-fit: contain;
+
+    }
+
+}
+
+
+
+@media screen and (min-width: 800px) and (max-width: 1800px){
+    .modal-dialog{
+        width: 50%;
+        height: 200px;
+        text-align: center;
+    }
+    .uploadname{
+        width: 80%;
+        height: 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+    }
+
+    .submission-screenshot{
+        margin-left: 20px;
+    }
+    .submission-screenshot img{
+
+        border: 2px solid #e0e0e0;
+        width: 320px;
+        height: 200px;
+        object-fit: contain;
+    }
+
+}
+.progress{
+    width: 94%;
+    margin-top: 10px;
+    margin-left:10px;
+}
+
+
+/*按钮美化*/
+.a-upload {
+    padding: 5px 10px;
+    width: 94%;
+    font-size: 24px;
+    line-height: 30px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    color:white ;
+    background:#3498db ;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    bottom: 10px;
+    /**zoom: 1*/
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 24px;
+    height: 80px;
+    width: 80px;
+    right: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+
+.a-upload:hover {
+    color: black;
+    background: #e0e0e0;
+    border-color: lightgray;
+    text-decoration: none
+}
+.submit{
+    margin-top: 30px;
+    margin-left: 35px;
+}
+.btn_primary{
+    margin-bottom: 30px;
+    background-color: #3498db;
+    color: white;
+    width: 95%;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+}
+
+.warning{
+    background-color: #eb3030;
+    border: 2px solid #eb3030;
+}

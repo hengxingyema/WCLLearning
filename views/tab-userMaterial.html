@@ -1,0 +1,95 @@
+<!--资料-->
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">资料</div>
+
+</ion-header-bar>
+
+<ion-view style="background-color: #F5F5F5;margin-top: 10px">
+
+    <ion-content style="">
+        <div class="list">
+            <div class="item material-img" style="font-size: 5vw;color: #666666;">
+                <span style="position: absolute;margin-top: 20px;margin-left: 5px">ID:&nbsp;{{temUserInfo.userCode}}</span>
+                <img ng-src="{{temUserInfo.userIcon}}" style="" ng-click="selectImg()">
+            </div>
+        </div>
+
+        <div class="list" style="margin-top: 12px" rj-close-back-drop>
+            <div class="item item-icon-left item-icon-right">
+                <div class="" ng-click="showPhoneConfirm('绑定手机号码')" rj-hold-active>
+                    <div class="" style="margin-left: -35px;font-size: 4.5vw;color: #666666;font-weight: 500">
+                        <span>手机</span>
+                        <span style="margin-left: 50px;color: #CCCCCC" ng-if="temUserInfo.phoneNumber == undefined || temUserInfo.phoneNumber == ''">未绑定</span>
+                        <span style="margin-left: 50px;color: #CCCCCC" ng-if="temUserInfo.phoneNumber != undefined || temUserInfo.phoneNumber != ''">{{temUserInfo.phoneNumber}}</span>
+                        <i class="ion-ios-arrow-right" style="color:#DDDDDD;margin-top: -4px;font-size: 8vw"></i>
+                    </div>
+                </div>
+
+                <hr style="width: 150%;margin-left: -35px">
+
+                <div class="" style="margin-left: -35px;font-size: 4.5vw;color: #666666;font-weight: 500" ng-click="showConfirm()" ng-hide="temUserInfo.aliAccount">
+                    <span>支付宝</span>
+                    <span style="margin-left: 34px;color: #CCCCCC">未绑定</span>
+                    <i class="ion-ios-arrow-right" style="color:#DDDDDD;margin-top: -4px;font-size: 8vw"></i>
+                </div>
+
+                <div class="" style="margin-left: -35px;font-size: 4.5vw;color: #666666;font-weight: 500" ng-show="temUserInfo.aliAccount">
+                    <span>支付宝</span>
+                    <span style="margin-left: 34px;color: #CCCCCC">{{temUserInfo.aliAccount}}</span>
+                    <i class="ion-ios-arrow-right" style="color:#DDDDDD;margin-top: -4px;font-size: 8vw"></i>
+                </div>
+
+                <hr style="width: 150%;margin-left: -35px">
+
+                <div class="" style="margin-left: -35px;font-size: 4.5vw;color: #666666;font-weight: 500" ng-click="showaliPayUserNameConfirm('绑定真实姓名')" ng-hide="temUserInfo.aliPayUserName">
+                    <span class="">姓名
+                        <span >
+                           <span style="margin-left: 50px;color: #CCCCCC;width: 100%"> 未绑定</span>
+                        </span>
+                        <i class="ion-ios-arrow-right" style="color:#DDDDDD;margin-top: -4px;font-size: 8vw"></i>
+                    </span>
+                </div>
+
+                <div class="" style="margin-left: -35px;font-size: 4.5vw;color: #666666;font-weight: 500" ng-show="temUserInfo.aliPayUserName">
+                    <span class="">姓名
+                        <span>
+                           <span style="margin-left: 50px;color: #CCCCCC"> {{temUserInfo.aliPayUserName}}</span>
+                       </span>
+                        <i class="ion-ios-arrow-right" style="color:#DDDDDD;margin-top: -4px;font-size: 8vw"></i>
+                    </span>
+                </div>
+
+                <hr style="width: 150%;margin-left: -35px">
+
+                <div class="">
+                    <a class="" style="margin-left: -35px;font-size: 4.5vw;color: #666666;font-weight: 500">
+                        微信（即将开放）
+                        <i class="ion-ios-arrow-right" style="color:#DDDDDD;margin-top: -4px;font-size: 8vw"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="list" style="margin-top: 5px">
+            <div class="item item-icon-left">
+                <i class="icon ion-android-warning" style="font-size: 25px;color: red"></i>
+                <p style="color: red">支付宝帐号和姓名绑定后无法修改</p>
+            </div>
+        </div>
+
+        <div class="list list-borderless" style="margin-top: 5px">
+            <div class="item item-text-wrap" style="background-color: #F5F5F5">
+                <button class="button button-full button-light" style="background-color: #4191FA;height: 60px;border-radius: 5px;color:#FFFFFF;font-size: 5vw" ng-click="submitMaterial()">
+                    提交
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,539 @@
+div,p{
+    margin: 0;
+    padding: 0;
+}
+
+.panel-recTask {
+    width: 624px;
+    height: 64px;
+    border-bottom: 1px solid #dbdbdb;
+    margin-bottom: 8px;
+}
+.panel-receivetask{
+    width: 612px;
+    height: auto;
+}
+.panel-receivetask span{
+    font-size: 20px;
+    margin-left: 10px;
+    color: #999999;
+
+
+}
+
+.cColor-a {
+    float: left;
+    margin-top: 30px;
+    font-size: 15px;
+    margin-left: 8px;
+}
+
+.cColor-b{
+    font-size: 13px;
+    color: #999999;
+    margin-top: 1px;
+    margin-left: 8px;
+}
+
+.d_add{
+    width: 620px;
+    height: 600px;
+  /*  display: inline-block;*/
+    margin-right:3px;
+    margin-bottom: 5px;
+    float: left;
+    background-color: #F9F9F9;
+    border: 1px solid #DBDBDB;
+}
+.data_sty{
+    font-size: 20px;
+    margin-top:10px;
+    margin-left: 23px;
+    color: #999999;
+
+}
+.receiveimg{
+    display: inline-block;
+    width: 32px;height: 32px;
+    border: 1px solid red;
+    border-radius: 4px;
+    margin-left: 10px;
+    line-height: 64px;
+
+}
+.bt_o{
+    margin-top: 15px;
+}
+.receivebtn{
+    background-color: #3498db;
+    color: white;
+    margin-left: 20px;
+    height: 36px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+/*"拒绝理由"中的 select下拉菜单*/
+.select_15{
+    margin:-3px  30px 0 -20px ;
+    height: 34px ;
+    width: 400px;
+    font-size: 14px;
+    color: #333333;
+    padding-left: 14px;
+    overflow: auto;
+
+}
+
+.receiveinfor div{
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.receiveinfor img{
+    width: 30%;
+    height: 400px;
+    object-fit: contain;
+    border: 1px  solid #e0e0e0;
+    margin-left: 14px;
+
+}
+.receive_btn{
+    margin-right: 30px;
+    font-size: 20px;
+}
+
+.receive_btn .reject{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 24px;
+    color: #f7aa58;
+    width: 100px;
+    border: 1px solid #f7aa58;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.receive_btn .noReject{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 24px;
+    color: #f7aa58;
+    width: 200px;
+    border: 1px solid #f7aa58;
+    border-radius: 4px;
+    background-color: white;
+}
+
+
+.receive_btn .receive{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 24px;
+    color: #3498db;
+    width: 100px;
+    border: 1px solid  #3498db;
+    border-radius: 4px;
+    background-color: white;
+
+}
+.receive_btn .reject2{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 24px;
+    color: white;
+    width: 100px;
+    border: 1px solid  #CC2222;
+    border-radius: 4px;
+    background-color: #CC2222;
+
+}
+
+.receive_btn .show1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: -24px;
+    color:white;
+    width: 100px;
+    border: 1px solid #53d435;
+    border-radius: 10px;
+    background-color: #53d435;
+}
+.receive_btn .show2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: -24px;
+    color:white;
+    width: 100px;
+    border: 1px solid #53d435;
+    border-radius: 10px;
+    background-color: #53d435;
+}
+
+.receive_btn .receive2{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 24px;
+    color: white;
+    width: 100px;
+    border: 1px solid  #53d435;
+    border-radius: 4px;
+    background-color: #53d435;
+
+}
+
+.btn_sure{
+    width: 80px;
+    background-color: #3498db;
+    color: white;
+    border: 1px solid  #3498db;
+    border-radius: 4px;
+
+}
+
+.icon1{
+    margin: 0;
+    border: 0;
+    background: #f4f4f4;
+    height: 50px;
+    padding-left:28px;
+    padding-top: 7px;
+}
+
+.selected{
+    margin: 0;
+    border: 0;
+    background: white;
+    height: 50px;
+    padding-left: 28px;
+    padding-top: 7px;
+}
+.se_1{
+    background-color:#FFFDFD;
+    color: #39cccc;
+    /* background-color: #0a9dc7;*/
+}
+.se_2{
+    background-color:#FFFDFD;
+    color:#6AB5B5;
+}
+.se_3{
+    background-color: #FFFDFD;
+    color:#319AC7;
+}
+.se_4{
+    background-color:#FFFDFD;
+    color: #D1B1F6;
+}
+
+.icon1 img{
+    width: 36px;
+    border: 1px solid #e0e0e0;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.icon1:hover{
+    background: white;
+}
+
+.icon1:active{
+    background: white;
+}
+
+.row{
+    overflow: hidden;
+
+}
+
+[class*=" change"]{
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+}
+
+h3{
+    margin-left: 40px;
+    font-size: 18px;
+    color: #999999;
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.checkDetail{
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #3498db;
+    color: #3498db;
+    font-size: 16px;
+    padding:0;
+    margin-left: 34px;
+}
+
+.checkDetail:hover{
+    border: 1px solid black;
+}
+
+.cancel{
+    width: 80px;
+    height: 25px;
+    background-color: transparent;
+    border: 1px solid #eb3030;
+    color: #eb3030;
+    font-size: 14px;
+    padding:0;
+}
+
+.cancel:hover{
+    border: 1px solid black;
+}
+
+.cancelled{
+    width: 80px;
+    height: 25px;
+    background-color: #9a9a9a;
+    border: 1px solid #9a9a9a;
+    color: white;
+    font-size: 14px;
+    padding:0;
+}
+
+.noRemain{
+    width: 80px;
+    height: 25px;
+    background-color: #3498db;
+    border: 1px solid #3498db;
+    color: white;
+    font-size: 14px;
+    padding:0;
+}
+
+
+.completed{
+    width: 80px;
+    height: 25px;
+    background-color: #00ee00;
+    border: 1px solid #00ee00;
+    color: white;
+    font-size: 14px;
+    padding:0;
+}
+
+.synwords{
+    color: #fff727;
+    font-size: 20px;
+}
+
+.oneTaskClose{
+    float: right;
+    font-size: 1.5em;
+    margin-top: -10px;
+    margin-right: 5px;
+    cursor: hand;
+}
+
+.oneTaskClose:hover{
+    color: #7a7a7a;
+}
+
+.taskStatus{
+    padding: 3px 5px 3px 5px;
+    font-size: 12px;
+    color: white;
+    border-radius: 4px;
+}
+
+
+/*才龙*/
+
+.modal-content {
+    width: 551px;
+    height: auto;
+}
+
+.task-appIcon-small {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    /*margin-top: 8px;*/
+    margin-left: 20px;
+  /*  margin-bottom: 10px;*/
+    margin-top: 26px;
+}
+
+.appTrackName {
+    font-size: 20px;
+    color: #333333;
+    margin-top: 25px;
+    margin-bottom: 6px;
+    width: 247px;
+    height: 30px;
+    margin-left: -40px;
+    white-space:nowrap;
+    word-break:keep-all;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.task-rateUnitPrice {
+    color: #F43446;
+    float: right;
+    margin-top: -45px;
+    margin-right: 25px;
+}
+
+.task-type {
+    font-size: 16px;
+    color: #3498DB;
+    margin-left: -40px;
+}
+
+.taskFormattedPrice {
+    float: right;
+    margin-top: -22px;
+    color: #999999;
+    font-size: 14px;
+    margin-right: 25px;
+}
+
+/*任务需求部分样式*/
+.task-demand {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.attach-criteria {
+    margin-bottom: 20px;
+}
+
+.needGet {
+    color: #FFFFFF;
+    border: 1px solid #A9C5E2;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 6px 10px;
+    background-color: #A9C5E2;
+    margin-top: 13px;
+}
+
+.demand {
+    border: 1px solid #E6E6E6;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+
+.demand-one {
+    margin-left: 15px;
+    margin-top: 17px;
+    margin-bottom: 16px;
+}
+
+.demand-gps {
+    font-size: 12px;
+    color: #F4B07A;
+}
+
+.demand-two {
+    font-size: 16px;
+    color: #666666;
+    margin-top: 5px;
+    margin-bottom: 6px;
+}
+
+.demand-vital {
+    color: #67BDFF;
+}
+
+.title-and-comment {
+    margin-left: 24px;
+    margin-top: 2px;
+    color: #4c4c4c;
+    font-size: 14px;
+
+    white-space: normal;
+    word-break:break-all;
+
+}
+
+.comment-top {
+    margin-left: 24px;
+    margin-top: 2px;
+    color: #999999;
+    font-size: 14px;
+}
+
+.title-and-comment-info {
+    color: #999999;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+/*修改*/
+.around{
+    /*height: 24px;*/
+    display: inline-block;
+    border-left: 1px solid #CCCCCC;
+
+    margin-left: 10px;
+}
+
+.user-custom {
+    font-size: 16px;
+    color: #666666;
+    margin-top: 5px;
+    white-space: normal;
+    word-break:break-all;
+
+}
+
+.color-ramp {
+    font-size: 16px;
+    color: #67bdff;
+}
+
+
+.task-top-info {
+    width: auto;
+    margin: 5px 0 19px 179px;
+}
+
+.task-img {
+    width:81px;
+    height:81px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-top: -78px;
+
+}
+
+.appTrack-name {
+  /*  margin-left:10px;*/
+    /*margin-bottom: 24px;*/
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333333;
+    width: 980px;
+    white-space:nowrap;
+    word-break:keep-all;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.mack-task-info {
+
+}
+
+.task-imgs {
+    width: 200px;
+    height: 365px;
+    margin-left: 3px;
+    margin-top: 10px;
+}
+.c_add{
+    font-size: 16px;
+    color:#8E8E8E;
+}
+

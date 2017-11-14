@@ -1,0 +1,114 @@
+<!--快速任务-->
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">快速任务</div>
+    <button class="button button-icon" onclick="location.reload()">
+        <img src="images/xiaoma/shape-1.png" style="width: 20px;height: 20px;margin-right: 8px;margin-top: -2px">
+    </button>
+
+</ion-header-bar>
+
+<ion-view style="background-color: #F5F5F5">
+
+    <ion-content style="">
+        <div class="list">
+            <a class="item item-avatar" style="height: 66px" ng-repeat="ongoing in ongoingTaskArray" href="#/quickTaskHall/quick/{{ongoing.taskId}}">
+                <img ng-src="{{ongoing.appIcon}}" style="width: 28.8vw;height: 28.8vw;border-radius: 8px;border: 1px solid #E5E4E3">
+                <p class="quickTask-A">搜索词：“{{ongoing.searchKeyword}}”</p>
+                <span style="margin-top: 3px">
+                    <span class="item-A" ng-if="ongoing.formattedPrice == undefined">免费</span>
+                    <span class="item-A" ng-if="ongoing.formattedPrice != undefined">付费</span>
+                    <!--<span class="item-A">有专属</span>-->
+                    <span class="item-A">剩余{{ongoing.remainCount}}份</span>
+                </span>
+                <span class="item-note" style="margin-top: -10px;margin-right: 10px;color: #00a5ff;font-size: 16px;font-weight: 500">
+                    进行中
+                </span>
+            </a>
+
+            <div class="item item-avatar" style="height: 66px" ui-sref="himselfApprentice">
+                <img src="/images/xiaoma/rectangle20.png" style="width: 28.8vw;height: 28.8vw;border-radius: 8px;border: 1px solid #E5E4E3">
+                <p class="quickTask-A">邀请好友</p>
+                <span style="margin-top: 3px">
+                    <span class="item-A">超高奖励</span>
+                    <span class="item-A">上不封顶</span>
+                </span>
+                <span class="item-note" style="margin-top: -20px;margin-right: 10px;color: #F43446;font-size: 10px">
+                    + <span style="font-size: 25px;font-weight: 500">10</span>元
+                </span>
+            </div>
+
+            <div class="item item-avatar" style="height: 66px" ng-repeat="quickTask in commentTasks" ng-click="getTheTask(quickTask.taskObjectId)">
+                <img ng-src="{{quickTask.appIcon}}" style="width: 28.8vw;height: 28.8vw;border-radius: 8px;border: 1px solid #E5E4E3">
+                <p class="quickTask-A">搜索词：“{{quickTask.searchKeyword}}”</p>
+                <span style="margin-top: 3px">
+                    <span class="item-A" ng-if="quickTask.formattedPrice == undefined">免费</span>
+                    <span class="item-A" ng-if="quickTask.formattedPrice != undefined">付费</span>
+                    <!--<span class="item-A">有专属</span>-->
+                    <span class="item-A">剩余{{quickTask.remainCount}}份</span>
+                </span>
+                <span class="item-note" style="margin-top: -20px;margin-right: 10px;color: #F43446;font-size: 10px">
+                    + <span style="font-size: 25px;font-weight: 500">{{quickTask.temUserUnitPrice}}</span>元
+                </span>
+            </div>
+
+            <!--测试模块 —— 测试和App的native http请求-->
+            <!--1.去小助手里获取用户信息 IDFA UUID 设备需要的信息-->
+            <!--2.抢到任务，发送信息给小助手（下次启动小助手时使用）-->
+            <!--3.抢到任务，每隔30s让小助手自动去里打开任务相关App-->
+            <!--4.领取任务奖励，小助手里看看有没有安装这个App，有没有打开过这个App-->
+            <!--5.粘贴字符串-->
+            <!--6.保存图片-->
+            <!--7.打开QQ/微信/新浪微博去分享 小马零花钱 的信息-->
+
+        </div>
+
+        <!--虚线框-->
+        <div class="dashed" style="height: auto">
+            <h4 style="color: #666666;font-size: 3.75vw;padding: 8px 20px;" ng-if="predictGetMoney > 0">任务即将开始,预计收益{{predictGetMoney}}元, 准时来抢</h4>
+            <h4 style="color: #666666;font-size: 3.75vw;padding: 8px 20px;" ng-if="predictGetMoney == 0 || predictGetMoney == undefined">任务即将开始,预计收益0元, 准时来抢</h4>
+        </div>
+
+        <div class="list" style="margin-top: 15px">
+            <div class="item item-avatar" style="height: 66px" ng-repeat="quickTask in aboutToStartTaskArray" ng-click="aboutToStartTask()">
+                <img src='images/xiaoma/detail.jpg' style="width: 28.8vw;height: 28.8vw;border-radius: 8px;border: 1px solid #E5E4E3">
+                <p class="quickTask-A">搜索词：{{quickTask.asoKey.substring(0, 1) + '***'}}</p>
+                <span style="margin-top: 3px">
+                    <!--<span class="item-A" ng-if="quickTask.formattedPrice == undefined">免费</span>-->
+                    <!--<span class="item-A" ng-if="quickTask.formattedPrice != undefined">付费</span>-->
+                    <span class="item-A">今日 {{quickTask.startHour}}:00</span>
+                    <span class="item-A">剩余{{quickTask.remainCount}}份</span>
+                </span>
+                <span class="item-note" style="margin-top: -20px;margin-right: 10px;color: #F43446;font-size: 10px">
+                    + <span style="font-size: 25px;font-weight: 500">{{quickTask.coltUserReceiveMoney}}</span>元
+                </span>
+            </div>
+        </div>
+
+        <div class="list" style="margin-top: 15px">
+            <!--每天已经完成的任务,显示灰色-->
+            <div class="item item-avatar" style="height: 66px" ng-repeat="complete in completeTasks">
+                <img ng-src="{{complete.appIcon}}" class="gray" style="width: 50px;height: 50px;border-radius: 8px;">
+                <p style="margin-top: -5px">
+                <p class="quickTask-A" style="color: #ADADAD">搜索词：“{{complete.searchKeyword}}”</p>
+                    <span style="margin-top: 3px">
+                        <span class="item-A" ng-if="complete.formattedPrice == undefined">免费</span>
+                        <span class="item-A" ng-if="complete.formattedPrice != undefined">付费</span>
+                        <span class="item-A">剩余{{complete.remainCount}}份</span>
+                    </span>
+                    <span class="item-note" style="margin-top: -13px;margin-right: 10px;font-size: 16px">
+                        已完成
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="" style="margin-top: 20px;background-color: #f5f5f5;height: 20px"></div>
+
+        <ion-infinite-scroll ng-if="commentloadHasMore == true" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+    </ion-content>
+
+</ion-view>

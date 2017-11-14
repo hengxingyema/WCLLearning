@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <title>野马运营</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <!--semantic ui css-->
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <!--js 和 dialog 冲突-->
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/javascripts/vendor/AngularJS/angular.min.js"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!--第三方 CSS JS-->
+    <link rel="stylesheet" href="../stylesheets/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="../stylesheets/myApp.css">
+    <link rel="stylesheet" href="../stylesheets/loading.css">
+    <link rel="stylesheet" href="/stylesheets/vendor/hover/hover-min.css">
+
+    <!--网站内部js-->
+    <script src="/javascripts/itunesApi.js"></script>
+    <script src="/javascripts/indexApp.js"></script>
+
+    <!--toast-->
+    <link href="/javascripts/vendor/toastr/toastr.css" rel="stylesheet"/>
+    <script src="/javascripts/vendor/toastr/toastr.js"></script>
+
+</head>
+<body ng-app="yemaWebApp">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">更新您的浏览器</a> 从而获得更好的体验.</p>
+<![endif]-->
+<div class="container" ng-controller="indexAppCtrl" style="width: 100%;" >
+    <!--导航-->
+    <th-nav></th-nav>
+</div>
+
+<div class="container">
+    <div class=" main_content"  ng-controller="itunesSearchControl" style="margin-left: -30px;">
+
+        <!--我的APP-->
+        <div class="add2">
+            <div class="list-group thumbnail_wrap"
+                 ng-click="selectedAppFunc(app)"
+                 ng-repeat="app in myApps"
+                 ng-class="{true: 'border'}[selectedApp == app]"
+                 style="border-radius: 6px;position: relative;">
+
+                <div class="add0">
+                    <img src="/images/doTask/close.png" class="close2"
+                         style="height:20px;width:20px;position: absolute;top:-13px;right:-15px;"
+                         ng-click="releaseBtnClick(app)" data-toggle="modal" data-target="#mymodal">
+
+                    <a href="">
+                        <img ng-src="{{ app.artworkUrl512 }}" class="img-responsive"  alt="App Icon" style="padding: 5px">
+
+                        <img src="/images/doTask/update.png" ng-show="selectedApp.isUpdated && app.appleId == selectedApp.appleId" class="img-responsive"  alt="New flag"
+                             style="position: absolute;top: -1px;left:-22px;width: 60px;height: 60px">
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;" >
+                <button class="btn_addApp" data-target="#addApp_modal" data-toggle="modal">
+                        <span class="glyphicon glyphicon-plus" style="font-size: 2em;">
+                        </span>
+                </button>
+            </div>
+        </div>
+
+        <!--解绑APP-->
+        <div class="modal fade" id="mymodal">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 360px;">
+                    <div class="modal-header" style="height: 74px;background-color:#6eb7e8;border-radius:4px;text-align: center">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×
+                            </span>
+                            <span class="sr-only">Close
+                            </span>
+                        </button>
+                        <h4 class="modal-title" style="font-size: 26px;color: #FFFFFF">确认解绑此应用吗?
+                        </h4>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="releaseMyApp()" >确认
+                        </button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+        <!--判断邀请人数-->
+        <div class="modal fade" id="invite" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="inviteLabel">
+                            你邀请人数不足
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        你需要邀请其他人才能继续添加新应用
+                        <button  class="alert alert-info Copy" id="alert-btn" ng-click="copyUrl()" role="alert"
+                                 data-placement="top" data-toggle="popover" data-content="复制成功!"
+                                 style="display: inline-block; margin-top: 35px;" >
+                            邀请好友体验野马,还可以获赠120Y币,点击复制邀请链接 :
+
+                            <input type="text" id="inviteUrlcopy" class="from-control" ng-model="inviteUrl">
+                        </button>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button   type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+        <!--添加APP-->
+        <div class="modal fade" id="addApp_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;
+                            </span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel" style="height: 24px">
+
+                        </h4>
+                    </div>
+                    <div class="modal-body" >
+                        <div class="col-lg-6 col-sm-12 input-group">
+                            <input type="text" class="form-control search_event" ng-model="searchKey" ng-keyup="keySearchApp($event)" placeholder="请搜索添加你需要发布任务的APP">
+                            <span class="input-group-btn">
+                         <button class="btn search_color" ng-click="searchApp()">
+                             <span class="glyphicon glyphicon-search">
+                             </span>
+                         </button>
+                   </span>
+                        </div>
+                        <!-- /input-group -->
+                        <div class="placehold-line">
+                            <div class="progress" ng-hide="!progressNum">
+                                <div ng-class="{'progress-bar': true, 'progress-bar-striped':true, active:true}" ng-style="{width: progressNum + '%'}">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning" role="alert" ng-hide="!isError">
+                                {{ errorMsg }}
+                            </div>
+
+                        </div>
+
+                        <div class="spinner" ng-hide="!isLoadingMyApp">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+
+
+                        <div class="media" ng-repeat="app in appResults" >
+                            <div class="media-left">
+                                <img class="media-object" ng-src="{{ app.artworkUrl512 }}" alt="App Icon">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading appName">{{ app.trackName.substr(0,10)+"..." }}</h4>
+                                <div class="media-info">
+                                    <p class="media-info-updateDate" ng-show="app.latestReleaseDate.length > 0">更新日期:{{ app.latestReleaseDate.substr(0,10) }}</p>
+                                    <p class="media-info-appId" style="margin-left: 0px">App Id:&nbsp;&nbsp;{{ app.appleId }}</p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <button  class=" button_bottom hvr-float-shadow" ng-click="chooseMyApp(app)" ng-hide="app.isMine">
+                                    确认绑定
+                                </button>
+                                <button  class="excedBtn">
+                                    已绑定
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+        <br>
+
+        <!--App详情-->
+        <div class="window1" ng-hide="myApps == undefined">
+
+            <div class="ui piled segment">
+                <h4 class="ui header">A header</h4>
+                <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+                <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint solet expetenda ne, his te phaedrum referrentur consectetuer. Id vix fabulas oporteat, ei quo vide phaedrum, vim vivendum maiestatis in.</p>
+
+
+            </div>
+
+            <!--APP 详细信息-->
+            <span style="font-size: 25px; color:black">{{ selectedApp.trackName.substr(0,30) }}</span>
+            <div style="margin-left: 28em;margin-top: 0.8em; margin-bottom: 0.5em;">
+                <p class="text1">价格: {{ selectedApp.formattedPrice }}
+                    <span class="text1" ng-show="selectedApp.latestReleaseDate.length > 0">更新日期:
+                        <span style="color: red; font-size: 14px">{{selectedApp.latestReleaseDate| date: 'yy/MM/dd'}}</span>
+                        <span class="text1">版本号: {{ selectedApp.version.substr() }}</span>
+                    </span>
+                </p>
+            </div>
+
+            <!--更新APP信息-->
+            <div style="margin-top: 2em;margin-left: 2em;">
+                <button class="add_app" ng-click="updateApp(selectedApp.appObjectId)"  data-toggle="modal" data-target="#updateApp">
+                    <span class="glyphicon glyphicon-repeat" style="color: #3498db" ></span>&nbsp;更新APP信息
+                </button>
+            </div>
+        </div>
+
+        <!--更新APP弹出窗口-->
+        <div class="modal fade" id="updateApp" >
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 400px;">
+                    <div class="modal-header" style="height:200px;border-radius:4px;text-align: center">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+
+                        <h4 class="modal-title"  style="font-size: 26px;text-align: center;margin-top: 50px">{{errorMsg}}</h4>
+                        <div class="spinner" ng-hide="!isLoadingApp" style="margin-top: 50px">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+        <div class="content1" style="">
+            <!--发布任务需求部分-->
+            <div class="switchmodel">
+                <form action="/myapp/task" method="post"  name="taskInfo">
+                    <input type="text" ng-show="0" name="appleId" value="{{selectedApp.appleId}}">
+                    <input type="text" ng-show="0" name="appObjectId" value="{{selectedApp.appObjectId}}">
+
+                    <!--框1, 不进行模板数据保存-->
+                    <div ng-class="{true:'k1',false:'k1-style'}[shadow]" id="float">
+                        <br><br>
+                        <p class="p">
+                            任务数量:
+                            <input type="number" ng-model="displayDemandTemplate.excCount" name="excCount" min="1" autocomplete="off"
+                                   ng-change="taskNumberChange()" required="required" id="userInputNum" onkeydown="if(event.keyCode==13)return false;"
+                                   style="margin-top: 20px; width: 100px; height:40px; border-radius: 5px;
+                                   border:1px solid #CCCCCC; text-align: center">&nbsp;条
+
+                            <span class="p1" ng-if="displayDemandTemplate.sendPlatform != '小马' || displayDemandTemplate.customTaskType == undefined">任务单价:{{displayDemandTemplate.excUnitPrice}}Y币</span>
+                            <span class="p1" ng-if="displayDemandTemplate.sendPlatform == '小马' && displayDemandTemplate.customTaskType != undefined">任务单价:{{displayDemandTemplate.customPrice}}Y币</span>
+                            <span class="p2">账户余额:&nbsp;&nbsp;&nbsp;{{usermoney}}Y币</span>
+
+                            <span ng-show="insufficientFund == true" class="pay-zhi" ng-click="jumppay()">
+                                充值
+                            </span>
+
+                            <input type="button" class="save-need" name="Submit" value="保存"
+                                   id="saveReportForm" onclick="saveAction()"
+                                   data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+
+                            <input type="button" class="b1" name="Submit" value="发布任务"
+                                   ng-click="canSendTask(displayDemandTemplate.excUnitPrice)"  ng-show="usermoney!==0"
+                                   id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                            <input type="button" class="b1-no" value="发布任务" disabled="true" ng-show="usermoney==0">
+                        </p>
+                    </div>
+
+                    <!--框2-->
+                    <div class="k2">
+                        <p style="font-size: 16px;color:#333333">任务类型
+                            <span class="p4">任务市场</span>
+                        </p>
+
+                        <div class="radone radio-inline" style="margin-left: -20px;">
+                            <input ng-hide="true" type="radio" ng-model="displayDemandTemplate.taskType" value="评论"
+                                   id="radoneInput" name="taskType" ng-click="calYCoin()" checked>
+
+                            <label for="radoneInput" style="border-bottom-left-radius: 4px;
+                                    border-top-left-radius: 4px;" >评论
+                            </label>
+                        </div>
+
+                        <div class="radone radio-inline" style="margin-left:-25px; ">
+                            <input ng-hide="true" type="radio" value="下载" ng-model="displayDemandTemplate.taskType"
+                                   id="radtwoInput" name="taskType" ng-click="calYCoin()"/>
+
+                            <label for="radtwoInput" style="border-bottom-right-radius: 4px;
+                                    border-top-right-radius: 4px; ">下载
+                            </label>
+                        </div>
+
+                        <!--超级用户权限-->
+                        <div ng-if="isManager == 1" class="radone radio-inline" style="margin-left: -20px;">
+                            <input ng-hide="true" type="radio" ng-model="displayDemandTemplate.sendPlatform" value="野马"
+                                   id="sendPlatformYema" name="sendPlatform" ng-click="calYCoin()" checked>
+
+                            <label for="sendPlatformYema" style="border-bottom-left-radius: 4px;
+                                    border-top-left-radius: 4px;" >野马
+                            </label>
+                        </div>
+
+                        <div ng-if="isManager == 1" class="radone radio-inline" style="margin-left:-25px; ">
+                            <input ng-hide="true" type="radio" value="小马" ng-model="displayDemandTemplate.sendPlatform"
+                                   id="sendPlatformSmallHorse" name="sendPlatform" ng-click="calYCoin()"/>
+
+                            <label for="sendPlatformSmallHorse" style="border-bottom-right-radius: 4px;
+                                    border-top-right-radius: 4px; ">小马
+                            </label>
+                        </div>
+
+                        <div class="radone" radio-inline style="float:right;margin-right: 562px;margin-top: 0px; ">
+                            <input ng-hide="true" type="radio" name="radio2" id="radthreeInput" value="3"  checked/>
+                            <label  for="radthreeInput" style="border-radius: 4px">IOS</label>
+                        </div>
+                    </div>
+
+                    <div ng-if="displayDemandTemplate.sendPlatform == '小马'">
+                        <p class="xiaoma" style="margin-top: -40px">
+                            <br><br>自定义任务类型
+                        </p>
+                        <p class="xiaoma">
+                            <input type="text"  name="customTaskType" ng-model="displayDemandTemplate.customTaskType"
+                                   style="width: 130px;height: 34px; border-radius: 4px;border:1px solid #CCCCCC;" onkeydown="if(event.keyCode==13)return false;">
+                        </p>
+                    </div>
+
+                    <!--特殊需求任务-->
+                    <div ng-if="displayDemandTemplate.sendPlatform == '小马' && displayDemandTemplate.customTaskType != undefined">
+                        <div class="k3">
+                            <div style="margin-left: 40px;">
+                                <br>
+                                <p style="margin-top: 10px;"><br><br>自定义任务价格</p>
+                                <p>
+                                    <input type="text" required="required" name="customPrice" ng-model="displayDemandTemplate.customPrice"
+                                           style="width: 100px;height: 34px; border-radius: 4px;border:1px solid #CCCCCC;" onkeydown="if(event.keyCode==13)return false;">元
+                                    <span style="font-size: 14px;color: red;margin-left:30px">*填写实际用户得到的价格</span>
+                                </p>
+                                <br>
+                                <p>自定义任务所需图片个数</p>
+
+                                <p>
+                                    <input type="number" name="captureCount" style="text-align:center; width: 60px; height: 34px;
+                                        border-radius: 3px; border:1px solid #CCCCCC;" required="required" autocomplete="off" onkeydown="if(event.keyCode==13)return false;"/>
+                                </p>
+                                <br>
+
+                            </div>
+                        </div>
+                        <!--框4-->
+                        <br>
+
+                        <div class="k4">
+                            <div style="margin-left: 40px;" ><br>
+                                <p style="margin-top:-10px;">自定义任务对文字的需求（可以多个）<br><br></p>
+                                <input name="addTag" type="button" value="添加" ng-click="addTags()"/>
+                            </div>
+
+                            <div id="inputTagsOne"></div>
+                            <div id="inputTagsTwo"></div>
+                            <div id="inputTagsThree"></div>
+                        </div>
+
+                        <div class="download" style="margin-bottom: 40px;">
+                            <br>
+
+                            <div class="k5">
+
+                                <div style="margin-left: 40px;"><br>
+                                    <p style="margin-top: 10px;">任务自定义备注需求<br><br></p>
+
+                                    <p>
+                                        <textarea name="extraDemands" ng-model="displayDemandTemplate.extraDemands" class="task-input3" autocomplete="off" ></textarea>
+
+                                    </p>
+                                    <br>
+
+                                </div>
+                            </div>
+
+
+                            <!--框6-->
+                            <br>
+                            <p class="t1">其他</p>
+                            <div class="k6">
+                                <div style="margin-left: 35px;font-size: 18px"><br>
+                                    <h4 style="margin-right: auto">自定义任务需求</h4>
+
+                                    <textarea name="detailRem" ng-model="displayDemandTemplate.detailRem" class="input-task"
+                                              autocomplete="off">
+
+                                    </textarea>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--框3-->
+
+                    <div ng-if="displayDemandTemplate.customTaskType == undefined" style="margin-top: 30px;">
+
+                        <p class="t1">截图一</p>
+
+                        <div class="k3">
+                            <img  class="img01" src="/images/doTask/head1.png"/>
+                            <div style="margin-left: 40px;">
+                                <br>
+                                <p style="margin-top: 10px;">*必须为有卡机<br><br>搜索关键词</p>
+                                <p>
+                                    <input type="text" ng-model="displayDemandTemplate.searchKeyword" name="searchName" autocomplete="off"
+                                           maxlength="12" ng-blur="getKeyAsoRank()" ng-focus="focuskey()" onkeydown="if(event.keyCode==13)return false;"
+                                           style="width: 300px;height: 34px; border-radius: 4px;border:1px solid #CCCCCC;" required="required">
+                                </p>
+                                <br>
+                                <p>排名
+                                    <span class="glyphicon glyphicon-question-sign"  data-placement="top"
+                                          data-toggle="popover"
+                                          data-content="40-50 1Y币,50名后,每多2名增加1Y币,最多200名"
+                                          id="glyphicon"
+                                          ng-click="addApp('glyphicon')"
+                                          style="font-size:0.8em">
+                                </span>
+                                <p>
+                                <div ng-show="getAsoRanking==1" class="ui active inline loader"></div>
+                                <input ng-show="getAsoRanking != 1" type="number" min=1 max=200 ng-model="displayDemandTemplate.ranKing" name="asoRank"
+                                       style="text-align:center; width: 60px; height: 34px; border-radius: 3px;
+                                       border:1px solid #CCCCCC;"  id="mytext1" ng-change="calYCoin()" onkeydown="if(event.keyCode==13)return false;"
+                                       required="required" autocomplete="off" />
+
+                                <span style="margin-left: 15px; font-size: 15px; color: black;">位</span>
+
+                                <button ng-show="getAsoRanking == -1" class="ui primary button"> 获取排名 </button>
+
+                                <button disabled class="b4" style="margin-left:310px;"
+                                        ng-show="rankExtraYCoin > 0"
+                                >+{{rankExtraYCoin}}Y币
+                                </button>
+
+                                <span class="alert alert-danger" role="alert" ng-show="displayDemandTemplate.ranKing > 200">排名不能超过200</span>
+                                </p>
+                                <br>
+                                <div class="checkbox"  >
+                                    <label>
+                                        <input type="checkbox" name="needGet" ng-model="displayDemandTemplate.needGet" ng-true-value=true ng-false-value=false
+                                               id="box1" ng-click="needGetCheck($event)" onkeydown="if(event.keyCode==13)return false;">
+                                        必须获取标志
+                                        <span style="color:orange;font-weight: 400;    font-size: 14px;">&nbsp;*首次下载</span>
+                                    </label>
+                                    <button disabled  ng-show="displayDemandTemplate.needGet == true" class="b4" style="margin-left:300px;">+5Y币</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--框4-->
+                        <br>
+                        <p class="t1">截图二</p>
+                        <div class="k4">
+                            <img  class="img02" src="/images/doTask/head2.png"/>
+                            <div style="margin-left: 40px;" ><br>
+                                <p style="margin-top:10px;">*必须跳过引导页,不支持手机号注册需求<br><br>注册方式</p>
+                                <div class="radone radio-inline" style="margin-left: -20px;">
+                                    <input ng-hide="true" type="radio" ng-model="displayDemandTemplate.registerStatus"
+                                           value="noNeed" id="rad4Input" ng-click="registerMethod('noNeed')" onkeydown="if(event.keyCode==13)return false;"
+                                           name="registerStatus"  checked/>
+
+                                    <label for="rad4Input" style="border-bottom-left-radius: 4px;border-top-left-radius: 4px;">不需注册</label>
+                                </div>
+                                <div class="radone radio-inline" style="margin-left: -25px;">
+                                    <input ng-hide="true" type="radio" ng-model="displayDemandTemplate.registerStatus" onkeydown="if(event.keyCode==13)return false;"
+                                           value="third" id="rad5Input" ng-click="registerMethod('third')" name="registerStatus">
+                                    <label for="rad5Input" >第三方注册</label>
+                                </div>
+
+                                <button disabled class="b4" style="margin-left:163px;"
+                                        ng-show="displayDemandTemplate.registerStatus == 'third'">+2Y币
+                                </button>
+
+                            </div>
+                        </div>
+                        <!--<div ng-show="down"><br><br></div>-->
+                        <!--框5-->
+                        <div class="download" style="margin-bottom: 40px;">
+                            <br>
+                            <div ng-if="displayDemandTemplate.taskType != '下载'">
+                                <p class="t1">截图三</p>
+                                <div class="k5">
+                                    <img class="img03" src="/images/doTask/head3.png"/>
+                                    <div style="margin-left: 40px;"><br>
+                                        <p style="margin-top: 10px;">*评论页无键盘,单人领取单条任务无需流量标志<br><br>评分</p>
+
+                                        <div class="radone radio-inline" style="margin-left: -20px;">
+                                            <input ng-hide="true" type="radio" value = 5 ng-model="displayDemandTemplate.Score" onkeydown="if(event.keyCode==13)return false;" id="radsevenInput" name="radio4" checked/>
+                                            <label for="radsevenInput" style="border-bottom-left-radius: 4px;border-top-left-radius: 4px;">5星</label>
+                                        </div>
+
+                                        <div class="radone radio-inline" style="margin-left:-25px; ">
+                                            <input ng-hide="true" type="radio" value = 4 ng-model="displayDemandTemplate.Score" onkeydown="if(event.keyCode==13)return false;" id="radeightInput" name="radio4" />
+                                            <label for="radeightInput" style="border-bottom-right-radius: 4px;border-top-right-radius: 4px; ">4星</label>
+                                        </div>
+
+                                        <p><br>标题关键词</p>
+
+                                        <p>
+                                            <input type="text" name="reviewTitleKey" ng-model="displayDemandTemplate.titleKeyword" maxlength="20" onkeydown="if(event.keyCode==13)return false;"
+                                                   style="padding-left: 10px;font-size: 14px;" class="input1" autocomplete="off" placeholder="请输入小于20字符" >
+
+                                            <span ng-bind="displayDemandTemplate.titleKeyword.length+0"
+                                                  style="margin-left:15px;color:#00b7ff;
+                                          font-size: 14px;">
+
+                                    </span>/20<br><br>
+                                            <span  style="color:#adadad;font-size: 16px;">必选</span>&nbsp;
+
+                                            <input type="text" ng-model="displayDemandTemplate.reviewMustTitleKey" name="reviewMustTitleKey" ng-change="calYCoin()" onkeydown="if(event.keyCode==13)return false;"
+                                                   style="padding-left: 4px;" maxlength="5" autocomplete="off" placeholder="请输入小于6字符" >
+
+                                            <button disabled class="b4" style="margin-left:234px;"
+                                                    ng-show="displayDemandTemplate.reviewMustTitleKey.length > 0"
+                                            >+1Y币
+                                            </button>
+                                        </p><br>
+
+                                        <p>评论关键词<br><br>
+                                            <textarea name="reviewContentKey" class="input3" rows="1" maxlength="40"
+                                                      ng-model="displayDemandTemplate.commentKeyword"
+
+                                                      placeholder="请输入小于40字符" autocomplete="off" style="font-size:14px;padding-left: 4px;margin-top: -10px;" >
+                                        </textarea>
+                                            <span ng-bind="displayDemandTemplate.commentKeyword.length+0"
+                                                  style="margin-left:15px;color:#00b7ff;font-size: 14px;">
+
+                                        </span>/40<br><br>
+
+                                            <span style="color:#adadad;font-size: 16px;">必选</span>
+                                            <input type="text" ng-model="displayDemandTemplate.reviewMustContentKey" ng-change="calYCoin()"
+                                                   maxlength="5" placeholder="请输入小于6字符" autocomplete="off" onkeydown="if(event.keyCode==13)return false;"
+                                                   name="reviewMustContentKey" class="field" style="margin-left:14px;padding-left: 4px;">
+
+                                            <button disabled class="b4" style="margin-left:229px;"
+                                                    ng-show="displayDemandTemplate.reviewMustContentKey.length > 0">+1Y币
+                                            </button>
+                                        </p><br>
+
+                                        <div class="checkbox" style="padding-bottom: 20px">
+                                            <label>
+                                                <input type="checkbox" ng-model="displayDemandTemplate.needMoreReviewContent" ng-true-value=true ng-false-value=false
+                                                       name="needMoreReviewContent"  id="box2" ng-click="commentOver50($event)" onkeydown="if(event.keyCode==13)return false;">
+                                                评论需满50字
+                                                <button disabled ng-show="displayDemandTemplate.needMoreReviewContent == true"
+                                                        class="b4" style="margin-left:305px;">+3Y币
+                                                </button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--框6-->
+                            <br>
+                            <p class="t1">其他</p>
+                            <div class="k6">
+                                <div style="margin-left: 35px;font-size: 18px"><br>
+                                    <h4 style="margin-right: auto">备注(特殊要求非官方认可):
+                                        <span class="glyphicon glyphicon-question-sign"  data-placement="top"
+                                              data-toggle="popover"
+                                              data-content="为了提高大家换评的效率和公平性，野马暂不支持任何非标准的评论要求。
+                                          如果您在备注中填写了特殊需求，是否完成此需求，完全取决于领取人。
+                                          如您拒绝，我们会按照标准的评论截图要求作出仲裁，请您理解。"
+                                              id="glyphicon1"
+                                              ng-click="addApp('glyphicon1')"
+                                              style="font-size:0.8em">
+                                </span>
+                                    </h4>
+
+                                    <textarea name="detailRem" class="input3" rows="10" maxlength="40" ng-change="remarkChange()"
+                                              ng-model="displayDemandTemplate.detailRem" autocomplete="off"
+                                              placeholder="请在备注中填写您的对评论要求的解释，但请不要增加非野马标准的要求。例如：手机注册、发布一条信息流、截取特殊界面的打开图等等均不支持"
+                                              style="font-size:14px;padding: 6px;height: 70px;">
+                                </textarea>
+                                    <span ng-bind="displayDemandTemplate.detailRem.length+0"
+                                          style="margin-left:15px;color:#00b7ff;font-size: 14px;">
+                               </span><span style="font-size: 14px;color:black;">/40 </span><br><br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--充值界面,余额不足    -->
+                        <div class="modal fade" id="releaseTaskApp" >
+
+                            <div class="modal-dialog" style="z-index: 3;margin-left: 35%;margin-top: 170px;"  >
+                                <div class="modal-content" style="width: 400px;">
+                                    <div class="modal-header" style="height:70px;border-radius:4px;text-align: center;background-color: #f3914c;">
+
+                                        <h4 class="modal-title" style="text-align: center;color: white;font-size: 22px;margin-top: 0px;">发布失败 </h4>
+                                        <div class="modal-body" style="background-color: white;width:398px;margin-left: -15px;margin-top: 10px;height:130px;
+                                    border-bottom-right-radius: 4px;border-bottom-left-radius: 4px;">
+                                            <span style="font-size: 22px;color: #f3914c;line-height: 28px;"> {{errorMsg}}</span>
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                                    style="position: absolute;right:15px;bottom:10px;width:80px;">关闭
+                                            </button>
+
+                                            <input type="button" class="btn" style="background-color: #f3914c;position: absolute;bottom: 10px;right:100px;color: white;width:80px;"
+                                                   value="充值" ng-click="jumppay()"/>
+
+                                        </div>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+
+                        <!--未被领取任务大于2-->
+                        <div class="modal fade" id="releaseTaskApp2" >
+                            <div class="modal-dialog" style="z-index: 3;margin-left: 35%;margin-top: 170px;"  >
+                                <div class="modal-content" style="width: 400px;">
+                                    <div class="modal-header" style="height:70px;border-radius:4px;text-align: center;background-color: #f3914c;">
+
+                                        <h4 class="modal-title" style="text-align: center;color: white;font-size: 22px;margin-top: 0px;">发布失败 </h4>
+                                        <div class="modal-body" style="background-color: white;width:398px;margin-left: -15px;margin-top: 10px;height:150px;
+                                    border-bottom-right-radius: 4px;border-bottom-left-radius: 4px;">
+                                            <span style="font-size: 20px;color: #f3914c;line-height: 28px;"> {{errorMsg}}</span>
+
+
+                                            <button type="button" class="btn btn-calm" data-dismiss="modal"
+                                                    style="position: absolute;right:15px;bottom:10px;width:80px;">确定
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                    </div>
+
+                    <!--Modal发布任务弹窗-->
+                    <div class="modal fade" id="releaseTaskApp1" >
+
+                        <div class="modal-dialog" style="z-index: 3;margin-left: 35%;margin-top: 170px;" >
+                            <div class="modal-content" style="width: 400px;">
+                                <div class="modal-header" style="height:70px;border-radius:4px;text-align: center;background-color: #6eb7e8;">
+                                    <h4 class="modal-title" style="text-align: center;color: white;font-size: 22px;margin-top: 0px;">确认发布?</h4>
+                                    <div class="modal-body" style="background-color: white;width:398px;margin-left: -15px;margin-top: 10px;height:140px;
+                                    border-bottom-right-radius: 4px;border-bottom-left-radius: 4px;">
+                                        <p style="margin-top: 10px;" >
+                                            <span style="font-size: 15px;position: absolute;left:8%;">任务数量:
+                                                <span style="color: #6eb7e8;font-size: 17px">&nbsp;&nbsp;{{displayDemandTemplate.excCount}}</span>
+                                            </span>
+
+                                            <span style="font-size: 15px;position: absolute;left:47%;" ng-if="displayDemandTemplate.sendPlatform != '小马' && displayDemandTemplate.customTaskType == undefined">任务单价:
+                                                <span style="color: #6eb7e8;font-size: 17px">&nbsp;&nbsp;{{displayDemandTemplate.excUnitPrice}}</span>
+                                            </span>
+
+                                            <span style="font-size: 15px;position: absolute;left:47%;" ng-if="displayDemandTemplate.sendPlatform == '小马' && displayDemandTemplate.customTaskType != undefined">任务单价:
+                                                <span style="color: #6eb7e8;font-size: 17px">&nbsp;&nbsp;{{displayDemandTemplate.customPrice}}</span>
+                                            </span>
+                                            <br>
+                                        </p>
+
+                                        <span class="modal-ol" style="font-size: 15px;position: absolute;left:8%;">App版本号:
+                                            <span style="color: black;font-size: 17px;">&nbsp;&nbsp;{{selectedApp.version.substr()}}</span>
+                                        </span>
+
+                                        <span class="modal-ol" style="font-size: 15px;position: absolute;right:-45px">App更新日期:
+                                            <span style="color: black;font-size: 17px;">&nbsp;&nbsp;{{selectedApp.latestReleaseDate.substring(0, 10)}}</span>
+                                        </span><br>
+
+                                        <button class="submint-task" onclick="closefun()">确认发布</button>
+
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" style="position: absolute;right:15px;bottom:10px;">
+                                            关闭
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--视频窗口-->
+        <div class="modal fade" id="releaseTaskVideo" style="padding: 0px; margin: 0px; position: absolute;top:50px;left: 200px">
+            <div class="modal-dialog" style="display: table-cell;vertical-align: middle;">
+                <div class="modal-content"style="width:960px;height:550px;padding: 0px;margin: 0px">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="releaseTaskVideo()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <video src="http://ac-rbmsnntf.clouddn.com/38619ca1e128a89631c2.mp4" controls="controls" id="release" preload style="width:960px;height:500px;">
+                            您的浏览器不支持 video 标签。
+                        </video>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- releaseTaskVideo-->
+        <!--触发视频-->
+        <button class="release2"  data-target="#releaseTaskVideo" data-toggle="modal"></button>
+    </div>
+
+</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260580187'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260580187' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+<script src="/javascripts/cookieHelper.min.js"></script>
+</html>

@@ -1,0 +1,993 @@
+/*APP介绍*/
+.introduce {
+    border-bottom-right-radius: 19px;
+    border-bottom-left-radius: 19px;
+    width: 38px;
+    height: 120px;
+    background-color: #66cccc;
+    position: absolute;
+    right: 10%;
+    top: 3.5em;
+    line-height: 1.2em;
+    border: 0px;
+    color:white;
+    font-size: 14px;
+}
+.welcome {
+    color: white;
+    font-size: 28px;
+    position: absolute;
+    left:25%;
+    top:15px;
+}
+.welcome-de{
+    font-size: 16px;
+    color:#fff1dd;position: absolute;
+    left:40%;
+    top:60px;
+
+}
+.orange-frame{
+    background-color: #fff1dd;
+    height:50px;
+    width:810px;
+    margin-left: 20px;
+}
+.orange-frame-word{
+font-size: 18px;
+    color:#f35261;
+    margin-left: 30px;
+   line-height: 50px;
+}
+.word-Q{
+    background-color: #f35261;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    margin-left: 45px;
+}
+.detail-head{
+    font-size: 16.5px;
+    color: #333333;
+    margin-left: 6px;
+}
+.detail-frame{
+    padding: 10px;
+    margin-left: 40px;
+}
+.detail-text{
+    margin-left: 30px;
+    font-size: 13px;
+    color:#666666;
+    padding: 7px;
+    border-left:2px solid #dedede;
+    line-height: 150%;
+}
+/*添加APP*/
+.add{
+    margin-top: -30px;
+    margin-left: -80px;
+    /*width:1400px;*/
+    min-height: 100px;
+    height:auto !important;
+    height:100px;
+    border-bottom: 1px solid#CCCCCC;
+}
+
+.btn_addApp{
+    margin-left: 30px;
+    border: 3px dashed #e0e0e0;
+    margin-top:10px;
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.add2{
+    border:0px solid black;
+    margin-left: 130px;
+    /*width: 1100px;*/
+}
+/*关闭键*/
+
+.card img.close2{
+    display:none;
+
+}
+.card:hover img.close2{
+    display:block;
+}
+
+.list-group{
+    margin-top: 0px;
+    /*border: 1px solid #e0e0e0;*/
+    /*box-shadow: 1px 1px 1px #e0e0e0;*/
+    height: 86px;
+    width: 86px;
+    float:left;
+    border-radius: 6px;
+    margin-left: 42px;
+
+}
+.list-group img{
+    border: 0px solid #dbdbdb;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+}
+/*标签页点击后样式*****************/
+.b30 {
+    width: 350px;
+    border: 0px;
+    height:50px;
+    font-size: 20px;
+    background:white;
+}
+.b30:active{
+    color:#5a94ec;
+    width:350px;
+    border: 0px;
+    font-size: 20px;
+    border-bottom: 2px solid#5a94ec;
+}
+/*窗口详情*/
+.window1{
+    height: 170px;
+    text-align: center;
+}
+.text1{
+
+    margin-left: -350px;
+    color:#999999;
+    font-size: 15px;
+}
+.text2{
+    margin-top: -28px;
+    margin-left:310px;
+    color:#999999;
+    font-size: 15px;
+}
+/*标签变色*/
+
+
+
+/*标签页*/
+
+.nav-tabs{
+    margin-top: -50px;
+    text-align: center;
+}
+.content1{
+    position: absolute;
+    left:0px;
+    width:1370px;
+    background-color: #f5f5f5;
+}
+div#hello {
+    background-color: white;
+    position: fixed;
+    top: 30px;
+    height: 80px;
+    width: 1400px;
+    z-index: 99;
+    display: none;
+}
+/*radio样式*/
+.radone label {
+    display: block;
+    width: 80px;
+    height: 34px;
+    border: 1px solid #999999;
+    cursor: pointer;
+    z-index: 1;
+    background: white;
+    color:#999999;
+    line-height: 30px;
+    text-align: center;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.radone input[type=radio]:checked + label {
+    line-height: 30px;
+    text-align: center;
+    background: #365164;
+    color:white;
+}
+.radtwo input[type=radio]:checked + label {
+    background: #365164;
+    color:white
+}
+.radthree input[type=radio]:checked + label {
+    background: #365164;
+    color:white
+}
+.rad4 input[type=radio]:checked + label {
+    background: #365164;
+    color:white
+}
+.rad5 input[type=radio]:checked + label {
+    background: #365164;
+    color:white
+}
+.rad6 input[type=radio]:checked + label {
+    background: #365164;
+    color:white
+}
+.radseven input[type=radio]:checked + label {
+    background: #365164;
+    color:white
+}
+.radeight input[type=radio]:checked + label {
+    background: #365164;
+    color:white
+}
+/*框1*/
+.k1{
+    z-index: 1;
+    height: 70px;
+    width:77.1%;
+    margin-left: 20px;
+    background-color: white;
+}
+
+.k1-style{
+    /*z-index: 9999;*/
+    height: 70px;
+    width:77.1%;
+    box-shadow:0 3px 4px #b2b2b2;
+    background-color: white;
+}
+
+.p{
+    margin-top: -45px;
+    font-size: 20px;
+    /*margin-top: 15px;*/
+    margin-left: 70px;
+}
+.p1 {
+    font-size: 20px;
+    color: #fb8545;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.p2{
+    margin-top: 5px;
+    margin-left: 30px;
+    font-size: 20px;
+    color: black;
+}
+
+.save-need {
+    margin-left: 20px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #3498db;
+    height:40px;
+    color: #3498db;
+}
+
+.b1{
+    margin-left: 16px;
+    width: 120px;
+    color:white;
+    border-radius: 5px;
+    background-color: #3498db;
+    border: 0px;
+    height:40px;
+}
+.b1-no{
+    margin-left: 16px;
+    width: 120px;
+    color:white;
+    border-radius: 5px;
+    background-color: #d1e0f5;
+    border: 0px;
+    height:40px;
+
+}
+.pay-zhi {
+    color: #5a94ec;
+    margin-left: 10px;
+    margin-top: -5px;
+    border: 1px solid #5a94ec;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+/*框2*/
+.k2{
+    margin-left: 160px;
+    margin-top: 20px;
+}
+.p3{
+
+}
+.p4{
+    font-size: 16px;
+    color: #333333;
+    margin-left: 500px;
+}
+.p5{
+
+    margin-left:100px;
+font-size: 14px;
+    color:#333333;
+}
+.b02{
+    width: 80px;
+    height: 34px;;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    color:white;
+    background-color: #365164;
+    border: 1px solid #365164;
+}
+.b002{
+      width: 84px;
+      height: 34px;
+      color:white;
+      background-color: #e0e0e0;
+      border: 1px solid #e0e0e0;
+}
+.b2{
+    width: 80px;
+    height: 34px;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    background-color: white;
+    color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    margin-left: -5px;
+}
+.b3{
+    margin-top: -80px;
+    margin-left: 260px;
+    color:white;
+    background-color: #365164;
+    border: 1px solid #365164;
+    width: 80px;
+    height: 34px;
+    border-radius: 4px;
+}
+/*框3*/
+.img01{
+    float: right;
+    margin-top: 30px;
+    height: 260px;
+    margin-right: 100px;
+}
+
+
+
+.b4{
+    height:26px;
+    background-color: #a9c5e2;
+    border-radius:13px;
+    color: white;
+    border: 0px;
+    width: 100px;
+}
+.t1{
+    margin-top: 30px;
+    font-size: 20px;
+    margin-left: 160px;
+}
+.k3{
+    border-radius: 10px;
+    background-color: white;
+    /*width: 1020px;*/
+    margin-left: 160px;
+    height: 320px;
+}
+/*框4*/
+.img02{
+    float: right;
+
+    margin-top: 20px;
+    margin-right: 100px;
+}
+.k4{
+    border-radius: 10px;
+    /*width: 1020px;*/
+    margin-left: 160px;
+    background-color: white;
+
+    height: 170px;
+}
+/*框5*/
+.img03{
+    float: right;
+    height:300px;
+    margin-top: 40px;
+    margin-right: 100px;
+}
+
+.input1{
+    width: 350px;
+    height: 34px;
+    border-radius: 4px;
+    border:1px solid #CCCCCC;
+
+}
+.input2{
+    width: 130px;
+    height: 34px;
+    border-radius: 4px;
+    border:1px solid #CCCCCC;
+}
+
+.field{
+    width: 130px;
+    height: 34px;
+    border-radius: 4px;
+    border:1px solid #CCCCCC;
+}
+
+.input3{
+    width: 350px;
+    height: 60px;
+    border-radius: 4px;
+    border:1px solid #CCCCCC;
+}
+.k5{
+    border-radius: 10px;
+    /*width: 1020px;*/
+    margin-left: 160px;
+    background-color: white;
+    height: auto;
+
+}
+
+/*输入框默认字符*/
+input::-webkit-input-placeholder {
+    color: #999;
+    -webkit-transition: color.5s;
+}
+input:focus::-webkit-input-placeholder, input:hover::-webkit-input-placeholder {
+    color: #c2c2c2;
+    -webkit-transition: color.5s;
+}
+/*框6*/
+.k6{
+    border-radius: 10px;
+    height:auto;
+    background-color: white;
+    /*width: 1020px;*/
+    margin-left: 160px;
+
+}
+/*radio*/
+.label1{
+    line-height:27px;
+    text-align: center;
+    color:white;
+    height: 34px;
+    background-color: #365164;
+    width: 80px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+
+}
+.label01{
+    line-height:27px;
+    text-align: center;
+    color:#999999;
+    height: 34px;
+    background-color: white;
+    width: 80px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border: 1px solid #999999;
+}
+.label2
+{
+    line-height:29px;
+    text-align: center;
+    color:white;
+    margin-left: -40px;
+    height: 34px;
+    background-color: #365164;
+    width: 120px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+
+}
+.label02
+{
+    line-height:27px;
+    text-align: center;
+    color:#999999;
+    margin-left: -40px;
+    height: 34px;
+    background-color:white;
+    width: 120px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #999999;
+
+}
+
+.label3
+{
+
+    margin-top: -45px;
+    margin-right: 793px;
+    line-height:32px;
+    color:white;
+    float:right;
+    height: 34px;
+    background-color: #365164;
+    width: 80px;
+    border-radius: 4px;
+}
+.label4{
+    text-align: center;
+    line-height:32px;
+    color:white;
+    height: 34px;
+    background-color: #365164;
+    width: 120px;
+    margin-left: -34px;
+}
+.label04{
+    text-align: center;
+    line-height:32px;
+    color:#999999;
+    height: 34px;
+    background-color:white;
+    border: 1px solid #999999;
+    width: 120px;
+    border-radius: 4px;
+}
+
+.label5
+{
+
+    line-height:27px;
+    text-align: center;
+    color:white;
+    margin-left: -40px;
+    height: 34px;
+    background-color: #365164;
+    width: 120px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+
+}
+.label05
+{
+    line-height:27px;
+    text-align: center;
+    color:#999999;
+    margin-left: -40px;
+    height: 34px;
+    background-color:white;
+    width: 120px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #999999;
+
+}
+
+body{
+    margin: 0 ;
+    padding: 0;
+}
+
+
+button{
+    outline: none;
+}
+
+.hvr-float-shadow{
+    outline-color: white;
+}
+
+.main_content{
+
+    width:1101px;
+    margin: 100px auto;
+}
+.input-group{
+    margin-bottom: 20px;
+    margin-left: 50px;
+    width:480px ;
+}
+.search_color{
+    background-color: white;
+    border: 1px solid #aab2bd;
+    border-left-style: none;
+}
+.search_event {
+    background-color: white;
+    border: 1px solid #aab2bd;
+    border-right-style: none;
+
+}
+
+.placehold-line{
+    margin: 2em 48px;
+    width: 80%;
+    border: 1px solid #aab2bd;
+    border-style: none none solid none ;
+}
+.infor{
+    margin-left: 48px;
+    width: 400px;
+}
+
+.media{
+    /*margin-top: 0em;*/
+    border: 1px solid #e0e0e0;
+    height: 8em;
+    margin-left: 48px;
+    border-style: none none solid none ;
+}
+
+.media img{
+    margin-top: 14px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+}
+.media-heading{
+    margin-top: 10px;
+    margin-left: 12px;
+}
+
+.media-body{
+    width: 44em;
+
+}
+
+.media-body div{
+    margin-top:9px;
+    margin-left: 12px;
+}
+.media-body h4{
+    margin-top: 20px;
+}
+
+.media-info-updateDate{
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.media-info-appId{
+    margin-left: 16px;
+}
+.media-right{
+    padding-right: 4em;
+
+}
+.button_bottom{
+    border:1px solid #3498db;
+    margin-top:50px;
+    width: 144px;
+    height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    color: #3498db;
+    background-color: white;
+    outline:none;
+}
+
+
+
+.addApp{
+    border: 1px dashed #e0e0e0;
+    box-shadow: 1px 1px 1px #e0e0e0;
+    height: 245px;
+    width: 160px;
+    margin-left: 32px;
+    float: left;
+}
+
+.btn-sm_release{
+    background-color: white;
+    border: none;
+    margin-left: 130px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    outline: none;
+}
+
+
+.app_name{
+    margin-bottom: 2px;
+    font-size: 16px;
+    color:#333333;
+    font-weight: 300;
+    width: 180px;
+    height: 42px;
+    padding-left: 28px;
+    padding-right: 20px;
+    /*border: 1px solid red;*/
+    margin-top: 14px;
+}
+.app_version,.app_update{
+  font-size: 12px;
+    color: #999999;
+    padding-left: 25px;
+    padding-right: 20px;
+    /*border: 1px solid black;*/
+    margin-top:-5px;
+}
+/*.app_button_bottom{*/
+    /*border:1px solid #3498db;*/
+    /*width: 40px;*/
+    /*height: 24px;*/
+    /*border-radius: 4px;*/
+    /*color: #3498db;*/
+    /*font-size: 12px;*/
+    /*background-color: white;*/
+    /*float: left;*/
+    /*margin-top: -55px;*/
+    /*margin-left: 108px;*/
+/*}*/
+.app_add_main{
+    float: left;
+    /*border: 1px solid red;*/
+    width: 270px;
+    height: 300px;
+}
+.app_add {
+    width: 180px;
+    height: 290px;
+    margin-left:0px;
+    border: 2px dashed #dbdbdb;
+
+
+}
+.app_add span{
+    width: 200px;
+    height: 250px;
+    /*border: 1px solid red;*/
+    font-size: 180px;
+    line-height: 200px;
+    display: block;
+    margin-top: 10px;
+    margin-left: 37px;
+    color: #dbdbdb;
+}
+.app_bottom{
+    margin-top: 40px;
+    font-size: 14px;
+    color:#999999;
+    font-weight:lighter;width: 1001px;
+    height: 20px ;border: 1px solid #999999;
+    float: left;
+    border-style: none none  solid none ;
+
+}
+.excedBtn{
+    background-color: #e0e0e0;
+    border:1px solid #e0e0e0;
+    margin-top:50px;
+    width: 144px;
+    height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: #e0e0e0;
+}
+
+
+.placehold-line{
+    margin-top: 2em;
+    width: 80%;
+    border: 1px solid #aab2bd;
+    border-style: none none solid none ;
+}
+
+.add_app {
+    font-size: 14px;
+    background-color: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+
+}
+.release2{
+    z-index:5;
+    position: fixed;
+    right:-5px;
+    top:60%;
+    width: 44px;
+    height: 140px;
+    background:url(/images/doTask/video2.png);
+    border: 0px ;
+    border-radius: 10px;
+}
+/*第一步:选择或添加任务应用*/
+.mytitle{
+    border-left: 4px solid #3498db;
+    padding-left: 20px;
+    font-size: 22px;
+    color: #333333;
+    margin-bottom: 26px;
+}
+.button_state .btn{
+    margin-top: 20px;
+    width: 160px;
+    height: 40px;
+    font-size: 18px;
+
+}
+.btn_releaseTask{
+    background-color: #6eb7e8;
+    color: white;
+}
+.btn_download{
+    background-color: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+}
+.btn_save1{
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #3498db;
+
+}
+.btn_save2{
+
+    background-color: #e0e0e0;
+    color: white;
+    border: 1px solid #e0e0e0;
+
+}
+.btn_task{
+
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #3498db;
+
+}
+.keyword{
+    width: 200px;
+}
+.beizhu{
+    width: 500px;height: 100px;
+}
+
+.synwords{
+    color: #fff727;
+    font-size: 20px;
+}
+#glyphicon #glyphicon1{
+    cursor: pointer;
+}
+.currentTask {
+    float: right;
+    margin-right: 145px;
+    margin-top: -60px;
+    width: 150px;
+    height: 42px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    color: #3498db;
+}
+
+.border{
+    border: 3px solid #3498db;
+}
+
+.task-remark{
+    width: 300px;
+    height: 34px;
+    border-radius: 4px;
+    border:1px solid #CCCCCC;
+    margin-left: 20px;
+}
+
+.modal-title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.upload-app {
+    font-size: 18px;
+    background-color: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    margin-top: 28px;
+}
+
+.submint-task {
+    position: absolute;
+    right:80px;
+    bottom:10px;
+
+    color:white;
+    border-radius: 5px;
+
+    width: 120px;
+    height: 33px;
+    /*background-color: #3498db;*/
+    border: 0px;
+    font-size: 18px;
+
+}
+
+.modal-ol {
+    font-size: 18px;
+    margin-right: 60px;
+}
+/*.back-top{*/
+    /*color:#999999;*/
+    /*opacity:0.8;*/
+    /*position: fixed;*/
+    /*top:80%;*/
+    /*right:100px;*/
+    /*z-index: 80;*/
+    /*height:70px;*/
+    /*width:70px;*/
+/*}*/
+/*.back-top:hover{*/
+    /*background-color: #333333;*/
+    /*opacity:0.8;*/
+/*}*/
+
+/*新写*/
+
+.xiaoma{
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 160px;
+}
+
+.input-task {
+    width: 800px;
+    height: 300px;
+    border-radius: 4px;
+    border:1px solid #CCCCCC;
+    font-size: 14px;
+}
+
+.task-input3 {
+    width: 600px;
+    height: 200px;
+    font-size:14px;
+    padding-left: 4px;
+    margin-top: -10px;
+    border-radius: 4px;
+    border:1px solid #CCCCCC;
+}
+
+#custom-file-upload {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0px solid white;
+    background-color: #00a5ff;
+    color: white;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+#custom-file-upload2 {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0px solid white;
+    background-color: #FBBD08;
+    color: white;
+    padding-top: 5px;
+    cursor: pointer;
+}

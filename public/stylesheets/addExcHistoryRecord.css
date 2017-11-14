@@ -1,0 +1,115 @@
+body{
+    margin: 0 ;
+    padding: 0;
+
+}
+.main{
+     margin-top: 100px;
+ }
+.input-group
+{
+    margin-left: 100px;
+
+}
+
+.placehold-line{
+    margin-left: 100px;
+    margin-top: 2em;
+    width: 80%;
+    border: 1px solid #aab2bd;
+    border-style: none none solid none ;
+}
+
+.media-right{
+    padding-right: 4em;
+}
+
+.media img{
+    margin-top: 14px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+.media{
+    margin-top: 0em;
+    margin-left: 100px;
+    border: 1px solid #e0e0e0;
+    height: 8em;
+    border-style: none none solid none ;
+}
+
+.media-info-{
+    margin-top: 5px;
+    /*width: 40%;*/
+}
+
+button{
+    outline: none;
+}
+.button_bottom{
+    border:1px solid #3498db;
+    margin-top:55px;
+    width: 144px;
+    height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    color: #3498db;
+    background-color: white;
+}
+
+.form-control{
+    background-color: white;
+    border: 1px solid #aab2bd;
+    border-right-style: none;
+}
+
+.search_color{
+    background-color: white;
+    border: 1px solid #aab2bd;
+    border-left-style: none;
+}
+
+.media-heading{
+    margin-top: 10px;
+    margin-left: 12px;
+}
+
+.media-body{
+    width: 44em;
+}
+
+.media-body div{
+    margin-top: 8px;
+    margin-left: 12px;
+}
+
+.media-info-updateDate{
+    font-size: 13px;
+}
+
+.media-info-appId{
+    margin-left: 16px;
+}
+
+.media-body div, span{
+    color: #999999;
+    font-size: 12px;
+}
+
+.excedBtn{
+    background-color: #e0e0e0;
+    border:1px solid #e0e0e0;
+    margin-top:50px;
+    width: 144px;
+    height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: #e0e0e0;
+}
+
+.appName{
+    padding-top: 10px;
+}

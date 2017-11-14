@@ -1,0 +1,169 @@
+body{
+    height:100%;
+    background-color:#f0f0f0
+}
+
+/* 设置行高*/
+.input-title, .register-subheading{
+    line-height:1;
+    letter-spacing:1px
+}
+
+/*设置整个div的样式*/
+.content{
+    padding-top:3.5em; /*设置元素上内边距*/
+    height:100%;
+    min-height:59.375em; /*设置元素最小高度*/
+}
+
+.register-content{
+    margin:0 auto; /*设置元素外边距*/
+    width:460px;
+    border:1px solid #ccc;
+    border-radius:0.3125em;
+    box-shadow:0 0 0.9375em 0 #cccccc;
+    background-color:#ffffff;
+}
+
+/*表单部分的样式*/
+.register-main{
+    margin:3.1em auto 0;
+    width:334px;
+}
+
+.wildhorse{
+    margin-left: 78px;
+}
+
+.register-title{
+    margin-top:48px;
+    margin-bottom:12px;
+    font-size:36px;
+    color:#333;
+    font-weight:500
+}
+
+.password-title{
+    text-align: center;
+}
+
+.register-subheading{
+    margin:0;
+    padding-bottom:26px;
+    font-size:13px;
+    color: #666666;
+    border-bottom:1px solid #e5e5e5
+}
+
+.solid-subheading{
+    margin-top: 26px;
+    margin-bottom: 56px;
+    border-bottom:1px solid #e5e5e5
+}
+
+.input-title{
+    margin:25px 0 10px;
+    font-size:16px;
+    color:#333;
+    font-weight:500
+}
+
+.phone-input{
+    padding-left:14px;
+    padding-right:24px;
+    width:100%;
+    height:42px;
+    border:1px solid #999;
+    border-radius:0.312em;
+}
+
+.input-title .login{
+    float:right;
+    font-size:12px;
+    color:#666;
+    margin-top:3px
+}
+
+.input-title .login a{
+    color:#3498db;
+    border-bottom:1px #999
+}
+
+.input-title .login a:active,.input-title .login a:hover{
+    color:#333;
+    border-bottom:1px solid #333
+}
+
+.register-input-group .input-fill{
+    position:relative;
+    overflow:hidden;
+    border-radius:3px
+}
+
+.signup{
+    padding-left:14px;
+    padding-right:24px;
+    width:60%;
+    height:42px;
+    border:1px solid #999999;
+    border-radius:0.312em;
+    margin-right: 19px;
+
+}
+
+#button1{
+    width:30%;
+    margin-left: 10px;
+    background-color: #ffffff;
+    color:#3498db;
+    font-size: 15px;
+}
+
+.register-sub button{
+    background-color:#3498db;
+    font-size:18px;
+    width:334px;
+    height:40px;
+    color: #ffffff;
+}
+
+.register-sub .btn:hover{
+    background-color:#0077aa;
+    border-color:#0077aa;
+    color:#fff
+}
+
+.register-sub{
+    margin-top:50px;
+    padding-bottom:26px
+}
+
+.agree{
+    margin:0 0 0 -5%;
+    color:#999;
+    font-size:13px;
+    width:110%;
+    margin-bottom: 50px;
+}
+
+.agreement{
+    font-size: 13px;
+    color: #999999;
+}
+
+.agree .secrecy{
+    margin-top:6px;
+    font-size:13px
+}
+
+
+#embed-captcha{
+    margin-top: 20px;
+    margin-left: 20px
+}
+#wait{
+    font-size:18px;
+    margin-left:40px;
+}
+
+

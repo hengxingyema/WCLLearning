@@ -1,0 +1,42 @@
+<!--二维码界面-->
+
+<ion-header-bar class="bar-dark" style="height: 48px;text-align: center">
+    <div class="buttons">
+        <button class="button button-icon icon ion-ios-arrow-left" onclick="JavaScript:history.back()">
+        </button>
+    </div>
+    <div class="h1 title" style="font-size: 18px;margin-top: 2px">二维码名片</div>
+
+</ion-header-bar>
+
+
+<ion-view style="">
+    <ion-content style="background-color: #F5F5F5;">
+
+        <div class="item item-body" style="text-align: center;margin-top: 10px;height: 506px">
+            <!--<img class="full-image" ng-src="{{userInfoObject.userIcon}}" style="width: 45px;height: 45px;">-->
+            <!--<p>-->
+                <!--ID:<span>{{userInfoObject.userCode}}</span>-->
+            <!--</p>-->
+
+            <div on-hold="">
+                <img src="/images/xiaoma/二维码.png" style="width: 60.15vw;height: 81.25vw;position:relative;  z-index: 0;">
+                <div id="qrcode" style="margin: -33.18vw auto 0 auto;position:relative;z-index: 2;border: 1px solid #ffffff;width: 80px;height: 80px"></div>
+            </div>
+
+            <div class="selectable alert alert-info Copy"  on-tap="copyUrl()" id="my_div_id"
+                 style="border: 1px dashed #DDDDDD;border-radius: 5px;margin-top: 60px;font-size: 16px;color: #333333;">
+                {{inviteUrl}}
+            </div>
+
+            <p style="margin-top: 13px;font-size: 11pt;color: #CCCCCC" >点击上面链接复制到剪切板</p>
+        </div>
+
+    </ion-content>
+
+</ion-view>
+
+
+
+
+
