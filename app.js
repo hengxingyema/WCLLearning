@@ -46,6 +46,7 @@ var jifenqiangApi = require('./routes/jifenqiangApi');
 var quickTaskHall = require('./routes/quickTaskApi');
 
 var Administrator = require('./routes/administratorApi');
+var WclResume = require('./routes/WclResume');
 
 //申请提现后台
 var withdrawDeposit = require('./routes/withdrawDepositApi');
@@ -156,6 +157,7 @@ app.use(function (req, res, next) {
     loginWhiteList.push("/doTask");
     loginWhiteList.push("/webAnalysis");
     loginWhiteList.push('/keywordsPackage');
+    loginWhiteList.push('/WclResume');
 
     //小马App
     loginWhiteList.push("/app");
@@ -276,6 +278,7 @@ app.use('/homePage', homePage);
 app.use('/home', homePage);
 app.use('/taskUserDetails', taskUserDetails);
 app.use('/Administrator', Administrator);
+app.use('/WclResume', WclResume);
 
 //小马试客
 app.use('/taskUser', taskUsers);
